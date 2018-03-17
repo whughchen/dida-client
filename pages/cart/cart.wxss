@@ -21,6 +21,7 @@ page{
     justify-content: space-between;
 }
 
+
 .service-policy .item{
     background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png) 0 center no-repeat;
     background-size: 10rpx;

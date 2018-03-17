@@ -35,7 +35,10 @@
     "pages/topicDetail/topicDetail",
     "pages/vehicleType/vehicleType",
     "pages/location/location",
-    "pages/searchLocation/searchLocation"
+    "pages/searchLocation/searchLocation",
+    "pages/ucenter/index"
+    
+
   ],
   "window": {
     "backgroundTextStyle": "dark",
