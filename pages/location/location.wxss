@@ -1,0 +1,16 @@
+/**index.wxss**/
+.nav{
+    position: fixed;
+    z-index: 10000;
+    bottom: 0px;
+    width: 100%;
+    height: 30px;
+}
+.nav-but{
+    border: cadetblue 1px solid;
+    border-radius: 0px;
+    width: 25%;
+    text-align: center;
+    line-height: 30px;
+    display: inline-flex;
+}

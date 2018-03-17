@@ -87,7 +87,7 @@
 
 .a-brand .mt {
   position: absolute;
-  z-index: 20;
+  z-index: 2;
   padding: 27rpx 31rpx;
   left: 0;
   top: 0;
@@ -105,45 +105,6 @@
   color: #999;
 }
 
-
-.a-brand .mt .brand11 {
-display: block;
-  font-size: 30rpx;
-  height: 30rpx;
-  color: #333;
-  
-  
-  position: relative;
-  z-index: 20;
-  padding: 150rpx 60rpx;
-  left: 0;
-  top: 0;
-}
-.a-brand  .text1 {
-  display: -webkit-inline-box;
-  font-size: 25rpx;
-  height: 25rpx;
-  color: #999;
-  
-  position: relative;
-  z-index: 20;
-  padding: 210rpx 10rpx;
-  left: 20;
-  top: 0;
-}
-.a-brand .secondline .text2 {
-  display: -webkit-inline-box;
-  font-size: 25rpx;
-  height: 25rpx;
-  color: #999;
-  
-  position: relative;
-  z-index: 20;
-  padding: 210rpx 10rpx;
-  left: 20;
-  top: 0;
-}
-
 .a-brand .item-1 {
   float: left;
   width: 375rpx;
@@ -152,14 +113,7 @@ display: block;
   border-top: 1rpx solid #fff;
   margin-left: 1rpx;
 }
-.a-brand .vehicle {
-  float: left;
-  width: 375rpx;
-  height: 282rpx;
-  overflow: hidden;
-  border-top: 1rpx solid #fff;
-  margin-left: 1rpx;
-}
+
 .a-brand .item-1:nth-child(2n+1){
   margin-left: 0;
   width: 374rpx;
@@ -424,53 +378,3 @@ display: block;
   width: 70rpx;
   height: 70rpx;
 }
-.page-body-button{
-  margin-top:20px;
-  line-height: 2;
-  width: 100%;
-}
-
-.unit-price-text{
-  height: 40rpx;
-  width: 80px;
-  line-height: 40rpx;
-  color: #444;
-  font-size: 40rpx;
-  border: thick;
-  margin-left: 100rpx;
-  
-
-}
-.unit-price{
-  height: 33rpx;
-  width: 100%;
-  line-height: 33rpx;
-  color: #333;
-  font-size: 33rpx;
-  border: thick
-}
-
-.unit-price-agreement{
-  height: 28rpx;
-  width: 100%;
-  line-height: 28rpx;
-  color: #333;
-  font-size: 28rpx;
-  border: thick;
-  margin-left:  30px;
-  display: block;
-}
-.lease-agreement{
-  height: 30rpx;
-  width: 100%;
-  line-height: 30rpx;
-  color: #333;
-  font-size: 30rpx;
-  border: thick;
-  margin-left:  20px;
-  margin-top: 30px;
-  margin-right: 20px;
-  display: block;
-  word-wrap: initial;
-}
-

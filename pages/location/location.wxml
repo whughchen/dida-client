@@ -1,0 +1,11 @@
+<view style="width: 100%; height: {{height}}px;">
+    <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14"
+         markers="{{markers}}"  style="width: 100%; height: {{height-30}}px;">
+         </map>
+    <view class="nav">
+        <button bindtap="search" data-type='酒店' class="nav-but">酒店</button>
+        <button bindtap="search" data-type='美食' class="nav-but">美食</button>
+        <button bindtap="search" data-type='书店' class="nav-but">书店</button>
+        <button bindtap="search" data-type='商场' class="nav-but">商场</button>
+    </view>
+</view>

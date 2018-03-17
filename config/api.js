@@ -59,4 +59,5 @@ module.exports = {
 
   FootprintList: ApiRootUrl + 'footprint/list',  //足迹列表
   FootprintDelete: ApiRootUrl + 'footprint/delete',  //删除足迹
+  VehicleTypeList: ApiRootUrl + 'vehicleType/list'  //货车类型
 };

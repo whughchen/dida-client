@@ -1,7 +1,6 @@
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
-const imageutil =require('../../services/imageutil.js')
 
 //获取应用实例
 const app = getApp()
@@ -13,13 +12,12 @@ Page({
     brands: [],
     floorGoods: [],
     banner: [],
-    channel: [],
-    vehicleType:[]
+    channel: []
   },
   onShareAppMessage: function () {
     return {
-      title: 'DidaLogistic',
-      desc: '滴答货运',
+      title: 'NideShop',
+      desc: '仿网易严选微信小程序商城',
       path: '/pages/index/index'
     }
   },
@@ -35,8 +33,7 @@ Page({
           brand: res.data.brandList,
           floorGoods: res.data.categoryList,
           banner: res.data.banner,
-          channel: res.data.channel,
-          vehicleType: res.data.vehicleType
+          channel: res.data.channel
         });
       }
     });
@@ -56,12 +53,4 @@ Page({
   onUnload: function () {
     // 页面关闭
   },
-
-  imageLoad: function (e) {
-  var imageSize = imageutil.imageUtil(e)
-  this.setData({
-    imagewidth: imageSize.imageWidth,
-    imageheight: imageSize.imageHeight
-  })
-}
 })

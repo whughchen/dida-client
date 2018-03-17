@@ -1,126 +1,59 @@
 
 <!--index.wxml-->
 <view class="container">
-  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
-    <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
-      <navigator url="{{item.link}}">
-        <image src="{{item.image_url}}" background-size="cover"></image>
-      </navigator>
-    </swiper-item>
-  </swiper>
-  <view class="m-menu">
-    <navigator  class="item" url="{{item.url}}" wx:for="{{channel}}" wx:key="{{item.id}}">
-      <image src="{{item.icon_url}}" background-size="cover"></image>
-      <text>{{item.name}}</text>
-    </navigator>
-  </view>
   <view class="a-section a-brand">
     <view class="h">
-      <navigator url="../brand/brand">
-        <text class="txt">品牌制造商直供</text>
-      </navigator>
+      <text class="txt">选择车型</text>
     </view>
     <view class="b">
-      <view class="item item-1" wx:for="{{brand}}" wx:key="item.id">
-        <navigator url="/pages/brandDetail/brandDetail?id={{item.id}}">
+      <view class="item-1  vehicle" wx:for="{{vehicleType}}" wx:key="item.id">
+        <navigator url="/pages/searchLocation/searchLocation?id={{item.id}}">
           <view class="wrap">
-            <image class="img" src="{{item.new_pic_url}}" mode="aspectFill"></image>
-            <view class="mt">
-              <text class="brand">{{item.name}}</text>
-              <text class="price">{{item.floor_price}}</text>
-              <text class="unit">元起</text>
+            <image class="img" style="width: {{imagewidth}}px; height: {{imageheight}}px;"  src="{{item.pic_url}}" mode="widthFix" bindload="imageLoad"></image>
+            
+            <view class="mt" style="width: {{imagewidth}}px; height: {{imageheight}}px;"  src="{{item.pic_url}}" mode="widthFix" bindload="imageLoad">
+              <text class="brand11">{{item.name}}</text>
+
             </view>
+              <text class="text1">{{item.capacity_weight}}吨</text>
+              <text class="text1">{{item.length}}*{{item.width}}*{{item.height}}米 </text>
+              <text class="text1">{{item.capacity_volumn}}方</text>
+              <text class="text2 secondline">载重   </text>
+              <text class="text2 secondline">长宽高   </text>
+              <text class="text2 secondline">体积   </text>
+
           </view>
         </navigator>
       </view>
     </view>
   </view>
-  <view class="a-section a-new" wx:if="{{newGoods.length > 0}}">
+
+
+  <view class="a-section a-brand">
     <view class="h">
-      <view>
-        <navigator url="../newGoods/newGoods">
-          <text class="txt">周一周四 · 新品首发</text>
-        </navigator>
-      </view>
+      <navigator url="/pages/searchLocation/searchLocation">
+        <button class="page-body-button" type="primary" bindtap="getLocation">渣土位置 点击定位</button>
+      </navigator>
+    </view> 
+  </view>
+
+  <view class="a-section a-brand">
+    <view class="h">
+      <text class="unit-price-text">预算</text>
+      <textarea class="unit-price">¥</textarea>
+      
     </view>
-    <view class="b">
-      <view class="item" wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
-        <navigator url="../goods/goods?id={{item.id}}">
-          <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image>
-          <text class="name">{{item.name}}</text>
-          <text class="price">￥{{item.retail_price}}</text>
-        </navigator>
-      </view>
+    <view>
+      <text class="unit-price-agreement">只限于垂直装卸，同时请参考《渣土标准》要求</text>
     </view>
   </view>
-  <view class="a-section a-popular" wx:if="{{hotGoods.length > 0}}">
-    <view class="h">
-      <view>
-        <navigator url="../hotGoods/hotGoods">
-          <text class="txt">人气推荐</text>
-        </navigator>
-      </view>
-    </view>
-    <view class="b">
-      <view class="item" wx:for="{{hotGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
-        <navigator url="/pages/goods/goods?id={{item.id}}">
-          <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image>
-          <view class="right">
-            <view class="text">
-              <text class="name">{{item.name}}</text>
-              <text class="desc">{{item.goods_brief}}</text>
-              <text class="price">￥{{item.retail_price}}</text>
-            </view>
-          </view>
-        </navigator>
-      </view>
-    </view>
+
+  <view class="a-section a-brand">
+      
+  <text class="lease-agreement">若产生高速费、停车费和搬运费，请用户额外支付；</text>
+  <text class="lease-agreement">关于搬运费，请参考《收费标准》，涉及特殊情况，请与司机师傅商议；
+  </text>
+     
   </view>
-  <view class="a-section a-topic" wx:if="topics.length > 0">
-    <view class="h">
-      <view>
-      <navigator url="../topic/topic" open-type="switchTab">
-        <text class="txt">专题精选</text>
-        </navigator>
-      </view>
-    </view>
-    <view class="b">
-      <scroll-view scroll-x="true" class="list">
-        <view class="item" wx:for="{{topics}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
-          <navigator url="../topicDetail/topicDetail?id={{item.id}}">
-            <image class="img" src="{{item.scene_pic_url}}" background-size="cover"></image>
-            <view class="np">
-              <text class="name">{{item.title}}</text>
-              <text class="price">￥{{item.price_info}}元起</text>
-            </view>
-            <text class="desc">{{item.subtitle}}</text>
-          </navigator>
-        </view>
-      </scroll-view>
-    </view>
-  </view>
-  <view class="good-grid" wx:for="{{floorGoods}}" wx:key="{{item.id}}">
-    <view class="h">
-      <view>
-        <text>{{item.name}}</text>
-      </view>
-    </view>
-    <view class="b">
-      <block wx:for="{{item.goodsList}}" wx:for-index="iindex" wx:for-item="iitem" wx:key="{{iitem.id}}">
-        <view class="item {{iindex % 2 == 0 ? '' : 'item-b'}}">
-          <navigator url="../goods/goods?id={{iitem.id}}" class="a">
-            <image class="img" src="{{iitem.list_pic_url}}" background-size="cover"></image>
-            <text class="name">{{iitem.name}}</text>
-            <text class="price">￥{{iitem.retail_price}}</text>
-          </navigator>
-        </view>
-      </block>
-      <view class="item item-b item-more">
-          <navigator url="/pages/category/category?id={{item.id}}" class="more-a">
-            <view class="txt">{{'更多'+item.name+'好物'}}</view>
-            <image class="icon" src="../../static/images/icon_go_more.png" background-size="cover"></image>
-          </navigator>
-      </view>
-    </view>
-  </view>
+  
 </view>
