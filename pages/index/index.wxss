@@ -47,7 +47,7 @@
   overflow: hidden;
   background: #fff;
   color: #333;
-  margin-top: 20rpx;
+  margin-top: 8rpx;
 }
 
 .a-section .h {
@@ -158,7 +158,7 @@ display: block;
   height: 282rpx;
   overflow: hidden;
   border-top: 1rpx solid #fff;
-  margin-left: 1rpx;
+  margin-left: 1px;
 }
 .a-brand .item-1:nth-child(2n+1){
   margin-left: 0;
@@ -431,23 +431,24 @@ display: block;
 }
 
 .unit-price-text{
-  height: 40rpx;
+  height: auto;
   width: 80px;
-  line-height: 40rpx;
+  line-height: 45rpx;
   color: #444;
   font-size: 40rpx;
   border: thick;
-  margin-left: 100rpx;
+  margin-left: 80rpx;
   
 
 }
 .unit-price{
-  height: 33rpx;
-  width: 100%;
-  line-height: 33rpx;
+  height: 48rpx;
+  width: 35%;
+  line-height: 48rpx;
   color: #333;
   font-size: 33rpx;
-  border: thick
+  border:solid 1px #00f; 
+  border-radius:2px;
 }
 
 .unit-price-agreement{
@@ -461,16 +462,33 @@ display: block;
   display: block;
 }
 .lease-agreement{
-  height: 30rpx;
+  height: auto;
   width: 100%;
-  line-height: 30rpx;
+  line-height: 38rpx;
   color: #333;
-  font-size: 30rpx;
+  font-size: 33rpx;
   border: thick;
-  margin-left:  20px;
-  margin-top: 30px;
-  margin-right: 20px;
+  margin-left:  10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   display: block;
   word-wrap: initial;
+}
+.add-address{
+    background: #b4282d;
+    text-align: center;
+    width: 45%;
+    height: 70rpx;
+    line-height: 70rpx;
+    position: relative;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    font-size: 29rpx;
+    bottom: 0;
+    left:0;
+    display: inline-block;
+    margin-left:  15px;
 }
 

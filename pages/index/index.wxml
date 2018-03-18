@@ -28,37 +28,47 @@
     </view>
   </view>
 
+  <view class="add-address"> 
+    <navigator url="/pages/ucenter/address/address">
+      <view class="add-address" bindtap="addressAddOrUpdate" data-address-id="0">输入地址</view>
+    </navigator>
+  </view>
 
-  <view class="a-section a-brand">
+  <view class="add-address"> 
+    <navigator url="/pages/searchLocation/searchLocation">
+      <view class="add-address" bindtap="getLocation" data-address-id="0">地图定位</view>   
+    </navigator>
+  </view>
+
+  
+  <!-- <view class="a-section a-brand">
     <view class="h">
       <navigator url="/pages/searchLocation/searchLocation">
         <button class="page-body-button" type="primary" bindtap="getLocation">渣土位置 点击定位</button>
       </navigator>
     </view> 
-  </view>
+  </view> -->
 
   <view class="a-section a-brand">
     <view class="h">
-      <text class="unit-price-text">预算</text>
-      <textarea class="unit-price">¥</textarea>
+      <text class="unit-price-text">预算 ¥</text>
+      <textarea class="unit-price"></textarea>
     </view>
     <view>
       <text class="unit-price-agreement">只限于垂直装卸，同时请参考《渣土标准》要求</text>
     </view>
   </view>
 
+
   <view class="a-section a-brand">  
-    <text class="lease-agreement">若产生高速费、停车费和搬运费，请用户额外支付；</text>
-    <text class="lease-agreement">关于搬运费，请参考《收费标准》，涉及特殊情况，请与司机师傅商议；
-  </text>
+    <text class="lease-agreement">若产生高速费、停车费和搬运费，请用户额外支付</text>
+    <text class="lease-agreement">关于搬运费，请参考《收费标准》，涉及特殊情况，请与司机师傅商议</text>
 
-</view>
+  </view>
 
-  <view class="a-section a-brand">
-    <view class="h">
+
       <navigator url="/pages/searchLocation/searchLocation">
         <button class="page-body-button" type="primary" bindtap="getLocation">叫车</button>
       </navigator>
-    </view> 
-  </view> 
+
 </view>
