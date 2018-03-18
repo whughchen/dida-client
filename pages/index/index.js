@@ -1,10 +1,11 @@
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
-const imageutil =require('../../services/imageutil.js')
+const imageutil =require('../../services/imageutil.js');
 
 //获取应用实例
-const app = getApp()
+const app = getApp();
+var id;
 Page({
   data: {
     newGoods: [],
@@ -14,8 +15,9 @@ Page({
     floorGoods: [],
     banner: [],
     channel: [],
-    vehicleType:[]
+    vehicleType:[],  
   },
+
   onShareAppMessage: function () {
     return {
       title: 'DidaLogistic',
@@ -58,10 +60,22 @@ Page({
   },
 
   imageLoad: function (e) {
-  var imageSize = imageutil.imageUtil(e)
-  this.setData({
-    imagewidth: imageSize.imageWidth,
-    imageheight: imageSize.imageHeight
-  })
-}
-})
+    var imageSize = imageutil.imageUtil(e)
+    this.setData({
+      imagewidth: imageSize.imageWidth,
+      imageheight: imageSize.imageHeight
+    })
+  },
+
+  choseVehicleType: function (e) {
+    console.log(e.currentTarget.dataset.id +' be selected')
+    var id = e.currentTarget.dataset.id;  //获取自定义的ID值  
+    this.setData({
+      id: id
+    })
+  }
+
+
+},
+id=0
+)

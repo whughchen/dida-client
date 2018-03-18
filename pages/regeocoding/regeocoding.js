@@ -5,18 +5,17 @@ Page({
         markers: [],
         latitude: '',
         longitude: '',
-        placeData: {}
+        rgcData: {}
     },
     makertap: function(e) {
         var that = this;
         var id = e.markerId;
         that.showSearchInfo(wxMarkerData, id);
-        that.changeMarkerColor(wxMarkerData, id);
     },
     onLoad: function() {
         var that = this;
         var BMap = new bmap.BMapWX({
-          ak: 'FTrMgqAebO4Q2Fk4VMm4I4WV9zMgiYBH'
+            ak: 'FTrMgqAebO4Q2Fk4VMm4I4WV9zMgiYBH'
         });
         var fail = function(data) {
             console.log(data)
@@ -33,8 +32,7 @@ Page({
                 longitude: wxMarkerData[0].longitude
             });
         }
-        BMap.search({
-            //"query": '美食',
+        BMap.regeocoding({
             fail: fail,
             success: success,
             iconPath: '../../img/marker_red.png',
@@ -44,26 +42,12 @@ Page({
     showSearchInfo: function(data, i) {
         var that = this;
         that.setData({
-            placeData: {
-                title:  data[i].title + '\n',
-                address: data[i].address + '\n',
-                telephone: + data[i].telephone
+            rgcData: {
+                address: '地址：' + data[i].address + '\n',
+                desc: '描述：' + data[i].desc + '\n',
+                business: '商圈：' + data[i].business
             }
-        });
-    },
-    changeMarkerColor: function(data, id) {
-        var that = this;
-        var markersTemp = [];
-        for (var i = 0; i < data.length; i++) {
-            if (i === id) {
-                data[i].iconPath = "../../img/marker_yellow.png";
-            } else {
-                data[i].iconPath = "../../img/marker_red.png";
-            }
-            markersTemp[i] = data[i];
-        }
-        that.setData({
-            markers: markersTemp
         });
     }
+
 })

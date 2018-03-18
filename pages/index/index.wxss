@@ -160,6 +160,18 @@ display: block;
   border-top: 1rpx solid #fff;
   margin-left: 1px;
 }
+vehicle-choosed {
+  float: left;
+  width: 375rpx;
+  height: 282rpx;
+  overflow: hidden;
+  border-top: 1rpx solid #fff;
+  margin-left: 1px;
+  background: url(../../img/on_choose.png);
+  color: #999;
+  border:solid 2px #00f; 
+  border-radius:2px;
+}
 .a-brand .item-1:nth-child(2n+1){
   margin-left: 0;
   width: 374rpx;
@@ -491,4 +503,3 @@ display: block;
     display: inline-block;
     margin-left:  15px;
 }
-

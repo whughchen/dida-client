@@ -34,9 +34,12 @@
     "pages/goods/goods",
     "pages/topicDetail/topicDetail",
     "pages/vehicleType/vehicleType",
+    "pages/ucenter/index",
     "pages/location/location",
     "pages/searchLocation/searchLocation",
-    "pages/ucenter/index"
+
+    "pages/regeocoding/regeocoding",
+    "pages/suggestion/suggestion"
     
 
   ],

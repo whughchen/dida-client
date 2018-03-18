@@ -45,7 +45,7 @@ Page({
       app.globalData.userInfo = res.data.userInfo;
       app.globalData.token = res.data.token;
     }).catch((err) => {
-      console.log(err)
+      console.log("user login error:"+err)
     });
   },
   exitLogin: function () {
