@@ -151,6 +151,7 @@ display: block;
   overflow: hidden;
   border-top: 1rpx solid #fff;
   margin-left: 1rpx;
+  border: 1px solid #000000;
 }
 .a-brand .vehicle {
   float: left;
@@ -160,9 +161,9 @@ display: block;
   border-top: 1rpx solid #fff;
   margin-left: 1px;
 }
-vehicle-choosed {
+.vehicle-choosed {
   float: left;
-  width: 375rpx;
+  width: 370rpx;
   height: 282rpx;
   overflow: hidden;
   border-top: 1rpx solid #fff;
@@ -171,6 +172,7 @@ vehicle-choosed {
   color: #999;
   border:solid 2px #00f; 
   border-radius:2px;
+    z-index: 21;
 }
 .a-brand .item-1:nth-child(2n+1){
   margin-left: 0;
@@ -178,7 +180,7 @@ vehicle-choosed {
 }
 
 .a-brand .item-1 .img {
-  width: 375rpx;
+  width: 370rpx;
   height: 253rpx;
 }
 
