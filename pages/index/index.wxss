@@ -181,7 +181,6 @@ display: block;
   overflow: hidden;
   border-top: 1rpx solid #fff;
   margin-left: 1px;
-  background: url(../../img/on_choose.png);
   color: #999;
   border:solid 1px #000000; 
   border-radius:2px;
@@ -196,7 +195,6 @@ display: block;
   margin-left: 1px;
   background: url(../../img/on_choose.png);
   color: #999;
-  border-radius:2px;
   z-index: 21;
 }
 .a-brand .item-1:nth-child(2n+1){

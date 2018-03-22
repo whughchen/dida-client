@@ -8,13 +8,13 @@ const app = getApp();
 var id;
 Page({
   data: {
-    newGoods: [],
-    hotGoods: [],
-    topics: [],
-    brands: [],
-    floorGoods: [],
-    banner: [],
-    channel: [],
+    // newGoods: [],
+    // hotGoods: [],
+    // topics: [],
+    // brands: [],
+    // floorGoods: [],
+    // banner: [],
+    // channel: [],
     vehicleType:[],  
   },
 
@@ -31,13 +31,13 @@ Page({
     util.request(api.IndexUrl).then(function (res) {
       if (res.errno === 0) {
         that.setData({
-          newGoods: res.data.newGoodsList,
-          hotGoods: res.data.hotGoodsList,
-          topics: res.data.topicList,
-          brand: res.data.brandList,
-          floorGoods: res.data.categoryList,
-          banner: res.data.banner,
-          channel: res.data.channel,
+          // newGoods: res.data.newGoodsList,
+          // hotGoods: res.data.hotGoodsList,
+          // topics: res.data.topicList,
+          // brand: res.data.brandList,
+          // floorGoods: res.data.categoryList,
+          // banner: res.data.banner,
+          // channel: res.data.channel,
           vehicleType: res.data.vehicleType
         });
       }
