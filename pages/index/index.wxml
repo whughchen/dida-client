@@ -6,7 +6,7 @@
       <text class="txt">选择车型</text>
     </view>
     <view class="b">
-      <view class="item-1  vehicle-choosed" wx:for="{{vehicleType}}" wx:key="item.id" data-id="{{index}}" bindtap="choseVehicleType" style="{{index == id?on-choosed:un-choosed}}">
+      <view class="vehicle-choosed" wx:for="{{vehicleType}}" wx:key="item.id" data-id="{{index}}" bindtap="choseVehicleType" style="{{index == id?on-choosed:un-choosed}}">
         <!-- <navigator url="/pages/searchLocation/searchLocation?id={{item.id}}"> -->
           <view class="wrap">
             <image class="img" style="width: {{imagewidth}}px; height: {{imageheight}}px;"  src="{{item.pic_url}}" mode="widthFix" bindload="imageLoad"></image>
