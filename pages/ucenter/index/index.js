@@ -58,7 +58,7 @@ Page({
           wx.removeStorageSync('token');
           wx.removeStorageSync('userInfo');
           wx.switchTab({
-            url: '/pages/index/index'
+            url: '/pages/contractor/index/index'
           });
         }
       }

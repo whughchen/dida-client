@@ -17,8 +17,8 @@
             </view>
               <text class="text1">{{item.capacity_weight}}吨</text>
               <text class="text1">{{item.length}}*{{item.width}}*{{item.height}}米 </text>
-              <text class="text1">{{item.capacity_volumn}}方</text>
-              <text class="text2 secondline">载重   </text>
+              <text class="text1">{{item.capacity_volumn}}方\n载重长宽高</text>
+              <text class="text1">   </text>
               <text class="text2 secondline">长宽高   </text>
               <text class="text2 secondline">体积   </text>
 
@@ -54,7 +54,7 @@
 
   <view class="a-section a-brand">
     <view class="h">
-      <text class="unit-price-text">预算 ¥</text>
+      <text class="unit-price-text">每车单价 ¥</text>
       <textarea class="unit-price"></textarea>
     </view>
     <view>
@@ -70,7 +70,7 @@
   </view>
 
 
-  <navigator url="/pages/searchLocation/searchLocation">
+  <navigator url="/pages/contractor/callLorry/callLorry">
     <button class="page-body-button" type="primary" bindtap="getLocation">叫车</button>
   </navigator>
   <!-- 

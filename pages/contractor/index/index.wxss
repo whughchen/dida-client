@@ -467,12 +467,12 @@ display: block;
 
 .unit-price-text{
   height: auto;
-  width: 80px;
+  width: 120px;
   line-height: 45rpx;
   color: #444;
   font-size: 40rpx;
   border: thick;
-  margin-left: 80rpx;
+  margin-left: 60rpx;
   
 
 }

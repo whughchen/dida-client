@@ -4,7 +4,7 @@
       <view class="msg">付款成功</view>
       <view class="btns">
         <navigator class="btn" url="/pages/ucenter/order/order" open-type="redirect">查看订单</navigator>
-        <navigator class="btn" url="/pages/index/index" open-type="switchTab">继续逛</navigator>
+        <navigator class="btn" url="/pages/contractor/index/index" open-type="switchTab">继续逛</navigator>
       </view>
     </view>
     <view class="error" wx:if="{{status != true}}">

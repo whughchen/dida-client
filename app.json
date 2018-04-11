@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/contractor/index/index",
     "pages/catalog/catalog",
     "pages/newGoods/newGoods",
     "pages/hotGoods/hotGoods",
@@ -36,10 +36,11 @@
     "pages/vehicleType/vehicleType",
     "pages/ucenter/index",
     "pages/location/location",
-    "pages/searchLocation/searchLocation",
 
-    "pages/regeocoding/regeocoding",
-    "pages/suggestion/suggestion"
+
+    "pages/contractor/searchLocation/searchLocation",
+    "pages/contractor/callLorry/callLorry"
+
     
 
   ],
@@ -57,7 +58,7 @@
     "color": "#666",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/contractor/index/index",
         "iconPath": "static/images/ic_menu_choice_nor.png",
         "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
         "text": "叫车"

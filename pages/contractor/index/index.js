@@ -1,7 +1,7 @@
-const util = require('../../utils/util.js');
-const api = require('../../config/api.js');
-const user = require('../../services/user.js');
-const imageutil =require('../../services/imageutil.js');
+const util = require('../../../utils/util.js');
+const api = require('../../../config/api.js');
+const user = require('../../../services/user.js');
+const imageutil =require('../../../services/imageutil.js');
 
 //获取应用实例
 const app = getApp();
@@ -28,7 +28,7 @@ Page({
     return {
       title: 'DidaLogistic',
       desc: '滴答货运',
-      path: '/pages/index/index'
+      path: '/pages/contractor/index/index'
     }
   },
 

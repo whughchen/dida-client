@@ -1,0 +1,20 @@
+
+<!--index.wxml-->
+<view class="container">
+    <view class="picture_list">
+        <text class="brand11">拍照 </text>
+        <text class="text1">拍照要求：全景，至少3张，正前方、侧面、鸟瞰图至少1张</text>
+
+        <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+            <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+            <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+            <view class="upload_progress" wx:if="{{item.upload_percent < 100}}">{{item.upload_percent}}%</view>
+        </view>
+        <view class="picture_item">
+            <image src="../../../img/marker_red.png" bindtap="uploadpic" mode="aspectFill"></image>
+        </view>
+    </view>
+    <button bindtap='uploadimage'>确定上传</button>
+
+
+</view>
