@@ -32,7 +32,7 @@ function request(url, data = {}, method = "GET") {
         'X-Nideshop-Token': wx.getStorageSync('token')
       },
       success: function (res) {
-        console.log("success");
+        console.log("request success, url="+url);
 
         if (res.statusCode == 200) {
 
@@ -102,7 +102,7 @@ function login() {
       success: function (res) {
         if (res.code) {
           //登录远程服务器
-          console.log(res)
+          console.log('登录远程服务器:'+res)
           resolve(res);
         } else {
           reject(res);

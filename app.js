@@ -4,9 +4,19 @@ var user = require('./services/user.js');
 
 App({
   onLaunch: function () {
+/*    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //发起网络请求
+          console.log('login res.code='+res.code)
+        } else {
+          console.log('获取用户登录态失败:' + res.errMsg)
+        }
+      }
+    });*/
     //获取用户的登录信息
     user.checkLogin().then(res => {
-      console.log('app login')
+      console.log('app login success')
       this.globalData.userInfo = wx.getStorageSync('userInfo');
       this.globalData.token = wx.getStorageSync('token');
     }).catch((err) => {
