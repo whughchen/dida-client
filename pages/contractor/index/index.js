@@ -8,21 +8,27 @@ const app = getApp();
 var id;
 Page({
   data: {
-    // newGoods: [],
-    // hotGoods: [],
-    // topics: [],
-    // brands: [],
-    // floorGoods: [],
-    // banner: [],
-    // channel: [],
-    vehicleType:[],  
+    vehicleType:[],
+    phone: 0  
   },
 
   getPhoneNumber: function (e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
+    // console.log(e.detail)
+    // console.log(e.detail.iv)
+    // console.log(e.detail.encryptedData)
+
+    util.request(api.DescroPhone, { iv: e.detail.iv, encryptedData: e.detail.encryptedData, sessionData: wx.getStorageSync('sessionData') }, 'POST').then(function (res) {
+      if (res) {
+        this.setData({
+          phone: res.data.phone
+        });
+        console.log('descro phoneNum=' + this.phone);
+      }
+    });
+    
   },
+
+
 
   onShareAppMessage: function () {
     return {
@@ -37,13 +43,6 @@ Page({
     util.request(api.IndexUrl).then(function (res) {
       if (res.errno === 0) {
         that.setData({
-          // newGoods: res.data.newGoodsList,
-          // hotGoods: res.data.hotGoodsList,
-          // topics: res.data.topicList,
-          // brand: res.data.brandList,
-          // floorGoods: res.data.categoryList,
-          // banner: res.data.banner,
-          // channel: res.data.channel,
           vehicleType: res.data.vehicleType
         });
       }

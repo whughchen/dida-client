@@ -23,6 +23,7 @@ function loginByWeixin() {
           //存储用户信息
           wx.setStorageSync('userInfo', res.data.userInfo);
           wx.setStorageSync('token', res.data.token);
+          wx.setStorageSync('sessionData', res.data.sessionData);
 
           resolve(res);
         } else {

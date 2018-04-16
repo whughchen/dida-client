@@ -71,11 +71,11 @@
 
 
   <navigator url="/pages/contractor/callLorry/callLorry">
-    <button class="page-body-button" type="primary" bindtap="getLocation">叫车</button>
+    <button class="page-body-button" type="primary" bindtap="getLocation">下一步</button>
   </navigator>
-  <!-- 
+   
   <view>
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号码 </button>
   </view>
-  -->
+  
 </view>

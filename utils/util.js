@@ -32,7 +32,7 @@ function request(url, data = {}, method = "GET") {
         'X-Nideshop-Token': wx.getStorageSync('token')
       },
       success: function (res) {
-        console.log("request success, url="+url);
+        console.log("request success, url="+url +", res="+JSON.stringify(res.data));
 
         if (res.statusCode == 200) {
 
@@ -50,7 +50,8 @@ function request(url, data = {}, method = "GET") {
                   //存储用户信息
                   wx.setStorageSync('userInfo', res.data.userInfo);
                   wx.setStorageSync('token', res.data.token);
-                  
+                  wx.setStorageSync('sessionData', res.data.sessionData);
+
                   resolve(res);
                 } else {
                   reject(res);
@@ -102,7 +103,7 @@ function login() {
       success: function (res) {
         if (res.code) {
           //登录远程服务器
-          console.log('登录远程服务器:'+res)
+          console.log('登录远程服务器:'+JSON.stringify(res))
           resolve(res);
         } else {
           reject(res);
@@ -120,6 +121,7 @@ function getUserInfo() {
     wx.getUserInfo({
       withCredentials: true,
       success: function (res) {
+        console.log('wx.getUserInfo:')
         console.log(res)
         resolve(res);
       },
