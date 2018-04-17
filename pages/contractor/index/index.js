@@ -9,20 +9,22 @@ var id;
 Page({
   data: {
     vehicleType:[],
-    phone: 0  
+    phone: '' 
   },
 
   getPhoneNumber: function (e) {
+    let that = this;
     // console.log(e.detail)
     // console.log(e.detail.iv)
     // console.log(e.detail.encryptedData)
 
     util.request(api.DescroPhone, { iv: e.detail.iv, encryptedData: e.detail.encryptedData, sessionData: wx.getStorageSync('sessionData') }, 'POST').then(function (res) {
-      if (res) {
-        this.setData({
-          phone: res.data.phone
+      if (res.errno === 0) {
+        that.setData({
+          phone: res.data
         });
-        console.log('descro phoneNum=' + this.phone);
+        console.log('phone = ' + that.data.phone);
+        wx.setStorageSync('phone',that.data.phone);
       }
     });
     

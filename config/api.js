@@ -2,7 +2,9 @@ const ApiRootUrl = 'http://127.0.0.1:8360/api/';
 //const ApiRootUrl = 'https://miniapp.rnh-inc.xyz/api/';
 
 module.exports = {
+
   IndexUrl: ApiRootUrl + 'contractor/index/index', //首页数据接口
+  ApiRootUrl: 'http://127.0.0.1:8360/api/',
   CatalogList: ApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
   CatalogCurrent: ApiRootUrl + 'catalog/current',  //分类目录当前分类数据接口
 
@@ -61,5 +63,6 @@ module.exports = {
   FootprintList: ApiRootUrl + 'footprint/list',  //足迹列表
   FootprintDelete: ApiRootUrl + 'footprint/delete',  //删除足迹
   VehicleTypeList: ApiRootUrl + 'vehicleType/list',  //货车类型
-  DescroPhone: ApiRootUrl + 'descro/descro'
+  DescroPhone: ApiRootUrl + 'descro/descro',
+  SavePhotoUrl: ApiRootUrl + 'photo/savePhotoUrl'
 };

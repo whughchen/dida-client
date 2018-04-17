@@ -32,65 +32,88 @@ Page({
         //显示
         that.setData({
           upload_picture_list: upload_picture_list,
-        })
+        });
       }
-    })
+    });
   },
 //点击上传事件
   uploadimage: function () {
-    var page = this
-    var upload_picture_list = page.data.upload_picture_list
+    var page = this;
+    var upload_picture_list = page.data.upload_picture_list;
     //循环把图片上传到服务器 并显示进度
     for (var j in upload_picture_list) {
       if (upload_picture_list[j]['upload_percent'] == 0) {
-        upload_file_server(page, upload_picture_list, j)
+        this.upload_file_server(page, upload_picture_list, j);
       }
     }
   },
   //上传方法
-  upload_file_server:function(that, upload_picture_list, j)
+  upload_file_server: function(that, upload_picture_list, j)
   {
+    let thatthat=this;
     var time = new Date()
-    var datetime = tt.formatTime(time)//获取时间 防止命名重复
-    var date = datetime.substring(0, 8)//获取日期 分日期 文件夹存储
+    var datetime = util.formatTime(time)//获取时间 防止命名重复
+    var date = datetime.substring(0, 10)//获取日期 分日期 文件夹存储
     console.log("开始上传" + j + "图片到服务器：")
     //上传返回值
     var upload_task = wx.uploadFile({
-      url: 'http//Index/Imageadmin/imageupload',//需要用HTTPS，同时在微信公众平台后台添加服务器地址
+      url: api.ApiRootUrl + 'upload/muckPic',
       filePath: upload_picture_list[j]['path'], //上传的文件本地地址
       name: 'file',
+      header: { 'content-type': 'multipart/form-data' },
       formData: {
         'num': j,
         'datetime': datetime,
-        'date': date
+        'date': date,
+        'userId': wx.getStorageSync('sessionData').user_id,
       },
       //附近数据，这里为路径
       success: function (res) {
-        console.log(res.data)
+        //console.log(res.data)
         var data = JSON.parse(res.data)
         //字符串转化为JSON
-        if (data.Success == true) {
-          console.log('OK')
-          //var filename = "https://127.0.0.1:8095/" + data.file//存储地址 显示
-          var filename = data.file//存储地址 显示
-          upload_picture_list[j]['path_server'] = filename
+        if (data.errno == 0) {
+          console.log('upload OK, path='+res.data);
+          var filename = data.file;//存储地址 显示
+          upload_picture_list[j]['path_server'] = filename;
         } else {
-          var filename = "https://127.0.0.1:8095/xx.png"//错误图片 显示
-          upload_picture_list[j]['path_server'] = filename
+          var filename = "https://127.0.0.1:8360/xx.png"//错误图片 显示
+          //upload_picture_list[j]['path_server'] = filename;
+          console.log('upload failed, reason=' + res.data);
         }
         that.setData({
           upload_picture_list: upload_picture_list
-        })
-      }
-    })
+        });
+        this.savePhotoUrl(upload_picture_list);
+
+      },
+      
+
+    });
+
+
+
     //上传 进度方法
     upload_task.onProgressUpdate((res) => {
       upload_picture_list[j]['upload_percent'] = res.progress
       //console.log('第' + j + '个图片上传进度：' + upload_picture_list[j]['upload_percent'])
       //console.log(upload_picture_list)
-      that.setData({upload_picture_list: upload_picture_list})
-    })
+      that.setData({upload_picture_list: upload_picture_list});
+    });
   },
+
+  savePhotoUrl: function (upload_picture_list) {
+    let that = this;
+    util.request(api.SavePhotoUrl, { upload_picture_list: upload_picture_list, userId: wx.getStorageSync('userId') }).then(function (res) {
+      if (res.errno == 0) {
+        console.log('savePhotoUrl success');
+      } else {
+        console.log('savePhotoUrl failed');
+      }
+    });
+  }
+
+
 
 
 
@@ -118,22 +141,6 @@ Page({
   onUnload: function () {
     // 页面关闭
   },
-
-  imageLoad: function (e) {
-    var imageSize = imageutil.imageUtil(e)
-    this.setData({
-      imagewidth: imageSize.imageWidth,
-      imageheight: imageSize.imageHeight
-    })
-  },
-
-  choseVehicleType: function (e) {
-    console.log(e.currentTarget.dataset.id +' be selected')
-    var id = e.currentTarget.dataset.id;  //获取自定义的ID值  
-    this.setData({
-      id: id
-    })
-  }
 
 
 }
