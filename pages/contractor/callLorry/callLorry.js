@@ -50,7 +50,6 @@ Page({
   //上传方法
   upload_file_server: function(that, upload_picture_list, j)
   {
-    let thatthat=this;
     var time = new Date()
     var datetime = util.formatTime(time)//获取时间 防止命名重复
     var date = datetime.substring(0, 10)//获取日期 分日期 文件夹存储
@@ -73,8 +72,8 @@ Page({
         var data = JSON.parse(res.data)
         //字符串转化为JSON
         if (data.errno == 0) {
-          console.log('upload OK, path='+res.data);
-          var filename = data.file;//存储地址 显示
+          console.log('upload OK, path='+data);
+          var filename = data.data.fileUrl;//存储地址 显示
           upload_picture_list[j]['path_server'] = filename;
         } else {
           var filename = "https://127.0.0.1:8360/xx.png"//错误图片 显示
@@ -84,7 +83,7 @@ Page({
         that.setData({
           upload_picture_list: upload_picture_list
         });
-        this.savePhotoUrl(upload_picture_list);
+        that.savePhotoUrl(upload_picture_list);
 
       },
       
@@ -104,14 +103,14 @@ Page({
 
   savePhotoUrl: function (upload_picture_list) {
     let that = this;
-    util.request(api.SavePhotoUrl, { upload_picture_list: upload_picture_list, userId: wx.getStorageSync('userId') }).then(function (res) {
+    util.request(api.SavePhotoUrl, { upload_picture_list: upload_picture_list, sessionData: wx.getStorageSync('sessionData') }, 'POST').then(function (res) {
       if (res.errno == 0) {
         console.log('savePhotoUrl success');
       } else {
         console.log('savePhotoUrl failed');
       }
     });
-  }
+  },
 
 
 
