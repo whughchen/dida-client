@@ -18,7 +18,7 @@ Page({
     var upload_picture_list = that.data.upload_picture_list
     //选择图片
     wx.chooseImage({
-      count: 8, // 默认9，这里显示一次选择相册的图片数量
+      count: 5, // 默认9，这里显示一次选择相册的图片数量
       sizeType: ['original', 'compressed'],// 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'],// 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {// 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
@@ -53,6 +53,7 @@ Page({
     var time = new Date()
     var datetime = util.formatTime(time)//获取时间 防止命名重复
     var date = datetime.substring(0, 10)//获取日期 分日期 文件夹存储
+    var successList = [];
     console.log("开始上传" + j + "图片到服务器：")
     //上传返回值
     var upload_task = wx.uploadFile({
@@ -60,6 +61,7 @@ Page({
       filePath: upload_picture_list[j]['path'], //上传的文件本地地址
       name: 'file',
       header: { 'content-type': 'multipart/form-data' },
+      maxFileSize: 4*1024*1024,
       formData: {
         'num': j,
         'datetime': datetime,
@@ -75,6 +77,7 @@ Page({
           console.log('upload OK, path='+data);
           var filename = data.data.fileUrl;//存储地址 显示
           upload_picture_list[j]['path_server'] = filename;
+          successList[j]= filename;
         } else {
           var filename = "https://127.0.0.1:8360/xx.png"//错误图片 显示
           //upload_picture_list[j]['path_server'] = filename;
@@ -83,7 +86,7 @@ Page({
         that.setData({
           upload_picture_list: upload_picture_list
         });
-        that.savePhotoUrl(upload_picture_list);
+        that.savePhotoUrl(successList);
 
       },
       

@@ -11,7 +11,7 @@
             <view class="upload_progress" wx:if="{{item.upload_percent < 100}}">{{item.upload_percent}}%</view>
         </view>
         <view class="picture_item">
-            <image src="../../../img/marker_red.png" bindtap="uploadpic" mode="aspectFill"></image>
+            <image src="../../../img/add_photo.png" bindtap="uploadpic" mode="aspectFill"></image>
         </view>
     </view>
     <button bindtap='uploadimage'>确定上传</button>
