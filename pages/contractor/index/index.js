@@ -37,7 +37,7 @@ Page({
       title: 'DidaLogistic',
       desc: '滴答货运',
       path: '/pages/contractor/index/index'
-    }
+    };
   },
 
   getIndexData: function () {
@@ -71,7 +71,7 @@ Page({
     this.setData({
       imagewidth: imageSize.imageWidth,
       imageheight: imageSize.imageHeight
-    })
+    });
   },
 
   choseVehicleType: function (e) {
@@ -79,7 +79,7 @@ Page({
     var id = e.currentTarget.dataset.id;  //获取自定义的ID值  
     this.setData({
       id: id
-    })
+    });
   }
 
 

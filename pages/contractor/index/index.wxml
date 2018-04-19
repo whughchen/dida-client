@@ -78,4 +78,5 @@
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号码 </button>
   </view>
   
+  
 </view>

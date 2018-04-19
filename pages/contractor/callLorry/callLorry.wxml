@@ -1,8 +1,8 @@
 
 <!--index.wxml-->
 <view class="container">
-    <view class="picture_list">
-        <text class="brand11">拍照 </text>
+  <view class="picture_list">
+        <text class="brand11" style='margin-bottom: 5px;'>添加照片 </text>
         <text class="text1">拍照要求：全景，至少3张，正前方、侧面、鸟瞰图至少1张</text>
 
         <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
@@ -13,8 +13,21 @@
         <view class="picture_item">
             <image src="../../../img/add_photo.png" bindtap="uploadpic" mode="aspectFill"></image>
         </view>
-    </view>
-    <button bindtap='uploadimage'>确定上传</button>
+  </view>
 
+  <view class="time_require">
+    <text style="font-size:20px;">时间要求:</text>
+    <radio-group>
+      <radio>12小时之内 </radio>
+      <radio>24小时之内 </radio>
+      <radio>48小时之内 </radio>
+    </radio-group>
+  </view>
+  <view >
+    <text style="font-size:20px;">备注:</text>
+    <textarea style="font-size:16px;" class='input_text'>例如 大于有多少袋\r\n是否需要拆卸门框、床垫、衣柜、马桶等废弃物, 请尽量说明 </textarea>
+  </view>
+
+  <button class="page-body-button" type="primary" bindtap="submitOrder">叫 车</button>
 
 </view>

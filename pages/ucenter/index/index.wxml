@@ -3,8 +3,6 @@
     <image class="avatar" src="{{userInfo.avatar}}"></image>
     <view class="info">
       <text class="name">{{userInfo.nickname}}</text>
-      <text class="level">{{userInfo.username}}</text>
-      <text class="level">{{userInfo.mobile}}</text>
     </view>
   </view>
 

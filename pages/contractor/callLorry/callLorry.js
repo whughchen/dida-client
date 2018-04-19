@@ -61,7 +61,6 @@ Page({
       filePath: upload_picture_list[j]['path'], //上传的文件本地地址
       name: 'file',
       header: { 'content-type': 'multipart/form-data' },
-      maxFileSize: 4*1024*1024,
       formData: {
         'num': j,
         'datetime': datetime,
@@ -113,6 +112,15 @@ Page({
         console.log('savePhotoUrl failed');
       }
     });
+  },
+
+  submitOrder: function () {
+    this.uploadimage();
+    this.createOrder();
+  },
+
+  createOrder: function(){
+   
   },
 
 

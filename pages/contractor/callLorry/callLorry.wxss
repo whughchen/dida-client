@@ -562,3 +562,20 @@ display: inline-block;
     width: 160rpx;
     height: 160rpx;
 }
+.time_require {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    width: 100%;
+}
+
+.input_text{
+  border-style: solid;
+  border-width: 1px;
+  width: 99%;
+  height: 100px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}

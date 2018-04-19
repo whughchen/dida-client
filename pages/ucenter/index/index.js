@@ -6,11 +6,11 @@ var app = getApp();
 Page({
   data: {
     userInfo: {},
-    sessionData:{}
+    sessionData:{},
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
-    console.log(app.globalData)
+    console.log(app.globalData);
   },
   onReady: function () {
 
@@ -45,13 +45,13 @@ Page({
     user.loginByWeixin().then(res => {
       this.setData({
         userInfo: res.data.userInfo,
-
+        sessionData: res.data.sessionData
       });
       app.globalData.userInfo = res.data.userInfo;
       app.globalData.token = res.data.token;
       app.globalData.sessionData = res.sessionData;
     }).catch((err) => {
-      console.log("user login error:"+err)
+      console.log("user login error:"+ JSON.stringify(err));
     });
   },
   exitLogin: function () {
