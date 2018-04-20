@@ -27,7 +27,20 @@ Page({
       }
     });
   },
-  addressAddOrUpdate (event) {
+  addressSelect (event) {
+    console.log('用户手动选择地址');
+    app.contractorAddressId= event.currentTarget.dataset.addressId;
+    wx.navigateBack({
+      contratorAddressId: event.currentTarget.dataset.addressId
+    })
+    wx.showToast({
+      title: '地址已选择',
+      icon: 'success',
+      duration: 1000
+    });
+  },
+  addressEdit(event) {
+    console.log('用户编辑')
     console.log(event)
     wx.navigateTo({
       url: '/pages/ucenter/addressAdd/addressAdd?id=' + event.currentTarget.dataset.addressId

@@ -7,7 +7,7 @@
     </view>
     <view class="b">
       <view class="vehicle-choosed" wx:for="{{vehicleType}}" wx:key="item.id" data-id="{{index}}" bindtap="choseVehicleType" style="{{index == id?on-choosed:un-choosed}}">
-        <!-- <navigator url="/pages/searchLocation/searchLocation?id={{item.id}}"> -->
+        <!-- <navigator url="/pages/contrator/searchLocation/searchLocation?id={{item.id}}"> -->
           <view class="wrap">
             <image class="img" style="width: {{imagewidth}}px; height: {{imageheight}}px;"  src="{{item.pic_url}}" mode="widthFix" bindload="imageLoad"></image>
             
@@ -41,6 +41,9 @@
     <navigator url="/pages/searchLocation/searchLocation">
       <view class="add-address" bindtap="getLocation" data-address-id="0">地图定位</view>   
     </navigator>
+<!--      <navigator url="/pages/tencentMap/tencentMap">
+          <view class="add-address"  data-address-id="0">地图定位</view>
+      </navigator>-->
   </view>
 </view>
   
@@ -70,7 +73,7 @@
   </view>
 
 
-  <navigator url="/pages/contractor/callLorry/callLorry">
+  <navigator url="/pages/contractor/callLorry/callLorry?vehichleType={{vehicleid}}">
     <button class="page-body-button" type="primary" bindtap="getLocation">下一步</button>
   </navigator>
    

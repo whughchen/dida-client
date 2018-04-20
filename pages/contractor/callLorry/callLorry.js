@@ -8,7 +8,10 @@ const app = getApp();
 
 Page({
   data: {
-    upload_picture_list: []
+    upload_picture_list: [],
+    vehichleType: -1,
+    responceTime: '',
+    remark: ''
   },
 
 
@@ -123,6 +126,13 @@ Page({
    
   },
 
+  radioSelect: function(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value);
+    this.setData({
+      responceTime: e.detail.value
+    });
+  },
+
 
 
 
@@ -137,7 +147,10 @@ Page({
 
 
   onLoad: function (options) {
-    //this.getIndexData();
+    this.setData({
+      vehichleType: options.vehichleType
+    });
+
   },
   onReady: function () {
     // 页面渲染完成

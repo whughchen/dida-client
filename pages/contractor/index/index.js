@@ -5,11 +5,12 @@ const imageutil =require('../../../services/imageutil.js');
 
 //获取应用实例
 const app = getApp();
-var id;
+//var id;
 Page({
   data: {
     vehicleType:[],
-    phone: '' 
+    phone: '' ,
+    vehicleid:-1
   },
 
   getPhoneNumber: function (e) {
@@ -57,6 +58,7 @@ Page({
     // 页面渲染完成
   },
   onShow: function () {
+
     // 页面显示
   },
   onHide: function () {
@@ -78,11 +80,10 @@ Page({
     console.log(e.currentTarget.dataset.id +' be selected')
     var id = e.currentTarget.dataset.id;  //获取自定义的ID值  
     this.setData({
-      id: id
+      vehicleid: id
     });
   }
 
 
-},
-id=0
+}
 )

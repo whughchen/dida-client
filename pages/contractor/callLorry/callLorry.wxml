@@ -17,10 +17,10 @@
 
   <view class="time_require">
     <text style="font-size:20px;">时间要求:</text>
-    <radio-group>
-      <radio>12小时之内 </radio>
-      <radio>24小时之内 </radio>
-      <radio>48小时之内 </radio>
+    <radio-group bindchange="radioSelect">
+      <radio value="12小时之内">12小时之内 </radio>
+      <radio value="24小时之内">24小时之内 </radio>
+      <radio value="48小时之内"  checked="true">48小时之内 </radio>
     </radio-group>
   </view>
   <view >

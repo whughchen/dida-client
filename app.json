@@ -33,13 +33,14 @@
     "pages/shopping/addressAdd/addressAdd",
     "pages/goods/goods",
     "pages/topicDetail/topicDetail",
-    "pages/vehicleType/vehicleType",
+
     "pages/ucenter/index",
     "pages/location/location",
 
 
-    "pages/contractor/searchLocation/searchLocation",
-    "pages/contractor/callLorry/callLorry"
+    "pages/searchLocation/searchLocation",
+    "pages/contractor/callLorry/callLorry",
+    "pages/tencentMap/tencentMap"
 
     
 

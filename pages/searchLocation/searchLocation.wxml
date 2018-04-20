@@ -5,3 +5,4 @@
   <text>{{placeData.title}}</text>
   <text>{{placeData.address}}</text>
 </view>
+<button class="page-body-button" type="primary" bindtap="selectLocation">确定</button>

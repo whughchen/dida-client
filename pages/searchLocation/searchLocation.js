@@ -1,11 +1,14 @@
-var bmap = require('../../../utils/wxapp-jsapi-master/src/bmap-wx.js');
+var bmap = require('../../utils/wxapp-jsapi-master/src/bmap-wx.js');
 var wxMarkerData = [];
+var app = getApp();
+
 Page({
     data: {
         markers: [],
         latitude: '',
         longitude: '',
         placeData: {}
+
     },
     makertap: function(e) {
         var that = this;
@@ -16,7 +19,7 @@ Page({
     onLoad: function() {
         var that = this;
         var BMap = new bmap.BMapWX({
-          ak: 'FTrMgqAebO4Q2Fk4VMm4I4WV9zMgiYBH'
+          ak: 'xZ9m6MbAToONKqYp5y7YYth77qRytQOo'
         });
         var fail = function(data) {
             console.log(data)
@@ -50,6 +53,7 @@ Page({
                 telephone: + data[i].telephone
             }
         });
+      app.contractorAddressTxt= that.address + that.title;
     },
     changeMarkerColor: function(data, id) {
         var that = this;
@@ -65,5 +69,18 @@ Page({
         that.setData({
             markers: markersTemp
         });
-    }
+    },
+  selectLocation (event) {
+    console.log('用户手动选择地址')
+    console.log(event)
+    wx.navigateBack({
+
+    })
+    wx.showToast({
+      title: '地图已定位',
+      icon: 'success',
+      duration: 1000
+    });
+  }
+
 })
