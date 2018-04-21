@@ -23,11 +23,12 @@
       <radio value="48小时之内"  checked="true">48小时之内 </radio>
     </radio-group>
   </view>
-  <view >
+  <view>
     <text style="font-size:20px;">备注:</text>
-    <textarea style="font-size:16px;" class='input_text'>例如 大于有多少袋\r\n是否需要拆卸门框、床垫、衣柜、马桶等废弃物, 请尽量说明 </textarea>
+    <textarea style="font-size:16px;" class='input_text' bindblur="charChange"  value="{{remark}}" placeholder="例如 大于有多少袋\r\n是否需要拆卸门框、床垫、衣柜、马桶等废弃物, 请尽量说明)"> </textarea>
+      
   </view>
+  <button class="page-body-button" type="primary" bindtap="submitCart">叫 车</button>
 
-  <button class="page-body-button" type="primary" bindtap="submitOrder">叫 车</button>
 
 </view>

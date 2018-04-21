@@ -8,9 +8,10 @@ const app = getApp();
 //var id;
 Page({
   data: {
-    vehicleType:[],
+    vehicleTypes:[],
     phone: '' ,
-    vehicleid:-1
+    vehicleTypeId:-1,
+    contractorAddressTxt: ''
   },
 
   getPhoneNumber: function (e) {
@@ -46,7 +47,7 @@ Page({
     util.request(api.IndexUrl).then(function (res) {
       if (res.errno === 0) {
         that.setData({
-          vehicleType: res.data.vehicleType
+          vehicleTypes: res.data.vehicleType
         });
       }
     });
@@ -58,6 +59,20 @@ Page({
     // 页面渲染完成
   },
   onShow: function () {
+    let that=this;
+    if (app.globalData.contractorAddressId >0){
+      util.request(api.AddressDetail + '?id=' + app.globalData.contractorAddressId).then(function (res) {
+        if (res.errno === 0) {
+          that.setData({
+            contractorAddressTxt: res.data.address
+          });
+        }
+      });  
+    }else{
+      that.setData({
+        contractorAddressTxt: app.globalData.contractorAddressTxt
+      })
+    }
 
     // 页面显示
   },
@@ -80,7 +95,7 @@ Page({
     console.log(e.currentTarget.dataset.id +' be selected')
     var id = e.currentTarget.dataset.id;  //获取自定义的ID值  
     this.setData({
-      vehicleid: id
+      vehicleTypeId: id
     });
   }
 

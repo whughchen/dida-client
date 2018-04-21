@@ -53,7 +53,8 @@ Page({
                 telephone: + data[i].telephone
             }
         });
-      app.contractorAddressTxt= that.address + that.title;
+      app.globalData.contractorAddressTxt= that.address + that.title;
+      console.log('定位地址：'+app.globalData.contractorAddressTxt);
     },
     changeMarkerColor: function(data, id) {
         var that = this;

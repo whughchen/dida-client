@@ -28,10 +28,12 @@ Page({
     });
   },
   addressSelect (event) {
-    console.log('用户手动选择地址');
-    app.contractorAddressId= event.currentTarget.dataset.addressId;
+
+    app.globalData.contractorAddressId = event.currentTarget.dataset.addressId;
+    console.log('用户手动选择地址:'+app.globalData.contractorAddressId);
     wx.navigateBack({
       contratorAddressId: event.currentTarget.dataset.addressId
+
     })
     wx.showToast({
       title: '地址已选择',

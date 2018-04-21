@@ -162,38 +162,38 @@ display: block;
 }
 .vehicle-choosed {
   float: left;
-  width: 370rpx;
+  width: 49%;
   height: 282rpx;
   overflow: hidden;
   border-top: 1rpx solid #fff;
   margin-left: 1px;
   color: #999;
-  /*border:solid 1px #000000; */
+  border-radius:4px;
+  z-index: 21;
+
+  border:solid 1px #000000; 
+  border-color: red;
+}
+
+.vehicle-unchoosed {
+  float: left;
+  width: 49%;
+  height: 282rpx;
+  overflow: hidden;
+  border-top: 1rpx solid #fff;
+  margin-left: 1px;
+  color: #999;
   border-radius:2px;
     z-index: 21;
 }
+
 .on-choosed{
-  float: left;
-  width: 370rpx;
-  height: 282rpx;
-  overflow: hidden;
-  border-top: 1rpx solid #fff;
-  margin-left: 1px;
-  color: #999;
   border:solid 1px #000000; 
   border-radius:2px;
   z-index: 21;
+  border-color: green;
 }
-.un-choosed{
-  float: left;
-  width: 370rpx;
-  height: 282rpx;
-  overflow: hidden;
-  border-top: 1rpx solid #fff;
-  margin-left: 1px;
-  color: #999;
-  z-index: 21;
-}
+
 .a-brand .item-1:nth-child(2n+1){
   margin-left: 0;
   width: 374rpx;
@@ -451,6 +451,7 @@ display: block;
   line-height: 33rpx;
   color: #333;
   font-size: 33rpx;
+
 }
 
 .good-grid .more-a .icon{
@@ -525,3 +526,14 @@ display: block;
     display: inline-block;
     margin-left:  15px;
 }
+
+.service_selection .is_checked{  
+  border: 1px solid #FE0002 ;  
+  color: #FE0002 ;  
+  background: #fff;  
+}  
+.service_selection .normal{  
+  border: none;  
+  color: #333;  
+  background: #F0F1EC;  
+}  

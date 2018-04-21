@@ -9,9 +9,11 @@ const app = getApp();
 Page({
   data: {
     upload_picture_list: [],
-    vehichleType: -1,
+    vehichleTypeId: '',
     responceTime: '',
-    remark: ''
+    remark: '',
+    cartInfo: {},
+    photoUrlId: 0
   },
 
 
@@ -76,7 +78,7 @@ Page({
         var data = JSON.parse(res.data)
         //字符串转化为JSON
         if (data.errno == 0) {
-          console.log('upload OK, path='+data);
+          console.log('upload OK, path=' + JSON.stringify(res.data));
           var filename = data.data.fileUrl;//存储地址 显示
           upload_picture_list[j]['path_server'] = filename;
           successList[j]= filename;
@@ -89,6 +91,7 @@ Page({
           upload_picture_list: upload_picture_list
         });
         that.savePhotoUrl(successList);
+        
 
       },
       
@@ -108,21 +111,64 @@ Page({
 
   savePhotoUrl: function (upload_picture_list) {
     let that = this;
-    util.request(api.SavePhotoUrl, { upload_picture_list: upload_picture_list, sessionData: wx.getStorageSync('sessionData') }, 'POST').then(function (res) {
+    util.request(api.SavePhotoUrl, { upload_picture_list: upload_picture_list}, 'POST').then(function (res) {
+      console.log(res);
       if (res.errno == 0) {
         console.log('savePhotoUrl success');
+        that.setData({
+          photoUrlId: res.data.photoUrlId
+        });
+        that.createOrder();
+
       } else {
         console.log('savePhotoUrl failed');
       }
     });
   },
 
-  submitOrder: function () {
+  submitCart: function () {
     this.uploadimage();
-    this.createOrder();
+
+
+    
+
   },
 
   createOrder: function(){
+    let that = this;
+    if (!that.data.photoUrlId){
+      wx.showToast({
+        image: '/static/images/icon_error.png',
+        title: '至少上传3张照片',
+        mask: true
+      });
+      return;
+    }
+
+    util.request(api.CartAdd, { goodsId: this.data.vehichleTypeId, number: 1, productId: this.data.vehichleTypeId, responceTime: this.responceTime, remark:this.remark,}, "POST")
+      .then(function (res) {
+        let _res = res;
+        if (_res.errno == 0) {
+          wx.showToast({
+            title: '添加叫车订单成功'
+          });
+          that.setData({
+            cartInfo: res.data.cartList[0]
+          });
+
+          wx.navigateTo({
+            url: '/pages/cart/cart'
+          });
+
+        } else {
+          wx.showToast({
+            image: '/static/images/icon_error.png',
+            title: _res.errmsg,
+            mask: true
+          });
+        }
+
+      });
    
   },
 
@@ -132,6 +178,21 @@ Page({
       responceTime: e.detail.value
     });
   },
+  charChange: function (e) {
+    if (e.detail && e.detail.value.length > 0) {
+      if (e.detail.value.length < 1 || e.detail.value.length > 500) {
+      } else {
+        this.setData({
+          remark: e.detail.value
+        });
+      }
+    } else {
+      this.setData({
+        remark: ''
+      });
+      app.func.showToast('请输入备注', 'loading', 1000);
+    }
+  }, 
 
 
 
@@ -148,9 +209,10 @@ Page({
 
   onLoad: function (options) {
     this.setData({
-      vehichleType: options.vehichleType
+      vehichleTypeId: options.vehicleTypeId,
+      
     });
-
+    console.log('跳转后vehicleid=' + this.data.vehichleTypeId);
   },
   onReady: function () {
     // 页面渲染完成

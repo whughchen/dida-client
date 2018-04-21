@@ -39,13 +39,17 @@ Page({
     try {
       wx.setStorageSync('addressId', event.currentTarget.dataset.addressId);
     } catch (e) {
-
+      console.log(e);
     }
+    wx.showToast({
+      title: '地址已选择'
+    });
 
-    //选择该收货地址
+/*    //选择该收货地址
     wx.redirectTo({
       url: '/pages/shopping/checkout/checkout'
-    })
+    })*/
+
   },
   onHide: function () {
     // 页面隐藏
