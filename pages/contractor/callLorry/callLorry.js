@@ -129,7 +129,6 @@ Page({
   submitCart: function () {
     this.uploadimage();
 
-
     
 
   },
@@ -149,15 +148,18 @@ Page({
       .then(function (res) {
         let _res = res;
         if (_res.errno == 0) {
-          wx.showToast({
-            title: '添加叫车订单成功'
-          });
+
           that.setData({
             cartInfo: res.data.cartList[0]
           });
 
-          wx.navigateTo({
-            url: '/pages/cart/cart'
+          wx.switchTab({
+            url: '../../cart/cart'
+          });
+          wx.showToast({
+            title: '添加叫车订单成功',
+            icon: 'success',
+            duration: 1500
           });
 
         } else {
@@ -171,6 +173,7 @@ Page({
       });
    
   },
+
 
   radioSelect: function(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);

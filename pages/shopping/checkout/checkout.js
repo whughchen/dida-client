@@ -28,6 +28,17 @@ Page({
         this.setData({
           'addressId': addressId
         });
+      }else {
+        util.request(api.AddressList, { isDefault: 1 }).then(function (res) {
+          if (res.errno === 0) {
+            console.log(res.data);
+            if(res.data.addressList.length>0){
+              that.setData({
+                addressId: res.data.addressList[0].id
+              });
+            }
+          }
+        });
       }
 
       var couponId = wx.getStorageSync('couponId');
@@ -37,7 +48,7 @@ Page({
         });
       }
     } catch (e) {
-      // Do something when catch error
+      console.log(e);
     }
 
 
@@ -62,10 +73,11 @@ Page({
       wx.hideLoading();
     });
   },
-  selectAddress() {
-    wx.navigateTo({
+  selectAddress(event) {
+    //wx.setStorageSync('addressId',event.currentTarget.dataset.addressId);
+/*    wx.navigateTo({
       url: '/pages/shopping/address/address',
-    })
+    })*/
   },
   addAddress() {
     wx.navigateTo({
@@ -102,11 +114,13 @@ Page({
         const orderId = res.data.orderInfo.id;
         pay.payOrder(parseInt(orderId)).then(res => {
           wx.redirectTo({
+            
+            
             url: '/pages/payResult/payResult?status=1&orderId=' + orderId
           });
         }).catch(res => {
           wx.redirectTo({
-            url: '/pages/payResult/payResult?status=0&orderId=' + orderId
+            url: '/pages/ucenter/order/order'
           });
         });
       } else {

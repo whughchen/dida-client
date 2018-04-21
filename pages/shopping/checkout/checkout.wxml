@@ -1,6 +1,6 @@
 <view class="container">
     <view class="address-box">
-        <view class="address-item" bindtap="selectAddress" wx:if="{{checkedAddress.id > 0}}">
+        <view class="address-item"  wx:if="{{checkedAddress.id > 0}}">
             <view class="l">
                 <text class="name">{{checkedAddress.name}}</text>
                 <text class="default" wx:if="{{checkedAddress.is_default === 1}}">默认</text>
@@ -9,7 +9,7 @@
                 <text class="mobile">{{checkedAddress.mobile}}</text>
                 <text class="address">{{checkedAddress.full_region + checkedAddress.address}}</text>
             </view>
-            <view class="r">
+            <view class="r" bindtap="selectAddress">
                 <image src="/static/images/address_right.png"></image>
             </view>
         </view>

@@ -45,10 +45,10 @@ Page({
       title: '地址已选择'
     });
 
-/*    //选择该收货地址
-    wx.redirectTo({
+    //选择该收货地址
+/*    wx.redirectTo({
       url: '/pages/shopping/checkout/checkout'
-    })*/
+    });*/
 
   },
   onHide: function () {

@@ -30,6 +30,7 @@ Page({
   addressSelect (event) {
 
     app.globalData.contractorAddressId = event.currentTarget.dataset.addressId;
+    wx.setStorageSync('addressId',event.currentTarget.dataset.addressId);
     console.log('用户手动选择地址:'+app.globalData.contractorAddressId);
     wx.navigateBack({
       contratorAddressId: event.currentTarget.dataset.addressId
