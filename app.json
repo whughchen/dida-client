@@ -66,6 +66,12 @@
       },
       {
         "pagePath": "pages/cart/cart",
+        "iconPath": "static/images/ic_menu_sort_nor.png",
+        "selectedIconPath": "static/images/ic_menu_sort_pressed.png",
+        "text": "任务"
+      },      
+      {
+        "pagePath": "pages/ucenter/order/order",
         "iconPath": "static/images/ic_menu_shoping_nor.png",
         "selectedIconPath": "static/images/ic_menu_shoping_pressed.png",
         "text": "订单"

@@ -14,7 +14,7 @@
             </view>
         </view>
 
- <!--      <view class="address-item address-empty" bindtap="addAddress" >
+        <view class="address-item address-empty" bindtap="addAddress" wx:if="{{checkedAddress.id <= 0}}">
             <view class="m">
                新增地址
             </view>
@@ -22,7 +22,7 @@
                 <image src="/static/images/address_right.png"></image>
             </view>
         </view>
-        -->
+
     </view>
 
     <view class="coupon-box">

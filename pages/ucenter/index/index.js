@@ -7,6 +7,7 @@ Page({
   data: {
     userInfo: {},
     sessionData:{},
+    phone:''
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -40,6 +41,24 @@ Page({
   },
   onUnload: function () {
     // 页面关闭
+  },
+  getPhoneNumber: function (e) {
+    let that = this;
+    // console.log(e.detail)
+    // console.log(e.detail.iv)
+    // console.log(e.detail.encryptedData)
+
+    util.request(api.DescroPhone, { iv: e.detail.iv, encryptedData: e.detail.encryptedData, sessionData: wx.getStorageSync('sessionData') }, 'POST').then(function (res) {
+      if (res.errno === 0) {
+        that.setData({
+          phone: res.data
+        });
+        console.log('phone = ' + that.data.phone);
+        wx.setStorageSync('phone', that.data.phone);
+      }
+    });
+    this.onShow();
+
   },
   goLogin(){
     user.loginByWeixin().then(res => {

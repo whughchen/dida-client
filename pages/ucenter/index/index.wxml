@@ -2,7 +2,9 @@
   <view class="profile-info" bindtap="goLogin">
     <image class="avatar" src="{{userInfo.avatar}}"></image>
     <view class="info">
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{phone == ''}}">登录</button>
       <text class="name">{{userInfo.nickname}}</text>
+      <text class="name">{{phone}}</text>
     </view>
   </view>
 

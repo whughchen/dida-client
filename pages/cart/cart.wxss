@@ -86,7 +86,7 @@ page{
 }
 
 .cart-view .item{
-    height: 164rpx;
+    height: 184rpx;
     width: 100%;
     overflow: hidden;
 }
@@ -106,7 +106,7 @@ page{
 
 .cart-view .item .cart-goods{
     float: left;
-    height: 164rpx;
+    height: 184rpx;
     width: 672rpx;
     border-bottom: 1px solid #f4f4f4;
 }
@@ -116,7 +116,7 @@ page{
     height:125rpx;
     width: 125rpx;
     background: #f4f4f4;
-    margin: 19.5rpx 18rpx 19.5rpx 0;
+    margin: 39.5rpx 18rpx 19.5rpx 0;
 }
 
 .cart-view .item .info{
@@ -151,7 +151,7 @@ page{
 }
 
 .cart-view .item .attr{
-    margin-bottom: 17rpx;
+    margin-bottom: 6rpx;
     height: 24rpx;
     line-height: 24rpx;
     font-size: 22rpx;

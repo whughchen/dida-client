@@ -24,6 +24,8 @@
                   <text class="num">x{{item.number}}车</text>
                 </view>
                 <view class="attr">{{ isEditCart ? '已选择:' : ''}}{{item.goods_specifition_name_value}}</view>
+                <view class="attr">{{item.responce_time}}</view>
+                <view class="attr">{{item.remark}}</view>
                 <view class="b">
                   <text class="price">￥{{item.retail_price}}</text>
                   <view class="selnum">

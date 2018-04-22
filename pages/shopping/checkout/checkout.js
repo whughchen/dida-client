@@ -74,10 +74,10 @@ Page({
     });
   },
   selectAddress(event) {
-    //wx.setStorageSync('addressId',event.currentTarget.dataset.addressId);
-/*    wx.navigateTo({
+
+    wx.navigateTo({
       url: '/pages/shopping/address/address',
-    })*/
+    })
   },
   addAddress() {
     wx.navigateTo({

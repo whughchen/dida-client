@@ -27,7 +27,13 @@
                         <text class="number">x{{item.number}}</text>
                     </view>
                     <view class="attr">{{item.goods_specifition_name_value}}</view>
+                    <view class="attr">{{orderInfo.responce_time}}</view>
+                    <view class="attr">{{orderInfo.remark}}</view>
                     <view class="price">￥{{item.retail_price}}</view>
+
+                </view>
+                <view wx:for="{{item.photo_urls}}" class="picture_item" wx:key="{{index}}">
+                    <image src="{{item.path}}" mode="aspectFill"></image>
                 </view>
             </view>
         </view>
