@@ -41,14 +41,15 @@ Page({
     } catch (e) {
       console.log(e);
     }
+
     wx.showToast({
       title: '地址已选择'
     });
-
     //选择该收货地址
-/*    wx.redirectTo({
-      url: '/pages/shopping/checkout/checkout'
-    });*/
+    wx.navigateBack({
+      
+    })
+
 
   },
   onHide: function () {
