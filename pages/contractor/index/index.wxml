@@ -1,6 +1,8 @@
 
 <!--index.wxml-->
-<view class="container">
+<!-- 工长端 -->
+<view wx:if="{{userInfo.user_type != '2'}}" class="container">
+ <view class="container">
   <view class="a-section a-brand">
     <view class="h">
       <text class="txt">选择车型</text>
@@ -69,17 +71,73 @@
   <view class="a-section a-brand">  
     <text class="lease-agreement">若产生高速费、停车费和搬运费，请用户额外支付</text>
     <text class="lease-agreement">关于搬运费，请参考《收费标准》，涉及特殊情况，请与司机师傅商议</text>
-
   </view>
 
 
   <navigator url="/pages/contractor/callLorry/callLorry?vehicleTypeId={{vehicleTypeId}}">
     <button class="page-body-button" type="primary" >下一步</button>
   </navigator>
-<!--   
-  <view>
-    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号码 </button>
-  </view>
--->
-  
+  </view>  
 </view>
+
+<!-- 司机端 -->
+<view wx:if="{{userInfo.user_type == '2'}}" class="swiper-page">
+  <view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">任务大厅</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">周边任务</view>
+</view>
+
+<swiper current="{{currentTab}}" duration="300"  bindchange="swiperTab">
+    <swiper-item >
+      <view class="no-cart" wx:if="{{1==1 }}">
+        <view class="c">
+          <image src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/noCart-a8fe3f12e5.png" />
+        <text>没有任务呢，去看看周边任务吧</text>  
+        </view>
+      </view>
+  <view class="cart-view" wx:if="{{cartGoods.length > 0}}">
+    <view class="list">
+      <view class="group-item">
+        <view class="goods">
+          <view class="item {{isEditCart ? 'edit' : ''}}" wx:for="{{cartGoods}}" wx:key="{{item.id}}">
+            <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-item-index="{{index}}"></view>
+            <view class="cart-goods">
+              <image class="img" src="{{item.list_pic_url}}"></image>
+              <view class="info">
+                <view class="t">
+                  <text class="name">{{item.goods_name}}</text>
+                  <text class="num">x{{item.number}}车</text>
+                </view>
+                <view class="attr">{{ isEditCart ? '已选择:' : ''}}{{item.goods_specifition_name_value}}</view>
+                <view class="attr">{{item.responce_time}}</view>
+                <view class="attr">{{item.remark}}</view>
+                <view class="b">
+                  <text class="price">￥{{item.retail_price}}</text>
+                  <view class="selnum">
+                    <view class="cut" bindtap="cutNumber" data-item-index="{{index}}">-</view>
+                    <input value="{{item.number}}" class="number" disabled="true" type="number" />
+                    <view class="add" bindtap="addNumber" data-item-index="{{index}}">+</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="no-cart" wx:if="{{1==1 }}">
+        <view class="c">
+        <text>没有任务呢，去看看周边任务吧</text>
+          <image src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/noCart-a8fe3f12e5.png" />
+          
+        </view>
+      </view>
+    </swiper-item>
+
+</swiper>
+</view>
+
+ 

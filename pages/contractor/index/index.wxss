@@ -537,3 +537,67 @@ display: block;
   color: #333;  
   background: #F0F1EC;  
 }  
+
+/*司机端*/
+.swiper-tab{
+    width: 100%;
+    border-bottom: 2rpx solid #ccc;
+    text-align: center;
+    height: 100%;
+    line-height: 100%;
+    display: flex;
+    flex-flow: row;
+    /*justify-content: space-between;*/
+}
+.swiper-tab-item{
+    width: 48%; 
+    color:#434343;
+    font-size: 20px;
+    line-height: 24px;
+}
+.active{
+    color:#F65959;
+    border-bottom: 4rpx solid #F65959;
+}
+swiper{
+  text-align: center;
+  height: 500px;
+}
+.swiper-page{
+  height: 100%;
+  line-height: 100%;
+}
+
+
+
+.no-cart{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.no-cart .c{
+    width: 100%;
+    height: auto;
+    margin-top: 200rpx;
+}
+
+.no-cart .c image{
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 258rpx;
+    height: 258rpx;
+}
+
+.no-cart .c text{
+    margin: 0 auto;
+    display: block;
+    width: 400rpx;
+    height: 29rpx;
+    line-height: 29rpx;
+    text-align: center;
+    font-size: 27rpx;
+    color: #999;
+}
+

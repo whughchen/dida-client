@@ -2,9 +2,11 @@
   <view class="profile-info" bindtap="goLogin">
     <image class="avatar" src="{{userInfo.avatar}}"></image>
     <view class="info">
-      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{phone == ''}}">登录</button>
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{userInfo.mobile == ''}}">登录</button>
       <text class="name">{{userInfo.nickname}}</text>
-      <text class="name">{{phone}}</text>
+      <text class="desc" wx:if="{{userInfo.mobile != ''}}">{{userInfo.mobile ==''? phone : userInfo.mobile }}</text>
+      <text class="desc">{{(userInfo.user_type == 1)? '工长': (userInfo.user_type == 2?'司机':'')}}</text>
+
     </view>
   </view>
 

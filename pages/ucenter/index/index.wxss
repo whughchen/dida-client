@@ -40,6 +40,14 @@ page{
     font-size: 37.5rpx;
     margin-bottom: 10rpx;
 }
+.profile-info .desc{
+    display: block;
+    height: 24rpx;
+    line-height: 24rpx;
+    color: #fff;
+    font-size: 22rpx;
+    margin-bottom: 10rpx;
+}
 
 .profile-info .level{
     display: block;

@@ -11,26 +11,11 @@ Page({
     vehicleTypes:[],
     phone: '' ,
     vehicleTypeId:-1,
-    contractorAddressTxt: ''
+    contractorAddressTxt: '',
+    userInfo:{},
+    currentTab: 0
   },
 
-  getPhoneNumber: function (e) {
-    let that = this;
-    // console.log(e.detail)
-    // console.log(e.detail.iv)
-    // console.log(e.detail.encryptedData)
-
-    util.request(api.DescroPhone, { iv: e.detail.iv, encryptedData: e.detail.encryptedData, sessionData: wx.getStorageSync('sessionData') }, 'POST').then(function (res) {
-      if (res.errno === 0) {
-        that.setData({
-          phone: res.data
-        });
-        console.log('phone = ' + that.data.phone);
-        wx.setStorageSync('phone',that.data.phone);
-      }
-    });
-    
-  },
 
 
 
@@ -54,6 +39,9 @@ Page({
   },
   onLoad: function (options) {
     this.getIndexData();
+    this.setData({
+      userInfo: wx.getStorageSync('userInfo')
+    })
   },
   onReady: function () {
     // 页面渲染完成
@@ -97,6 +85,25 @@ Page({
     this.setData({
       vehicleTypeId: id
     });
+  },
+
+  //司机端程序
+  swiperTab: function (e) {
+    var that = this;
+    that.setData({
+      currentTab: e.detail.current
+    });
+  },
+  //点击切换
+  clickTab: function (e) {
+    var that = this;
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
   }
 
 
