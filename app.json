@@ -40,7 +40,10 @@
 
     "pages/searchLocation/searchLocation",
     "pages/contractor/callLorry/callLorry",
-    "pages/tencentMap/tencentMap"
+    "pages/tencentMap/tencentMap",
+    "pages/driver/driverValidation/driverValidation",
+    "pages/driver/vehicleValidation/vehicleValidation"
+    
 
     
 
@@ -62,7 +65,7 @@
         "pagePath": "pages/contractor/index/index",
         "iconPath": "static/images/ic_menu_choice_nor.png",
         "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
-        "text": "叫车"
+        "text": "首页"
       },
       {
         "pagePath": "pages/cart/cart",

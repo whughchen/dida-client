@@ -130,9 +130,9 @@
     <swiper-item>
       <view class="no-cart" wx:if="{{1==1 }}">
         <view class="c">
-        <text>没有任务呢，去看看周边任务吧</text>
+        
           <image src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/noCart-a8fe3f12e5.png" />
-          
+          <text>没有任务呢，去看看周边任务吧</text>
         </view>
       </view>
     </swiper-item>

@@ -6,27 +6,57 @@
       <text class="name">{{userInfo.nickname}}</text>
       <text class="desc" wx:if="{{userInfo.mobile != ''}}">{{userInfo.mobile ==''? phone : userInfo.mobile }}</text>
       <text class="desc">{{(userInfo.user_type == 1)? '工长': (userInfo.user_type == 2?'司机':'')}}</text>
-
     </view>
+  </view>
+  <view wx:if="{{userInfo.user_type == 2}}" class="balance">
+    <view class="balance-grid" bindtap="listMyBalance">
+      <text class="money">{{myBalance >0? myBalance : 0}}元</text>
+      <text class="text">我的余额</text>
+    </view>
+    <view class="balance-grid" bindtap="withdraw">
+      <text class="money">{{myBalance >0? myBalance : 0}}元</text>
+      <text class="text">提现</text>
+    </view>
+     
   </view>
 
   <view class="user-menu">
-    <view class="item">
+    <view class="item" wx:if="{{userInfo.user_type != 2}}">
       <navigator url="/pages/ucenter/order/order" class="a">
         <text class="icon order"></text>
         <text class="txt">我的订单</text>
       </navigator>
     </view>
-    <view class="item">
+    <view class="item" wx:if="{{userInfo.user_type == 2}}">
+      <navigator url="/pages/driver/driverValidation/driverValidation" class="a">
+        <text class="icon order"></text>
+        <text class="txt">车主认证</text>
+      </navigator>
+    </view>
+
+    <view class="item" wx:if="{{userInfo.user_type != 2}}">
       <navigator url="/pages/ucenter/coupon/coupon" class="a">
         <text class="icon coupon"></text>
         <text class="txt">优惠券</text>
       </navigator>
     </view>
-    <view class="item no-border">
+    <view class="item" wx:if="{{userInfo.user_type == 2}}">
+      <navigator url="/pages/driver/vehicleValidation/vehicleValidation" class="a">
+        <text class="icon order"></text>
+        <text class="txt">车辆认证</text>
+      </navigator>
+    </view>
+
+    <view class="item no-border" wx:if="{{userInfo.user_type != 2}}">
       <navigator url="url" class="a">
         <text class="icon gift"></text>
         <text class="txt">礼品卡</text>
+      </navigator>
+    </view>
+        <view class="item" wx:if="{{userInfo.user_type == 2}}">
+      <navigator url="/pages/ucenter/order/order" class="a">
+        <text class="icon order"></text>
+        <text class="txt">接单设置</text>
       </navigator>
     </view>
     <view class="item">
