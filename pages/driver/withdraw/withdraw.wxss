@@ -1,0 +1,69 @@
+.balance{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 5%;
+}
+
+.balance-grid{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.balance-grid .text{
+    font-size: 16px;
+    text-align: center;
+    display: block;
+}
+
+.balance-grid .money{
+    font-size: 22px;
+    color: red;
+    text-align: center;
+    display: block;
+}
+.balance-log-title{
+    width: 100%;
+
+
+    padding-top: 20px; 
+}
+.balance-log-textarea{
+    width: 50%;
+    border-bottom: 1px solid grey;
+    text-align: left;
+    font-size: 40px;
+    margin-left: 20%;
+    height: 80px;
+
+    padding-top: 20px; 
+    margin-bottom: 10px;
+}
+.balance-log-view{
+    width: 100%;
+    margin-top: 10px
+}
+
+.balance-log-list{
+    width: 100%;
+    border-bottom: 0.2px solid lightgrey;
+    height: 30px;
+    display: inline-block;
+}
+balance-log-list-text{
+    font-size: 20px;
+    text-align: left;
+}
+
+
+balance-log-list-money{
+    font-size: 24px;
+    font-weight: bold;
+    text-align:  right;
+    color: red;
+}
+
+balance-log-list-date{
+    font-size: 12px;
+    text-align: right;
+}/* pages/driver/withdraw/withdraw.wxss */

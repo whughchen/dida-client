@@ -63,5 +63,8 @@ module.exports = {
   FootprintDelete: ApiRootUrl + 'footprint/delete',  //删除足迹
   VehicleTypeList: ApiRootUrl + 'vehicleType/list',  //货车类型
   DescroPhone: ApiRootUrl + 'descro/descro',
-  SavePhotoUrl: ApiRootUrl + 'photo/savePhotoUrl'
+  SavePhotoUrl: ApiRootUrl + 'photo/savePhotoUrl',
+  GetMyBalance: ApiRootUrl + 'balance/getMyBalance',
+  WithdrawSum: ApiRootUrl + 'balance/withdrawSum',
+  BalanceLog: ApiRootUrl + 'balance/balanceLog'
 };

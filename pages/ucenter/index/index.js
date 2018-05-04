@@ -7,7 +7,9 @@ Page({
   data: {
     userInfo: {},
     sessionData:{},
-    phone:''
+    phone:'',
+    myBalance: 0,
+    withdrawSum: 0
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -33,6 +35,9 @@ Page({
       userInfo: app.globalData.userInfo,
       sessionData: app.globalData.sessionData
     });
+
+    this.getMyBalance();
+    this.withdrawSum();
 
   },
   onHide: function () {
@@ -60,6 +65,34 @@ Page({
     this.onShow();
 
   },
+
+  
+  getMyBalance: function(e) {
+    let that = this;
+    util.request(api.GetMyBalance).then(function (res) {
+      if (res.errno === 0) {
+        that.setData({
+          myBalance: res.data.myBalance[0].balance
+        });
+        console.log('balance = ' + that.data.myBalance);
+      }
+    });
+
+  },
+
+  withdrawSum: function (e) {
+    let that = this;
+    util.request(api.WithdrawSum).then(function (res) {
+      if (res.errno === 0) {
+        that.setData({
+          withdrawSum: res.data.withdrawSum
+        });
+        console.log('withdrawSum = ' + that.data.withdrawSum);
+      }
+    });
+
+  },
+
   goLogin(){
     user.loginByWeixin().then(res => {
       this.setData({

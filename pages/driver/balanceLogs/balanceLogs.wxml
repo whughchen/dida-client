@@ -1,0 +1,29 @@
+<view class="container">
+    <view  class="balance">
+        <view class="balance-grid">
+            <text class="text">我的余额(元)</text>
+            <text class="money">{{myBalance >0? myBalance : 0}}元</text>
+        </view>
+    </view>
+    <view  class="balance-log-view" >
+        <view class="balance-log-title" >
+            <text class="text">收支明细：</text>
+        </view>
+        <view wx:if="{{balanceLogs.length > 0}}">
+            <view class="balance-log-list" wx:for="{{balanceLogs}}" wx:key="{{item.id}}">
+                <text class="balance-log-list-text">{{item.balance_type ==2 ? '余额提取：' :'工作收入：'}}</text>
+                <text class="balance-log-list-money">{{item.balance_type ==2?'-':'+'}}{{item.amount}}  </text>
+                <text class="balance-log-list-date">  {{item.create_time}}</text>
+
+            </view>
+        </view>
+
+
+
+    </view>
+
+
+
+
+
+</view>

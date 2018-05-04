@@ -1,0 +1,30 @@
+<view class="container">
+    <view  class="balance">
+        <view class="balance-grid">
+            <text class="text">可取余额(两小时到账)</text>
+            <text class="money">{{myBalance >0? myBalance : 0}}元</text>
+        </view>
+    </view>
+    <view  class="balance-log-view" >
+        <view class="balance-log-title" >
+            <text class="text">提取金额：</text>
+        </view>
+        <view class="balance-log-textarea">
+        ￥
+          <textarea></textarea>
+          
+        </view>
+        <text class="text">最多可提现8000元</text>
+
+
+
+    </view>
+
+     <button class="page-body-button" type="primary" bindtap="withdraw">提 现</button>
+
+
+
+
+
+
+</view>

@@ -42,7 +42,9 @@
     "pages/contractor/callLorry/callLorry",
     "pages/tencentMap/tencentMap",
     "pages/driver/driverValidation/driverValidation",
-    "pages/driver/vehicleValidation/vehicleValidation"
+    "pages/driver/vehicleValidation/vehicleValidation",
+    "pages/driver/balanceLogs/balanceLogs",
+    "pages/driver/withdraw/withdraw"
     
 
     
