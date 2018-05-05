@@ -82,14 +82,16 @@
 
 <!-- 司机端 -->
 <view wx:if="{{userInfo.user_type == '2'}}" class="swiper-page">
+  <view class="container">
   <view class="swiper-tab">
     <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">任务大厅</view>
     <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">周边任务</view>
-</view>
+  </view>
 
 <swiper current="{{currentTab}}" duration="300"  bindchange="swiperTab">
     <swiper-item >
-      <view class="no-cart" wx:if="{{1==1 }}">
+
+      <view class="no-cart" wx:if="{{cartTotal ==0 }}">
         <view class="c">
           <image src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/noCart-a8fe3f12e5.png" />
         <text>没有任务呢，去看看周边任务吧</text>  
@@ -136,8 +138,10 @@
         </view>
       </view>
     </swiper-item>
+    
 
-</swiper>
+  </swiper>
+  </view>
 </view>
 
  

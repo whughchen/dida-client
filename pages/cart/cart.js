@@ -220,7 +220,7 @@ Page({
       if (element.checked == true) {
         return true;
       } else {
-        return false;submitOrder
+        return false;
       }
     });
 

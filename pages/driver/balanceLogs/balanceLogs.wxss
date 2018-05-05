@@ -37,11 +37,13 @@
     width: 100%;
     border-bottom: 0.2px solid lightgrey;
     height: 30px;
-    display: inline-block;
+    /*display: inline-block;*/
+    float: left;
 }
 balance-log-list-text{
     font-size: 20px;
     text-align: left;
+    float: left;
 }
 
 
@@ -50,9 +52,13 @@ balance-log-list-money{
     font-weight: bold;
     text-align:  right;
     color: red;
+    float: right;
+    width: 50px;
 }
 
 balance-log-list-date{
     font-size: 12px;
     text-align: right;
+    float: right;
+
 }

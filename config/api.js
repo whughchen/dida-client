@@ -66,5 +66,8 @@ module.exports = {
   SavePhotoUrl: ApiRootUrl + 'photo/savePhotoUrl',
   GetMyBalance: ApiRootUrl + 'balance/getMyBalance',
   WithdrawSum: ApiRootUrl + 'balance/withdrawSum',
-  BalanceLog: ApiRootUrl + 'balance/balanceLog'
+  BalanceLog: ApiRootUrl + 'balance/balanceLog',
+  HallCart: ApiRootUrl + 'task/hallCart',
+  NearByCart: ApiRootUrl + 'task/nearByCart'
+
 };

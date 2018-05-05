@@ -13,7 +13,11 @@ Page({
     vehicleTypeId:-1,
     contractorAddressTxt: '',
     userInfo:{},
-    currentTab: 0
+    currentTab: 0,
+    cartGoods: [],
+    cartTotal: 0,
+    page: 1,
+    size: 10
   },
 
 
@@ -38,7 +42,6 @@ Page({
     });
   },
   onLoad: function (options) {
-    this.getIndexData();
     this.setData({
       userInfo: wx.getStorageSync('userInfo')
     })
@@ -48,21 +51,42 @@ Page({
   },
   onShow: function () {
     let that=this;
-    if (app.globalData.contractorAddressId >0){
+    var location = wx.getStorageSync('location');
+    if (!location){
+      wx.getLocation({
+        type: 'wgs84',
+        success: function (res) {
+          var loc = { lon: res.longitude, lat: res.latitude };
+          wx.setStorageSync('location',loc);
+        }
+      })
+    }
+
+
+    //工长页面请求车型列表
+    if (that.data.userInfo.user_type !=2 ){
+      that.getAddressTxt();
+    } else { //司机页面请求任务列表
+      that.getHallCart();
+    }
+    // 页面显示
+  },
+
+  getAddressTxt: function(){
+    let that = this;
+    if (app.globalData.contractorAddressId > 0) {
       util.request(api.AddressDetail + '?id=' + app.globalData.contractorAddressId).then(function (res) {
         if (res.errno === 0) {
           that.setData({
             contractorAddressTxt: res.data.address
           });
         }
-      });  
-    }else{
+      });
+    } else {
       that.setData({
         contractorAddressTxt: app.globalData.contractorAddressTxt
       })
     }
-
-    // 页面显示
   },
   onHide: function () {
     // 页面隐藏
@@ -103,7 +127,47 @@ Page({
       that.setData({
         currentTab: e.target.dataset.current
       })
+      if (that.data.currentTab==1){ // 第二标签页：周边任务
+        that.getNearByCart();
+      }
     }
+  },
+  getHallCart: function () {
+    let that = this;
+    util.request(api.HallCart, { page: that.data.page, size: that.data.size},'POST').then(function (res) {
+      if (res.errno === 0) {
+        console.log(res.data);
+        that.setData({
+          cartGoods: res.data.hallCart,
+          cartTotal: res.data.hallCartCount
+        });
+      }
+    });
+  },
+
+  getNearByCart: function () {
+    let that = this;
+    var location = wx.getStorageSync('location');
+    util.request(api.NearByCart, { lon: location.lon, lat: location.lon},'POST').then(function (res) {
+      if (res.errno === 0) {
+        console.log(res.data);
+        that.setData({
+          cartGoods: res.data.hallCart
+        });
+      }
+
+    });
+  },
+  onReachBottom() {
+    if (this.data.cartTotal/this.data.size > this.data.page) {
+      this.setData({
+        page: this.data.page + 1
+      });
+    } else {
+      return false;
+    }
+
+    this.getHallCart();
   }
 
 

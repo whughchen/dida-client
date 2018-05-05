@@ -12,8 +12,8 @@
         <view wx:if="{{balanceLogs.length > 0}}">
             <view class="balance-log-list" wx:for="{{balanceLogs}}" wx:key="{{item.id}}">
                 <text class="balance-log-list-text">{{item.balance_type ==2 ? '余额提取：' :'工作收入：'}}</text>
-                <text class="balance-log-list-money">{{item.balance_type ==2?'-':'+'}}{{item.amount}}  </text>
-                <text class="balance-log-list-date">  {{item.create_time}}</text>
+                <text class="balance-log-list-money">{{item.balance_type ==2?'-':'+'}}{{item.amount}}   </text>
+                <text class="balance-log-list-date">   {{item.create_time}}</text>
 
             </view>
         </view>
