@@ -148,11 +148,12 @@ Page({
   getNearByCart: function () {
     let that = this;
     var location = wx.getStorageSync('location');
-    util.request(api.NearByCart, { lon: location.lon, lat: location.lon},'POST').then(function (res) {
+    util.request(api.NearByCart, { lon: location.lon, lat: location.lat},'POST').then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);
         that.setData({
-          cartGoods: res.data.hallCart
+          cartGoods: res.data.nearByCart,
+          cartTotal: res.data.cartTotal
         });
       }
 
@@ -168,6 +169,11 @@ Page({
     }
 
     this.getHallCart();
+  },
+  gotoCartDetail: function(){
+    wx.navigateTo({
+      url: '/pages/cartDetail/cartDetail'
+    })
   }
 
 

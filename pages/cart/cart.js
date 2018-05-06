@@ -14,7 +14,8 @@ Page({
     },
     isEditCart: false,
     checkedAllStatus: true,
-    editCartList: []
+    editCartList: [],
+    userInfo: {}
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -26,6 +27,11 @@ Page({
 
   },
   onShow: function () {
+    if(!this.data.userInfo.user_type){
+      this.setData({
+        userInfo: wx.getStorageSync('userInfo')
+      })
+    }
     // 页面显示
     this.getCartList();
   },

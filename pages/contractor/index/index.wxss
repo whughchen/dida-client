@@ -1,3 +1,9 @@
+.page{
+  height:100%;
+  min-height:100%;
+  background:#f4f4f4;
+
+}
 .container{
     background: #f4f4f4;
     width: 100%;
@@ -568,6 +574,7 @@ display: block;
 swiper{
   text-align: center;
   height: 600px;
+
 }
 .swiper-page{
   line-height: 100%;
@@ -630,9 +637,10 @@ swiper{
 }
 
 .cart-view .item{
-    height: 184rpx;
+    height: 194rpx;
     width: 100%;
     overflow: hidden;
+    padding-bottom: 10px;
 }
 .cart-view .item .checkbox{
     float: left;
@@ -653,6 +661,8 @@ swiper{
     height: 184rpx;
     width: 672rpx;
     border-bottom: 1px solid #f4f4f4;
+    margin-left: 10px;
+    padding-bottom: 10px;
 }
 
 .cart-view .item .img{
@@ -706,8 +716,8 @@ swiper{
 }
 
 .cart-view .item .b{
-    height: 28rpx;
-    line-height: 28rpx;
+    height: 37rpx;
+    line-height: 37rpx;
     font-size: 25rpx;
     color: #333;
     overflow: hidden;
@@ -768,4 +778,32 @@ swiper{
     display: flex;
 }
 
+.order .b{
+    height: 103rpx;
+    line-height: 103rpx;
+    margin-left: 31.25rpx;
+    padding-right: 31.25rpx;
+    border-top: 1px solid #f4f4f4;
+    font-size: 30rpx;
+    color: #333;
+}
 
+.cart-view .item .b .l{
+    float: left;
+}
+
+.cart-view .item .b .r{
+    float: right;
+}
+
+.cart-view .item .b .btn{
+    height: 36rpx;
+    line-height: 36rpx;
+    text-align: center;
+    padding: 0 20rpx;
+    border-radius: 5rpx;
+    font-size: 28rpx;
+    color: #fff;
+    background: #b4282d;
+    width: 80px;
+}

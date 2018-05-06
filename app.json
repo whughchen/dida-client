@@ -44,8 +44,8 @@
     "pages/driver/driverValidation/driverValidation",
     "pages/driver/vehicleValidation/vehicleValidation",
     "pages/driver/balanceLogs/balanceLogs",
-    "pages/driver/withdraw/withdraw"
-    
+    "pages/driver/withdraw/withdraw",
+    "pages/cartDetail/cartDetail"
 
     
 

@@ -1,0 +1,68 @@
+<view class="container">
+    <view class="cart-info">
+        <view class="item-a">创建时间：{{cartInfo.create_time}}</view>
+        <view class="item-c">
+            <view class="l">实付：<text class="cost">￥{{cartInfo.retail_price}}</text></view>
+            <view class="r">
+                <view class="btn" bindtap="cancelCart">修改报价</view>
+                <view class="btn active" bindtap="payCart">确认接单</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="cart-goods">
+        <view class="h">
+            <view class="label">叫车信息</view>
+            <view class="status">{{cartInfo.cart_status_text}}</view>
+        </view>
+        <view class="goods">
+            <view class="item">
+                <view class="img">
+                    <image src="{{cartInfo.list_pic_url}}"></image>
+                </view>
+                <view class="info">
+                    <view class="t">
+                        <text class="name">{{cartInfo.goods_name}}</text>
+                        <text class="number">x{{cartInfo.number}}</text>
+                    </view>
+                    <view class="attr">{{cartInfo.goods_specifition_name_value}}</view>
+                    <view class="attr">{{cartInfo.responce_time}}</view>
+                    <view class="attr">{{cartInfo.remark}}</view>
+                    <view class="price">￥{{cartInfo.retail_price}}</view>
+
+                </view>
+                <view wx:for="{{cartInfo.photo_urls}}" class="picture_item" wx:key="{{index}}">
+                    <image src="{{cartInfo.path}}" mode="aspectFill"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="cart-bottom">
+        <view class="address">
+            <view class="t">
+                <text class="name">{{cartInfo.consignee}}</text>
+                <text class="mobile">{{cartInfo.mobile}}</text>
+            </view>
+            <view class="b">{{cartInfo.full_region + cartInfo.address}}</view>
+        </view>
+        <view class="total">
+            <view class="t">
+                <text class="label">商品合计：</text>
+                <text class="txt">￥{{cartInfo.retail_price}}</text>
+            </view>
+            <view class="t">
+                <text class="label">运费：</text>
+                <text class="txt">￥{{0 }}</text>
+            </view>
+            <view class="t" wx:if="{{distance>0}}">
+                <text class="label">距离：</text>
+                <text class="txt" >￥{{distance }}米</text>
+            </view>
+        </view>
+        <view class="pay-fee">
+            <text class="label">实付：</text>
+            <text class="txt">￥{{cartInfo.retail_price}}</text>
+        </view>
+    </view>
+</view>

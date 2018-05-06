@@ -81,8 +81,9 @@
 </view>
 
 <!-- 司机端 -->
-<view wx:if="{{userInfo.user_type == '2'}}" class="swiper-page">
   <view class="container">
+<view wx:if="{{userInfo.user_type == '2'}}" class="swiper-page">
+
   <view class="swiper-tab">
     <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">任务大厅</view>
     <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">周边任务</view>
@@ -102,6 +103,7 @@
       <view class="group-item">
         <view class="goods">
           <view class="item {{isEditCart ? 'edit' : ''}}" wx:for="{{cartGoods}}" wx:key="{{item.id}}">
+            <navigator url="/pages/cartDetail/cartDetail?id={{item.id}}">
             <view class="cart-goods">
               <image class="img" src="{{item.list_pic_url}}"></image>
               <view class="info">
@@ -113,7 +115,10 @@
                 <view class="attr">{{item.responce_time}}</view>
                 <view class="attr">{{item.remark}}</view>
                 <view class="b">
-                  <text class="price">￥{{item.retail_price}}</text>
+                  <text class="l">￥{{item.retail_price}}</text>
+                  <view class="r">
+                    <button class="btn" data-order-index="{{item.id}}" catchtap="gotoCartDetail" >接单</button>
+                </view>
                   <view class="selnum">
                     <view class="cut" bindtap="cutNumber" data-item-index="{{index}}">-</view>
                     <input value="{{item.number}}" class="number" disabled="true" type="number" />
@@ -122,20 +127,57 @@
                 </view>
               </view>
             </view>
+            </navigator>
           </view>
         </view>
       </view>
     </view>
     </view>
     </swiper-item>
-    <swiper-item>
-      <view class="no-cart" wx:if="{{1==1 }}">
+    <!-- 周边任务-->
+    <swiper-item >
+
+      <view class="no-cart" wx:if="{{cartTotal ==0 }}">
         <view class="c">
-        
           <image src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/noCart-a8fe3f12e5.png" />
-          <text>没有任务呢，去看看周边任务吧</text>
+        <text>没有任务呢，去看看周边任务吧</text>  
         </view>
       </view>
+  <view class="cart-view" wx:if="{{cartGoods.length > 0}}">
+    <view class="list">
+      <view class="group-item">
+        <view class="goods">
+          <view class="item {{isEditCart ? 'edit' : ''}}" wx:for="{{cartGoods}}" wx:key="{{item.id}}">
+            <navigator url="/pages/cartDetail/cartDetail?id={{item.id}}&distance={{item.distance}}">
+            <view class="cart-goods">
+              <image class="img" src="{{item.list_pic_url}}"></image>
+              <view class="info">
+                <view class="t">
+                  <text class="name">{{item.goods_name}}</text>
+                  <text class="num">x{{item.number}}车</text>
+                </view>
+                <view class="attr">{{ isEditCart ? '已选择:' : ''}}{{item.goods_specifition_name_value}}</view>
+                <view class="attr">{{item.responce_time}}</view>
+                <view class="attr">{{item.remark}}</view>
+                <view class="b">
+                  <text class="l">￥{{item.retail_price}}   距离:{{item.distance}}米</text>
+                  <view class="r">
+                    <button class="btn" data-order-index="{{index}}" catchtap="gotoCartDetail" >接单</button>
+                  </view>
+                  <view class="selnum">
+                    <view class="cut" bindtap="cutNumber" data-item-index="{{index}}">-</view>
+                    <input value="{{item.number}}" class="number" disabled="true" type="number" />
+                    <view class="add" bindtap="addNumber" data-item-index="{{index}}">+</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
     </swiper-item>
     
 

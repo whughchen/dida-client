@@ -86,7 +86,7 @@ page{
 }
 
 .cart-view .item{
-    height: 184rpx;
+    height: 194rpx;
     width: 100%;
     overflow: hidden;
 }
@@ -106,9 +106,24 @@ page{
 
 .cart-view .item .cart-goods{
     float: left;
-    height: 184rpx;
+    height: 194rpx;
     width: 672rpx;
     border-bottom: 1px solid #f4f4f4;
+}
+.cart-view .item .b .r{
+    float: right;
+}
+
+.cart-view .item .b .btn{
+    height: 36rpx;
+    line-height: 36rpx;
+    text-align: center;
+    padding: 0 20rpx;
+    border-radius: 5rpx;
+    font-size: 28rpx;
+    color: #fff;
+    background: #b4282d;
+    width: 80px;
 }
 
 .cart-view .item .img{
@@ -160,8 +175,8 @@ page{
 }
 
 .cart-view .item .b{
-    height: 28rpx;
-    line-height: 28rpx;
+    height: 36rpx;
+    line-height: 36rpx;
     font-size: 25rpx;
     color: #333;
     overflow: hidden;

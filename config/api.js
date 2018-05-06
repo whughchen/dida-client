@@ -68,6 +68,7 @@ module.exports = {
   WithdrawSum: ApiRootUrl + 'balance/withdrawSum',
   BalanceLog: ApiRootUrl + 'balance/balanceLog',
   HallCart: ApiRootUrl + 'task/hallCart',
-  NearByCart: ApiRootUrl + 'task/nearByCart'
+  NearByCart: ApiRootUrl + 'task/nearByCart',
+  CartDetail: ApiRootUrl + 'cart/cartDetail',  //订单详情
 
 };
