@@ -660,7 +660,7 @@ swiper{
     height:125rpx;
     width: 125rpx;
     background: #f4f4f4;
-    margin: 39.5rpx 18rpx 19.5rpx 0;
+    margin: 39.5rpx 18rpx 19.5rpx 0rpx;
 }
 
 .cart-view .item .info{
@@ -686,6 +686,7 @@ swiper{
     font-size: 25rpx;
     color: #333;
     overflow: hidden;
+    float: left;
 }
 
 .cart-view .item .num{
@@ -701,6 +702,7 @@ swiper{
     font-size: 22rpx;
     color: #666;
     overflow: hidden;
+    display: flex;
 }
 
 .cart-view .item .b{
