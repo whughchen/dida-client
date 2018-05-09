@@ -41,12 +41,23 @@ page{
     margin-bottom: 10rpx;
 }
 .profile-info .desc{
-    display: block;
-    height: 24rpx;
-    line-height: 24rpx;
+    display: inline-block;
+    height: 26rpx;
+    line-height: 26rpx;
     color: #fff;
     font-size: 22rpx;
     margin-bottom: 10rpx;
+}
+.profile-info .switchRole{
+    display: inline-block;
+    height: 24rpx;
+    line-height: 24rpx;
+    font-size: 26rpx;
+    margin-bottom: 10rpx;
+    margin-left: 10px;
+    color: lightblue;
+    text-decoration: underline;
+
 }
 
 .profile-info .level{

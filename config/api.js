@@ -70,5 +70,6 @@ module.exports = {
   HallCart: ApiRootUrl + 'task/hallCart',
   NearByCart: ApiRootUrl + 'task/nearByCart',
   CartDetail: ApiRootUrl + 'cart/cartDetail',  //订单详情
+  SwitchRole: ApiRootUrl + 'user/switchRole'
 
 };

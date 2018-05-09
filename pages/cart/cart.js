@@ -27,10 +27,14 @@ Page({
 
   },
   onShow: function () {
+    var userInfo = wx.getStorageSync('userInfo');
+    that.setData({
+      userInfo: userInfo
+    });
     if(!this.data.userInfo.user_type){
       this.setData({
         userInfo: wx.getStorageSync('userInfo')
-      })
+      });
     }
     // 页面显示
     this.getCartList();
@@ -237,7 +241,7 @@ Page({
 
     wx.navigateTo({
       url: '../shopping/checkout/checkout'
-    })
+    });
   },
   deleteCart: function () {
     //获取已选择的商品

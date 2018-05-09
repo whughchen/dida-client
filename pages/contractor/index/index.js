@@ -62,9 +62,15 @@ Page({
       })
     }
 
+    var userInfo = wx.getStorageSync('userInfo');
+    that.setData({
+      userInfo: userInfo
+    })
+
 
     //工长页面请求车型列表
     if (that.data.userInfo.user_type !=2 ){
+      that.getIndexData();
       that.getAddressTxt();
     } else { //司机页面请求任务列表
       that.getHallCart();

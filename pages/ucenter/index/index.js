@@ -123,5 +123,23 @@ Page({
       }
     })
 
-  }
+  },
+  
+  switchRole: function() {
+    let that = this;
+    util.request(api.SwitchRole).then(function (res) {
+      if (res.errno === 0) {      
+        console.log('身份切换成功, 当前身份为：'+ res.data.userInfo.user_type );
+        that.setData({
+          userInfo: res.data.userInfo
+        });
+        wx.setStorageSync('userInfo', res.data.userInfo);
+      }
+    });
+
+    wx.showToast({
+      title: '已切换身份为' + that.data.userInfo.user_type == 2 ? '司机': '工长'
+    })
+
+  },
 })
