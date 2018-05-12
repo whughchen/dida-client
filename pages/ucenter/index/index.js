@@ -21,23 +21,28 @@ Page({
   onShow: function () {
 
     let userInfo = wx.getStorageSync('userInfo');
-    let token = wx.getStorageSync('token');
     let sessionData = wx.getStorageSync('sessionData');
 
     // 页面显示
-    if (userInfo && token && sessionData) {
+    if (userInfo  && sessionData) {
       app.globalData.userInfo = userInfo;
-      app.globalData.token = token;
       app.globalData.sessionData=sessionData;
+
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        sessionData: app.globalData.sessionData
+      });
+
+      this.getMyBalance();
+      this.withdrawSum();
+    }
+    if (!sessionData){
+      this.goLogin();
     }
 
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      sessionData: app.globalData.sessionData
-    });
+    
 
-    this.getMyBalance();
-    this.withdrawSum();
+
 
   },
   onHide: function () {
@@ -65,6 +70,25 @@ Page({
     this.onShow();
 
   },
+
+  getUserInfo: function (e) {
+    wx.setStorageSync('userInfo', e.detail.userInfo);
+
+    util.request(api.AuthLoginByWeixin, { iv: e.detail.iv, encryptedData: e.detail.encryptedData, sessionData: wx.getStorageSync('sessionData') }, 'POST').then(function (res) {
+      if (res.errno === 0) {
+        that.setData({
+          phone: res.data
+        });
+        console.log('phone = ' + that.data.phone);
+        wx.setStorageSync('phone', that.data.phone);
+      }
+    });
+
+    
+    this.onShow();
+
+  },
+
 
   
   getMyBalance: function(e) {
@@ -100,7 +124,6 @@ Page({
         sessionData: res.data.sessionData
       });
       app.globalData.userInfo = res.data.userInfo;
-      app.globalData.token = res.data.token;
       app.globalData.sessionData = res.sessionData;
     }).catch((err) => {
       console.log("user login error:"+ JSON.stringify(err));

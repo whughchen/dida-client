@@ -1,9 +1,10 @@
 <view class="container">
-  <view class="profile-info" bindtap="goLogin">
-    <image class="avatar" src="{{userInfo.avatar}}"></image>
+  <view class="profile-info" >
+    <image class="avatar" src="{{userInfo.avatar}}" wx:if="{{userInfo.user_type}}"></image>
+    <open-data type="userAvatarUrl" class="avatar"></open-data>
     <view class="info">
-      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{userInfo.mobile == ''}}">添加手机号码</button>
-      <text class="name">{{userInfo.nickname}}</text>
+      <open-data type="userNickName" lang="zh_CN" style="color: white;"></open-data>
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="getPhone">添加手机号码</button>
       <text class="desc" wx:if="{{userInfo.mobile != ''}}">{{userInfo.mobile ==''? phone : userInfo.mobile }}</text>
       <view style="display: block">
         <text class="desc">{{(userInfo.user_type == 2)? '司机': '工长'}}</text>

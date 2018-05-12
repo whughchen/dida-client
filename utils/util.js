@@ -42,7 +42,7 @@ function request(url, data = {}, method = "GET") {
             let code = null;
             return login().then((res) => {
               code = res.code;
-              return getUserInfo();
+              //return getUserInfo();
             }).then((userInfo) => {
               //登录远程服务器
               request(api.AuthLoginByWeixin, { code: code, userInfo: userInfo }, 'POST').then(res => {
