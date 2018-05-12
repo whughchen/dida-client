@@ -23,7 +23,7 @@ Page({
     });
   },
   payOrder(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/pay/pay',
     })
   },
