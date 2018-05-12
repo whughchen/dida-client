@@ -112,6 +112,11 @@ Page({
       app.globalData.userInfo = res.data.userInfo;
       app.globalData.sessionData = res.data.sessionData;
       app.globalData.token = res.data.token;
+      if (res.data.userInfo.mobile){
+        this.setData({
+          phone: res.data.userInfo.mobile
+        });
+      }
 
     }).catch((err) => {
       console.log("user login error:"+ JSON.stringify(err));
