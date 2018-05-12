@@ -47,6 +47,7 @@ page{
     color: #fff;
     font-size: 22rpx;
     margin-bottom: 10rpx;
+    margin-left: 10rpx;
 }
 .profile-info .switchRole{
     display: inline-block;

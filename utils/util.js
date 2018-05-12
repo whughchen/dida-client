@@ -45,17 +45,18 @@ function request(url, data = {}, method = "GET") {
               //return getUserInfo();
             }).then((userInfo) => {
               //登录远程服务器
-              request(api.AuthLoginByWeixin, { code: code, userInfo: userInfo }, 'POST').then(res => {
-                if (res.errno === 0) {
-                  //存储用户信息
-                  wx.setStorageSync('userInfo', res.data.userInfo);
-                  wx.setStorageSync('token', res.data.token);
-                  wx.setStorageSync('sessionData', res.data.sessionData);
+                request(api.GetSessionData, { code: code, location: wx.getStorageSync('location')}, 'POST').then(res => {
+                  if (res.errno === 0) {
 
-                  resolve(res);
-                } else {
-                  reject(res);
-                }
+                    //存储用户信息
+                    wx.setStorageSync('sessionData', res.data.sessionData);
+                    wx.setStorageSync('userInfo', res.data.userInfo);
+                    wx.setStorageSync('token', res.data.token);
+
+                    resolve(res);
+                  } else {
+                    reject(res);
+                  }
               }).catch((err) => {
                 reject(err);
               });

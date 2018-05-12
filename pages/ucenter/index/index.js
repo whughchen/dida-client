@@ -71,29 +71,13 @@ Page({
 
   },
 
-  getUserInfo: function (e) {
-    wx.setStorageSync('userInfo', e.detail.userInfo);
 
-    util.request(api.AuthLoginByWeixin, { iv: e.detail.iv, encryptedData: e.detail.encryptedData, sessionData: wx.getStorageSync('sessionData') }, 'POST').then(function (res) {
-      if (res.errno === 0) {
-        that.setData({
-          phone: res.data
-        });
-        console.log('phone = ' + that.data.phone);
-        wx.setStorageSync('phone', that.data.phone);
-      }
-    });
-
-    
-    this.onShow();
-
-  },
 
 
   
   getMyBalance: function(e) {
     let that = this;
-    util.request(api.GetMyBalance).then(function (res) {
+    util.request(api.GetMyBalance,{userId: that.data.userInfo.id},'POST').then(function (res) {
       if (res.errno === 0) {
         that.setData({
           myBalance: res.data.myBalance[0].balance
@@ -106,7 +90,7 @@ Page({
 
   withdrawSum: function (e) {
     let that = this;
-    util.request(api.WithdrawSum).then(function (res) {
+    util.request(api.WithdrawSum, { userId: that.data.userInfo.id }, 'POST').then(function (res) {
       if (res.errno === 0) {
         that.setData({
           withdrawSum: res.data.withdrawSum
@@ -121,10 +105,12 @@ Page({
     user.loginByWeixin().then(res => {
       this.setData({
         userInfo: res.data.userInfo,
-        sessionData: res.data.sessionData
+        sessionData: res.data.sessionData,
       });
       app.globalData.userInfo = res.data.userInfo;
-      app.globalData.sessionData = res.sessionData;
+      app.globalData.sessionData = res.data.sessionData;
+      app.globalData.token = res.data.token;
+
     }).catch((err) => {
       console.log("user login error:"+ JSON.stringify(err));
     });
