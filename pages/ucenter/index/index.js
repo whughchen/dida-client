@@ -22,6 +22,7 @@ Page({
 
     let userInfo = wx.getStorageSync('userInfo');
     let sessionData = wx.getStorageSync('sessionData');
+    let phone = wx.getStorageSync('phone');
 
     // 页面显示
     if (userInfo  && sessionData) {
@@ -30,7 +31,8 @@ Page({
 
       this.setData({
         userInfo: app.globalData.userInfo,
-        sessionData: app.globalData.sessionData
+        sessionData: app.globalData.sessionData,
+        phone: phone
       });
 
       this.getMyBalance();
