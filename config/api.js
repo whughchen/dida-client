@@ -8,6 +8,8 @@ module.exports = {
   CatalogCurrent: ApiRootUrl + 'catalog/current',  //分类目录当前分类数据接口
   ApiRootUrl: ApiRootUrl,
   AuthLoginByWeixin: ApiRootUrl + 'auth/loginByWeixin', //微信登录
+  GetSessionData: ApiRootUrl + 'auth/getSessionData', //微信登录
+  
 
   GoodsCount: ApiRootUrl + 'goods/count',  //统计商品总数
   GoodsList: ApiRootUrl + 'goods/list',  //获得商品列表

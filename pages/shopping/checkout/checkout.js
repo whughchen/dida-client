@@ -23,7 +23,7 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
 
     try {
-      var addressId = wx.getStorageSync('addressId');
+      var addressId = options.addressId;
       if (addressId) {
         this.setData({
           'addressId': addressId
@@ -53,6 +53,7 @@ Page({
 
 
   },
+  
   getCheckoutInfo: function () {
     let that = this;
     util.request(api.CartCheckout, { addressId: that.data.addressId, couponId: that.data.couponId }).then(function (res) {

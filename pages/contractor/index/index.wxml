@@ -10,19 +10,19 @@
     <view class="b">
       <view  wx:for="{{vehicleTypes}}" wx:key="item.id" data-id="{{index}}" bindtap="choseVehicleType" class="{{index == vehicleTypeId?'vehicle-choosed':'vehicle-unchoosed'}}">
           <view class="wrap">
-            <image class="img" style="width: {{imagewidth}}px; height: {{imageheight}}px;"  src="{{item.pic_url}}" mode="widthFix" bindload="imageLoad"></image>
-            
-            <view class="mt" style="width: {{imagewidth}}px; height: {{imageheight}}px;"  src="{{item.pic_url}}" mode="widthFix" bindload="imageLoad">
+            <image class="img" style="width: {{imagewidth}}px; height: {{imageheight}}px;display: block;margin-left: 2px;"  src="{{item.pic_url}}" mode="widthFix" bindload="imageLoad"></image>
+              <view style="margin-left: 5px;">
               <text class="brand11">{{item.name}}</text>
+              <text class="text2">  单价¥{{item.unit_price}}</text>
 
-            </view>
-              <text class="text1">{{item.capacity_weight}}吨</text>
-              <text class="text1">{{item.length}}*{{item.width}}*{{item.height}}米 </text>
-              <text class="text1">{{item.capacity_volumn}}方\n载重长宽高</text>
-              <text class="text1">   </text>
-              <text class="text2 secondline">长宽高   </text>
-              <text class="text2 secondline">体积   </text>
+                  <view>
+                    <text class="text1">{{item.capacity_weight}}吨  {{item.length}}*{{item.width}}*{{item.height}}米 {{item.capacity_volumn}}方</text>
 
+                  </view>
+                  <view>  
+                    <text class="text1">载重  长*宽*高         体积</text>
+                  </view>
+                </view>
           </view>
         <!-- </navigator> -->
       </view>
@@ -45,17 +45,10 @@
   </view>
 
   <view>
-   <text style='margin-left:14px'>地址：{{app.globalData.contractorAddressTxt}}</text>
+   <text style='margin-left:14px;font-size:14px' wx:if="{{addressText}}">地址：{{addressText}}</text>
   </view>
 </view>
-  
-  <!-- <view class="a-section a-brand">
-    <view class="h">
-      <navigator url="/pages/searchLocation/searchLocation">
-        <button class="page-body-button" type="primary" bindtap="getLocation">渣土位置 点击定位</button>
-      </navigator>
-    </view> 
-  </view> -->
+
 
   <view class="a-section a-brand">
     <view class="h">
@@ -74,7 +67,7 @@
   </view>
 
 
-  <navigator url="/pages/contractor/callLorry/callLorry?vehicleTypeId={{vehicleTypeId}}">
+  <navigator url="/pages/contractor/callLorry/callLorry?vehicleTypeId={{vehicleTypeId}}&addressId={{addressId}}">
     <button class="page-body-button" type="primary" >下一步</button>
   </navigator>
   </view>  

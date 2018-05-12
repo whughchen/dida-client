@@ -17,7 +17,9 @@
       <view class="group-item">
         <view class="goods">
           <view class="item {{isEditCart ? 'edit' : ''}}" wx:for="{{cartGoods}}" wx:key="{{item.id}}">
+          <navigator url="/pages/cartDetail/cartDetail?id={{item.id}}">
             <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-item-index="{{index}}" wx:if="{{userInfo.user_type==1}}"></view>
+
             <view class="cart-goods">
               <image class="img" src="{{item.list_pic_url}}"></image>
               <view class="info">
@@ -41,39 +43,13 @@
                 </view>
               </view>
             </view>
+            </navigator>
           </view>
+          
         </view>
       </view>
 
-      <!--<view class="group-item">
-                <view class="header">
-                    <view class="promotion">
-                        <text class="tag">满赠</text>
-                        <text class="txt">再加26元, 3件赠1件蔓越莓干</text>
-                        <image class="icon" src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/go-b67cb9718d.png"></image>
-                    </view>
-                    <view class="get">领赠品</view>                
-                </view>
-                <view class="goods">
-                    <view class="item">
-                        <view class="checkbox" ></view>
-                        <view class="cart-goods">
-                            <image class="img" src="http://yanxuan.nosdn.127.net/04e05e9de3a471b1f6479dd137b459a8.png"></image>
-                            <view class="info">
-                                <view class="t">
-                                    <text class="name">秋冬保暖加厚细羊毛被</text>
-                                    <text class="num">x1</text>
-                                </view>
-                                <view class="attr">220*240cm</view>
-                                <view class="b">
-                                    <text class="price">￥199.99</text>
-                                    <view class="open">优惠活动</view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </view>-->
+
     </view>
     <view class="cart-bottom" wx:if="{{userInfo.user_type==1}}">
       <view class="checkbox {{checkedAllStatus ? 'checked' : ''}}" bindtap="checkedAll">全选({{cartTotal.checkedGoodsCount}})</view>

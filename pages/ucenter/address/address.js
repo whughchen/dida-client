@@ -29,18 +29,35 @@ Page({
   },
   addressSelect (event) {
 
-    app.globalData.contractorAddressId = event.currentTarget.dataset.addressId;
-    wx.setStorageSync('addressId',event.currentTarget.dataset.addressId);
-    console.log('用户手动选择地址:'+app.globalData.contractorAddressId);
-    wx.navigateBack({
-      contratorAddressId: event.currentTarget.dataset.addressId
+    
+    console.log('用户手动选择地址:' + event.currentTarget.dataset.addressId);
+    var data = event.currentTarget.dataset.addressId;
+    if(data){
+      var address = data.split(';')
 
-    })
-    wx.showToast({
-      title: '地址已选择',
-      icon: 'success',
-      duration: 1000
-    });
+      let pages = getCurrentPages();//当前页面
+      let prevPage = pages[pages.length - 2];//上一页面
+      prevPage.setData({//直接给上移页面赋值
+        addressId: address[0],
+        addressText: address[1]
+      });
+
+      wx.switchTab({
+        url: '/pages/contractor/index/index',
+      });
+      wx.showToast({
+        title: '地址已选择',
+        icon: 'success',
+        duration: 1000
+      });
+    }else{
+      wx.showToast({
+        title: '请选择地址，或者新建地址！',
+        icon: 'fail',
+        duration: 1000
+      });
+    }
+
   },
   addressEdit(event) {
     console.log('用户编辑')

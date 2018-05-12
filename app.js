@@ -24,8 +24,6 @@ App({
       session_key:'',
       user_id: '',
       openid: ''
-    },
-    contratorAddressId: -1,
-    contractorAddressTxt: ''
+    }
   }
 });

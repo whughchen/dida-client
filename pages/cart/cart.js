@@ -28,7 +28,7 @@ Page({
   },
   onShow: function () {
     var userInfo = wx.getStorageSync('userInfo');
-    that.setData({
+    this.setData({
       userInfo: userInfo
     });
     if(!this.data.userInfo.user_type){
@@ -237,10 +237,14 @@ Page({
     if (checkedGoods.length <= 0) {
       return false;
     }
+    var params=''
+    for (var i= 0; i < checkedGoods.length ; i++){
+      params = params + 'cartIdArray=' + checkedGoods[i].id;
+    }
 
 
     wx.navigateTo({
-      url: '../shopping/checkout/checkout'
+      url: '../shopping/checkout/checkout?' + params
     });
   },
   deleteCart: function () {

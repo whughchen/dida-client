@@ -92,9 +92,10 @@
 }
 
 .a-brand .img {
-  position: absolute;
+  /*position: absolute;*/
   left: 0;
   top: 0;
+  max-height: 96px;
 }
 
 .a-brand .mt {
@@ -118,42 +119,29 @@
 }
 
 
-.a-brand .mt .brand11 {
-display: block;
-  font-size: 30rpx;
-  height: 30rpx;
-  color: #333;
-  
-  
+.brand11 {
+  font-size: 20rpx;
+  height: 25rpx;
   position: relative;
   z-index: 20;
-  padding: 150rpx 60rpx;
-  left: 0;
-  top: 0;
 }
 .a-brand  .text1 {
   display: -webkit-inline-box;
-  font-size: 25rpx;
-  height: 25rpx;
+  font-size: 20rpx;
+  height: 20rpx;
   color: #999;
   
   position: relative;
   z-index: 20;
-  padding: 210rpx 10rpx;
   left: 20;
   top: 0;
 }
-.a-brand .secondline .text2 {
-  display: -webkit-inline-box;
+.text2 {
   font-size: 25rpx;
   height: 25rpx;
-  color: #999;
-  
   position: relative;
   z-index: 20;
-  padding: 210rpx 10rpx;
-  left: 20;
-  top: 0;
+  color: red;
 }
 
 .a-brand .item-1 {
@@ -168,7 +156,7 @@ display: block;
 .a-brand .vehicle {
   float: left;
   width: 375rpx;
-  height: 282rpx;
+  height: 3322rpx;
   overflow: hidden;
   border-top: 1rpx solid #fff;
   margin-left: 1px;
@@ -176,7 +164,7 @@ display: block;
 .vehicle-choosed {
   float: left;
   width: 49%;
-  height: 282rpx;
+  height: 305rpx;
   overflow: hidden;
   border-top: 1rpx solid #fff;
   margin-left: 1px;
@@ -191,7 +179,7 @@ display: block;
 .vehicle-unchoosed {
   float: left;
   width: 49%;
-  height: 282rpx;
+  height: 305rpx;
   overflow: hidden;
   border-top: 1rpx solid #fff;
   margin-left: 1px;

@@ -11,7 +11,8 @@ Page({
     vehicleTypes:[],
     phone: '' ,
     vehicleTypeId:-1,
-    contractorAddressTxt: '',
+    addressText: '',
+    addressId: 0,
     userInfo:{},
     currentTab: 0,
     cartGoods: [],
@@ -44,7 +45,9 @@ Page({
   onLoad: function (options) {
     this.setData({
       userInfo: wx.getStorageSync('userInfo')
-    })
+    });
+
+
   },
   onReady: function () {
     // 页面渲染完成
@@ -75,7 +78,17 @@ Page({
     } else { //司机页面请求任务列表
       that.getHallCart();
     }
-    // 页面显示
+    // 跳转带来的参数
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1]; //上一页
+    if (currPage.data.addressText != "") {
+      that.setData({//将携带的参数赋值
+        addressId: currPage.data.addressId,
+        addressText: currPage.data.addressText,
+      });
+    }
+
+
   },
 
   getAddressTxt: function(){
@@ -84,15 +97,16 @@ Page({
       util.request(api.AddressDetail + '?id=' + app.globalData.contractorAddressId).then(function (res) {
         if (res.errno === 0) {
           that.setData({
-            contractorAddressTxt: res.data.address
+            contractorAddressTxt: res.data.address,
+            addressId: res.data.addressId
           });
         }
       });
-    } else {
+    } /*else {
       that.setData({
         contractorAddressTxt: app.globalData.contractorAddressTxt
       })
-    }
+    }*/
   },
   onHide: function () {
     // 页面隐藏

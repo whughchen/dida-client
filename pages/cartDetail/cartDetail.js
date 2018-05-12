@@ -7,9 +7,13 @@ Page({
     cartInfo: {},
     cartGoods: [],
     handleOption: {},
-    distance:0
+    distance:0,
+    userInfo:{}
   },
   onLoad: function (options) {
+    this.setData({
+      userInfo: wx.getStorageSync("userInfo")
+    });
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       cartId: options.id,

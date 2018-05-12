@@ -10,10 +10,11 @@ Page({
   data: {
     upload_picture_list: [],
     vehichleTypeId: '',
-    responceTime: '',
+    responceTime: '48小时之内',
     remark: '',
     cartInfo: {},
-    photoUrlId: 0
+    photoUrlId: 0,
+    addressId:0
   },
 
 
@@ -127,9 +128,7 @@ Page({
   },
 
   submitCart: function () {
-    this.uploadimage();
-
-    
+    this.uploadimage();  
 
   },
 
@@ -144,7 +143,7 @@ Page({
       return;
     }
 
-    util.request(api.CartAdd, { goodsId: this.data.vehichleTypeId, number: 1, productId: this.data.vehichleTypeId, responceTime: this.responceTime, remark:this.remark,}, "POST")
+    util.request(api.CartAdd, { goodsId: that.data.vehichleTypeId, number: 1, productId: that.data.vehichleTypeId, responceTime: that.data.responceTime, remark: that.data.remark, photoUrlId: that.data.photoUrlId}, "POST")
       .then(function (res) {
         let _res = res;
         if (_res.errno == 0) {
@@ -184,6 +183,11 @@ Page({
   charChange: function (e) {
     if (e.detail && e.detail.value.length > 0) {
       if (e.detail.value.length < 1 || e.detail.value.length > 500) {
+        wx.showToast({
+          title: '至少输入一个字符，长度不能超过250个汉字',
+          icon: 'fail',
+          duration: 1000
+        })
       } else {
         this.setData({
           remark: e.detail.value
@@ -213,9 +217,10 @@ Page({
   onLoad: function (options) {
     this.setData({
       vehichleTypeId: options.vehicleTypeId,
-      
+      addressId: options.addressId
+
     });
-    console.log('跳转后vehicleid=' + this.data.vehichleTypeId);
+    console.log('跳转后vehicleid=' + this.data.vehichleTypeId + ',adressId=' + options.addressId);
   },
   onReady: function () {
     // 页面渲染完成
