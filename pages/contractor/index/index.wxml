@@ -13,7 +13,7 @@
             <image class="img" style="width: {{imagewidth}}px; height: {{imageheight}}px;display: block;margin-left: 2px;"  src="{{item.pic_url}}" mode="widthFix" bindload="imageLoad"></image>
               <view style="margin-left: 5px;">
               <text class="brand11">{{item.name}}</text>
-              <text class="text2">  单价¥{{item.retail_price}}</text>
+              <text class="text2">  单价¥{{item.unit_price}}</text>
 
                   <view>
                     <text class="text1">{{item.capacity_weight}}吨  {{item.length}}*{{item.width}}*{{item.height}}米 {{item.capacity_volumn}}方</text>

@@ -20,7 +20,8 @@
 
     </view>
 
-     <button class="page-body-button" type="primary" bindtap="withdraw">提 现</button>
+     <button class="page-body-button" type="primary" bindtap="withdraw" wx:if="{{myBalance>0}}">提 现</button>
+
 
 
 

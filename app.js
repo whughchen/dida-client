@@ -24,6 +24,8 @@ App({
       session_key:'',
       user_id: '',
       openid: ''
-    }
+    },
+    addressId:0,
+    addressText: ''
   }
 });

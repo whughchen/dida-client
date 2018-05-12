@@ -70,7 +70,7 @@ Page({
   getMyBalance: function (e) {
     let that = this;
     util.request(api.GetMyBalance).then(function (res) {
-      if (res.errno === 0) {
+      if (res.errno === 0 && res.data.myBalance.length >0 ) {
         that.setData({
           myBalance: res.data.myBalance[0].balance
         });

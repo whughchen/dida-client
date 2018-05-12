@@ -41,6 +41,9 @@ Page({
         addressId: address[0],
         addressText: address[1]
       });
+      app.globalData.addressId = address[0];
+      app.globalData.addressText = address[1];
+
 
       wx.switchTab({
         url: '/pages/contractor/index/index',

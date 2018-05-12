@@ -74,7 +74,7 @@ Page({
     //工长页面请求车型列表
     if (that.data.userInfo.user_type !=2 ){
       that.getIndexData();
-      that.getAddressTxt();
+      //that.getAddressTxt();
     } else { //司机页面请求任务列表
       that.getHallCart();
     }
@@ -85,6 +85,11 @@ Page({
       that.setData({//将携带的参数赋值
         addressId: currPage.data.addressId,
         addressText: currPage.data.addressText,
+      });
+    }else{
+      that.setData({//将携带的参数赋值
+        addressId: app.globalData.addressId,
+        addressText: app.globalData.addressText,
       });
     }
 
