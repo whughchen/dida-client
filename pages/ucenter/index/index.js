@@ -147,7 +147,9 @@ Page({
     });
 
     wx.showToast({
-      title: '已切换身份为' + that.data.userInfo.user_type == 2 ? '司机': '工长'
+      title: '切换身份为' + (that.data.userInfo.user_type == 2 ? '司机': '工长'),
+      icon:'success',
+      duration:1000
     })
 
   },
