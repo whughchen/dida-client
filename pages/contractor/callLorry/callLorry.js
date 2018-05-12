@@ -143,7 +143,7 @@ Page({
       return;
     }
 
-    util.request(api.CartAdd, { goodsId: that.data.vehichleTypeId, number: 1, productId: that.data.vehichleTypeId, responceTime: that.data.responceTime, remark: that.data.remark, photoUrlId: that.data.photoUrlId}, "POST")
+    util.request(api.CartAdd, { goodsId: that.data.vehichleTypeId, number: 1, productId: that.data.vehichleTypeId, responceTime: that.data.responceTime, remark: that.data.remark, photoUrlId: that.data.photoUrlId, location: wx.getStorageSync('location')}, "POST")
       .then(function (res) {
         let _res = res;
         if (_res.errno == 0) {

@@ -40,7 +40,7 @@
     <view class="order-box">
         <view class="order-item">
             <view class="l">
-                <text class="name">商品合计</text>
+                <text class="name">费用合计</text>
             </view>
             <view class="r">
                 <text class="txt">￥{{goodsTotalPrice}}</text>

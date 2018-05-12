@@ -57,6 +57,12 @@ page{
     color: #b4282d;
 }
 
+.item-c .status{
+    float: right;
+    font-size: 30rpx;
+    color: #b4282d;
+}
+
 .item-c .btn{
     line-height: 66rpx;
     bcart-radius: 5rpx;

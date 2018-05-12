@@ -5,8 +5,8 @@
         <view class="item-c">
             <view class="l">实付：<text class="cost">￥{{orderInfo.actual_price}}</text></view>
             <view class="r">
-                <view class="btn" bindtap="cancelOrder">取消订单</view>
-                <view class="btn active" bindtap="payOrder">去付款</view>
+                <view class="btn" bindtap="cancelOrder" wx:if="{{userInfo.user_type == 1}}">取消订单</view>
+                <view class="btn active" bindtap="payOrder" wx:if="{{userInfo.user_type == 1}}">去付款</view>
             </view>
         </view>
     </view>

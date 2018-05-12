@@ -32,7 +32,7 @@ Page({
   },
   onShow:function(){
     var userInfo = wx.getStorageSync('userInfo');
-    that.setData({
+    this.setData({
       userInfo: userInfo
     })
   },

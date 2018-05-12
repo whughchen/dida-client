@@ -185,6 +185,11 @@ page{
 .cart-view .item .price{
     float: left;
 }
+.cart-view .item .status{
+    float: right;
+    font-size: 35rpx;
+    color: #b4282d;
+}
 
 .cart-view .item .open{
     height: 28rpx;

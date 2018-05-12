@@ -17,9 +17,8 @@
       <view class="group-item">
         <view class="goods">
           <view class="item {{isEditCart ? 'edit' : ''}}" wx:for="{{cartGoods}}" wx:key="{{item.id}}">
-          <navigator url="/pages/cartDetail/cartDetail?id={{item.id}}">
-            <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-item-index="{{index}}" wx:if="{{userInfo.user_type==1}}"></view>
-
+          <view class="checkbox {{item.checked ? 'checked' : ''}}" bindtap="checkedItem" data-item-index="{{index}}" wx:if="{{userInfo.user_type==1}}"></view>
+            <navigator url="/pages/cartDetail/cartDetail?id={{item.id}}">
             <view class="cart-goods">
               <image class="img" src="{{item.list_pic_url}}"></image>
               <view class="info">
@@ -32,7 +31,9 @@
                 <view class="attr">{{item.remark}}</view>
                 <view class="b">
                   <text class="price">￥{{item.retail_price}}</text>
+                  <text class="status" wx:if="{{userInfo.user_type != 2}}">{{item.status == 0 ? '等待接单':'正在进行中'}}</text>
                   <view class="r" wx:if="{{userInfo.user_type==2}}">
+                     
                     <button class="btn" data-order-index="{{index}}" catchtap="gotoCartDetail" >接单</button>
                   </view>
                   <view class="selnum">
@@ -41,7 +42,9 @@
                     <view class="add" bindtap="addNumber" data-item-index="{{index}}">+</view>
                   </view>
                 </view>
+                
               </view>
+              
             </view>
             </navigator>
           </view>
@@ -56,7 +59,9 @@
       <view class="total">{{!isEditCart ? '￥'+cartTotal.checkedGoodsAmount : ''}}</view>
       <view class="delete" bindtap="editCart">{{!isEditCart ? '编辑' : '完成'}}</view>
       <view class="checkout" bindtap="deleteCart" wx:if="{{isEditCart}}">删除所选</view>
+      <!--
       <view class="checkout" bindtap="checkoutOrder" wx:if="{{!isEditCart}}">下单</view>
+      -->
     </view>
   </view>
 </view>
