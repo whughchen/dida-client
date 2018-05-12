@@ -34,6 +34,11 @@ Page({
         sessionData: app.globalData.sessionData,
         phone: phone
       });
+      if (phone){
+        this.setData({
+          phone: phone
+        });
+      }
 
       this.getMyBalance();
       this.withdrawSum();
@@ -116,6 +121,7 @@ Page({
         this.setData({
           phone: res.data.userInfo.mobile
         });
+        wx.setStorageSync('phone', res.data.userInfo.mobile);
       }
 
     }).catch((err) => {
