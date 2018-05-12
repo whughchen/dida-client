@@ -514,7 +514,7 @@
 .add-address{
     background: #b4282d;
     text-align: center;
-    width: 45%;
+    width: 95%;
     height: 70rpx;
     line-height: 70rpx;
     position: relative;

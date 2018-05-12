@@ -29,20 +29,20 @@
     </view>
   </view>
 <view>
-  <view style='text-align: center; align-items: center;'>
-    <text >选择位置</text>
-  </view>
+  
   <view class="add-address"> 
     <navigator url="/pages/ucenter/address/address">
-      <view class="add-address" bindtap="addressAddOrUpdate" data-address-id="0">输入地址</view>
+      <view class="add-address" bindtap="addressAddOrUpdate" data-address-id="0">货物地址</view>
     </navigator>
   </view>
 
+<!--
   <view class="add-address"> 
     <navigator url="/pages/searchLocation/searchLocation">
       <view class="add-address" bindtap="getLocation" data-address-id="0">地图定位</view>   
     </navigator>
   </view>
+    -->
 
   <view>
    <text style='margin-left:14px;font-size:14px' wx:if="{{addressText}}">地址：{{addressText}}</text>
