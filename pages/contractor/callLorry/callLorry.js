@@ -14,7 +14,8 @@ Page({
     remark: '',
     cartInfo: {},
     photoUrlId: 0,
-    addressId:0
+    addressId:0,
+    nearByDrivers: []
   },
 
 
@@ -149,7 +150,8 @@ Page({
         if (_res.errno == 0) {
 
           that.setData({
-            cartInfo: res.data.cartList[0]
+            cartInfo: res.data.cartList[0],
+            nearByDrivers: res.data.nearByUsers
           });
 
           wx.switchTab({
@@ -171,6 +173,14 @@ Page({
 
       });
    
+  },
+
+
+  sentMsgToNearByDrivers: function() {
+    if(this.data.nearByDrivers.length >0){
+
+    }
+
   },
 
 
