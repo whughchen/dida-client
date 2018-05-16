@@ -67,7 +67,7 @@
   </view>
 
 
-  <navigator url="/pages/contractor/callLorry/callLorry?vehicleTypeId={{vehicleTypeId}}&addressId={{addressId}}">
+  <navigator url="/pages/contractor/callLorry/callLorry?vehicleTypeId={{vehicleTypeId}}&addressId={{addressId}}&addressText={{addressText}}">
     <button class="page-body-button" type="primary" >下一步</button>
   </navigator>
   </view>  

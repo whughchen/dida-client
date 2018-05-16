@@ -15,7 +15,17 @@ Page({
     cartInfo: {},
     photoUrlId: 0,
     addressId:0,
-    nearByDrivers: []
+    addressText:'',
+    nearByDrivers: [],
+    formId: '0'
+  },
+
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.formId)
+    this.setData({
+      formId: e.detail.formId
+    })
+    this.uploadimage();  
   },
 
 
@@ -129,7 +139,7 @@ Page({
   },
 
   submitCart: function () {
-    this.uploadimage();  
+    
 
   },
 
@@ -144,7 +154,7 @@ Page({
       return;
     }
 
-    util.request(api.CartAdd, { goodsId: that.data.vehichleTypeId, number: 1, productId: that.data.vehichleTypeId, responceTime: that.data.responceTime, remark: that.data.remark, photoUrlId: that.data.photoUrlId, location: wx.getStorageSync('location')}, "POST")
+    util.request(api.CartAdd, { goodsId: that.data.vehichleTypeId, number: 1, productId: that.data.vehichleTypeId, responceTime: that.data.responceTime, remark: that.data.remark, photoUrlId: that.data.photoUrlId, location: wx.getStorageSync('location'), formId: that.data.formId, addressId: that.data.addressId, addressText: that.data.addressText }, "POST")
       .then(function (res) {
         let _res = res;
         if (_res.errno == 0) {
@@ -227,7 +237,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       vehichleTypeId: options.vehicleTypeId,
-      addressId: options.addressId
+      addressId: options.addressId,
+      addressText: options.addressText,
 
     });
     console.log('跳转后vehicleid=' + this.data.vehichleTypeId + ',adressId=' + options.addressId);
