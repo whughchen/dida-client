@@ -1,5 +1,5 @@
-//const ApiRootUrl = 'http://127.0.0.1:8360/api/';
-const ApiRootUrl = 'https://miniapp.rnh-inc.xyz/api/';
+const ApiRootUrl = 'http://127.0.0.1:8360/api/';
+//const ApiRootUrl = 'https://miniapp.rnh-inc.xyz/api/';
 
 module.exports = {
 
