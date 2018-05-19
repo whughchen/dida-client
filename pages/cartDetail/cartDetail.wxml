@@ -26,7 +26,7 @@
                 <view class="info">
                     <view class="t">
                         <text class="name">{{cartInfo.goods_name}}</text>
-                        <text class="number">x{{cartInfo.number}}</text>
+                        <text class="number">x{{cartInfo.number}}车</text>
                     </view>
                     <view class="attr">{{cartInfo.goods_specifition_name_value}}</view>
                     <view class="attr">{{cartInfo.responce_time}}</view>
@@ -34,11 +34,28 @@
                     <view class="price">￥{{cartInfo.retail_price}}</view>
 
                 </view>
-                <view wx:for="{{cartInfo.photo_urls}}" class="picture_item" wx:key="{{index}}">
-                    <image src="{{cartInfo.path}}" mode="aspectFill"></image>
-                </view>
+
             </view>
         </view>
+    </view>
+        <view class="cart-bottom">
+        <view class="label">用车人信息</view>
+        <view class="fromUserInfo">     
+
+            <view class="mobile">客户姓名：{{cartInfo.fromUser.nickname}}</view>
+            <view class="mobile">客户电话：{{cartInfo.fromUser.mobile}}</view>
+
+            <view class="b">拉货地址：{{cartInfo.full_region + cartInfo.address}}</view>
+        </view>
+    </view>
+
+    <view class="cart-bottom">
+      <view class="label">开工前照片</view>
+      <view class="picture_list">
+        <view wx:for="{{cartInfo.photoUrls.photo_urls}}" class="picture_item" wx:for-index="index">
+          <image  src="{{cartInfo.photoUrls.photo_urls[0]}}" mode="aspectFill"></image>
+        </view>
+      </view>
     </view>
 
     <view class="cart-bottom">

@@ -73,6 +73,11 @@ Page({
     });
 
   },
+  updateCartprice:function(){
+    util.request(api.updateCartprice, {cartId: this.data.cartId},'POST').then(function (res) {
+    });
+
+  },
   onReady: function () {
     // 页面渲染完成
   },
