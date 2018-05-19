@@ -471,7 +471,7 @@
   width: 120px;
   line-height: 45rpx;
   color: #444;
-  font-size: 40rpx;
+  font-size: 30rpx;
   border: thick;
   margin-left: 60rpx;
   
@@ -512,6 +512,8 @@
   word-wrap: initial;
 }
 .add-address{
+  margin-top: 10px;
+  margin-bottom: 10px;
     background: #b4282d;
     text-align: center;
     width: 95%;

@@ -17,7 +17,8 @@ Page({
     addressId:0,
     addressText:'',
     nearByDrivers: [],
-    formId: '0'
+    formId: '0',
+    numberOfvehicle:0
   },
 
   formSubmit: function (e) {
@@ -67,6 +68,16 @@ Page({
   //上传方法
   upload_file_server: function(that, upload_picture_list, j)
   {
+    /*if (upload_picture_list[j].size >= 2*1024*1024){     
+      wx.showToast({
+        image: '/static/images/icon_error.png',
+        title: '图片不能超过2M',
+        mask: true,
+        duration: 1000
+      });
+      return;
+    }*/
+
     var time = new Date()
     var datetime = util.formatTime(time)//获取时间 防止命名重复
     var date = datetime.substring(0, 10)//获取日期 分日期 文件夹存储
@@ -114,6 +125,7 @@ Page({
 
     //上传 进度方法
     upload_task.onProgressUpdate((res) => {
+
       upload_picture_list[j]['upload_percent'] = res.progress
       //console.log('第' + j + '个图片上传进度：' + upload_picture_list[j]['upload_percent'])
       //console.log(upload_picture_list)
@@ -154,7 +166,7 @@ Page({
       return;
     }
 
-    util.request(api.CartAdd, { goodsId: that.data.vehichleTypeId, number: 1, productId: that.data.vehichleTypeId, responceTime: that.data.responceTime, remark: that.data.remark, photoUrlId: that.data.photoUrlId, location: wx.getStorageSync('location'), formId: that.data.formId, addressId: that.data.addressId, addressText: that.data.addressText }, "POST")
+    util.request(api.CartAdd, { goodsId: that.data.vehichleTypeId, number: that.data.numberOfvehicle, productId: that.data.vehichleTypeId, responceTime: that.data.responceTime, remark: that.data.remark, photoUrlId: that.data.photoUrlId, location: wx.getStorageSync('location'), formId: that.data.formId, addressId: that.data.addressId, addressText: that.data.addressText }, "POST")
       .then(function (res) {
         let _res = res;
         if (_res.errno == 0) {
@@ -186,12 +198,7 @@ Page({
   },
 
 
-  sentMsgToNearByDrivers: function() {
-    if(this.data.nearByDrivers.length >0){
 
-    }
-
-  },
 
 
   radioSelect: function(e) {
@@ -239,6 +246,7 @@ Page({
       vehichleTypeId: options.vehicleTypeId,
       addressId: options.addressId,
       addressText: options.addressText,
+      numberOfvehicle: options.numberOfvehicle
 
     });
     console.log('跳转后vehicleid=' + this.data.vehichleTypeId + ',adressId=' + options.addressId);

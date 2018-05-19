@@ -10,7 +10,7 @@ Page({
   data: {
     vehicleTypes:[],
     phone: '' ,
-    vehicleTypeId:-1,
+    vehicleTypeId:9999,
     addressText: '',
     addressId: 0,
     userInfo:{},
@@ -18,7 +18,8 @@ Page({
     cartGoods: [],
     cartTotal: 0,
     page: 1,
-    size: 10
+    size: 10,
+    numberOfvehicle:0
   },
 
 
@@ -109,14 +110,66 @@ Page({
 
   },
   checkData: function(){
-    if(this.data.vehichleType == -1){
+    if(this.data.vehichleType == 9999 ){
       wx.showToast({
         image: '/static/images/icon_error.png',
-        title: '请选择用车类型',
-        mask: true
+        title: '用车类型是？',
+        mask: true,
+        icon: 'fail'
       });
+      return;
     }
+    if (this.data.numberOfvehicle == 0) {
+      wx.showToast({
+        image: '/static/images/icon_error.png',
+        title: '工程量预估？',
+        mask: true
+        //icon: 'fail'
+      });
+      return;
+    }
+    if (this.data.addressId == 0) {
+      wx.showToast({
+        image: '/static/images/icon_error.png',
+        title: '地址是？',
+        mask: true,
+        icon: 'fail'
+      });
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/contractor/callLorry/callLorry?vehicleTypeId=' + this.data.vehicleTypeId + '&addressId=' + this.data.addressId + '&addressText=' + this.data.addressText + '&numberOfvehicle=' + this.data.numberOfvehicle,
+    })
+    
+
+
   },
+  charChange: function (e) {
+    if (e.detail && e.detail.value.length > 0) {
+      if (e.detail.value.length < 1 || e.detail.value.length > 2) {
+        wx.showToast({
+          title: '请输入工程量预估多少车',
+          icon: 'fail',
+          duration: 1000
+        })
+      } else {
+        if (isNaN(e.detail.value)){
+          wx.showToast({
+            title: '请输入数字',
+            icon: 'fail',
+            duration: 1000
+          })
+        }else{
+          this.setData({
+            numberOfvehicle: e.detail.value
+          });
+        }
+
+      }
+    } else {
+      app.func.showToast('请输入预估车次', 'loading', 1000);
+    }
+  }, 
 
   getAddressTxt: function(){
     let that = this;

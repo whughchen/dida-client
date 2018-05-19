@@ -28,37 +28,34 @@
       </view>
     </view>
   </view>
-<view>
-  
-  <view class="add-address"> 
-    <navigator url="/pages/ucenter/address/address">
-      <view class="add-address" bindtap="addressAddOrUpdate" data-address-id="0">货物地址</view>
-    </navigator>
-  </view>
-
-<!--
-  <view class="add-address"> 
-    <navigator url="/pages/searchLocation/searchLocation">
-      <view class="add-address" bindtap="getLocation" data-address-id="0">地图定位</view>   
-    </navigator>
-  </view>
-    -->
-
-  <view>
-   <text style='margin-left:14px;font-size:14px' wx:if="{{addressText}}">地址：{{addressText}}</text>
-  </view>
-</view>
-
-
   <view class="a-section a-brand">
     <view class="h">
-      <text class="unit-price-text">每车单价 ¥</text>
-      <textarea class="unit-price"></textarea>
+      <text class="unit-price-text">工程量预估</text>
+      <textarea class="unit-price" value="{{number}}" bindblur="charChange"></textarea>
+      <text class="unit-price-text">车</text>
     </view>
     <view>
       <text class="unit-price-agreement">只限于垂直装卸，同时请参考《渣土标准》要求</text>
     </view>
   </view>
+  
+
+  <view>
+    
+    <view class="add-address"> 
+      <navigator url="/pages/ucenter/address/address">
+        <view  bindtap="addressAddOrUpdate" data-address-id="0">货物地址</view>
+      </navigator>
+    </view>
+
+
+    <view>
+    <text style='margin-left:14px;font-size:14px' wx:if="{{addressText}}">地址：{{addressText}}     </text>
+    </view>
+  </view>
+
+
+
 
 
   <view class="a-section a-brand">  
@@ -67,9 +64,9 @@
   </view>
 
 
-  <navigator url="/pages/contractor/callLorry/callLorry?vehicleTypeId={{vehicleTypeId}}&addressId={{addressId}}&addressText={{addressText}}">
+  <!--navigator url="/pages/contractor/callLorry/callLorry?vehicleTypeId={{vehicleTypeId}}&addressId={{addressId}}&addressText={{addressText}}"-->
     <button class="page-body-button" type="primary" bindtap="checkData">下一步</button>
-  </navigator>
+  <!--/navigator-->
   </view>  
 </view>
 
