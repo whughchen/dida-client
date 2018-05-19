@@ -68,7 +68,7 @@ Page({
   //上传方法
   upload_file_server: function(that, upload_picture_list, j)
   {
-    /*if (upload_picture_list[j].size >= 2*1024*1024){     
+    if (upload_picture_list[j].size >= 2*1024*1024){     
       wx.showToast({
         image: '/static/images/icon_error.png',
         title: '图片不能超过2M',
@@ -76,7 +76,7 @@ Page({
         duration: 1000
       });
       return;
-    }*/
+    }
 
     var time = new Date()
     var datetime = util.formatTime(time)//获取时间 防止命名重复
