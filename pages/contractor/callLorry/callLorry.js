@@ -82,7 +82,7 @@ Page({
         'num': j,
         'datetime': datetime,
         'date': date,
-        'userId': wx.getStorageSync('sessionData').user_id,
+        'userId': wx.getStorageSync('sessionData').userId,
       },
       //附近数据，这里为路径
       success: function (res) {

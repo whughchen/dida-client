@@ -57,12 +57,27 @@ function checkLogin() {
       });
 
     } else {
-      //reject(false);
+      
       wx.login({
         success: function (res) {
           if (res.code) {
             //发起网络请求
-            console.log(res.code)
+            console.log('登录成功：'+res.code)
+            util.request(api.GetSessionData, { code: res.code, location: wx.getStorageSync('location') }, 'POST').then(res => {
+              if (res.errno === 0) {
+                //存储用户信息
+                wx.setStorageSync('sessionData', res.data.sessionData);
+                wx.setStorageSync('userInfo', res.data.userInfo);
+                wx.setStorageSync('token', res.data.token);
+
+
+                resolve(res);
+              } else {
+                reject(res);
+              }
+            }).catch((err) => {
+              reject(err);
+            });
           } else {
             console.log('获取用户登录态失败！' + res.errMsg)
           }

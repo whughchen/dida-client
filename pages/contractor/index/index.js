@@ -95,6 +95,15 @@ Page({
 
 
   },
+  checkData: function(){
+    if(this.data.vehichleType == -1){
+      wx.showToast({
+        image: '/static/images/icon_error.png',
+        title: '请选择用车类型',
+        mask: true
+      });
+    }
+  },
 
   getAddressTxt: function(){
     let that = this;
