@@ -45,6 +45,10 @@ Page({
     }
     if (!sessionData){
       this.goLogin();
+    }else{
+      this.setData({
+        phone: userInfo.mobile
+      })
     }
 
     
@@ -114,15 +118,16 @@ Page({
         userInfo: res.data.userInfo,
         sessionData: res.data.sessionData,
       });
-      app.globalData.userInfo = res.data.userInfo;
-      app.globalData.sessionData = res.data.sessionData;
-      app.globalData.token = res.data.token;
-      if (res.data.userInfo.mobile){
+      if (res.data.userInfo.mobile) {
         this.setData({
           phone: res.data.userInfo.mobile
         });
         wx.setStorageSync('phone', res.data.userInfo.mobile);
       }
+      app.globalData.userInfo = res.data.userInfo;
+      app.globalData.sessionData = res.data.sessionData;
+      app.globalData.token = res.data.token;
+
 
     }).catch((err) => {
       console.log("user login error:"+ JSON.stringify(err));
