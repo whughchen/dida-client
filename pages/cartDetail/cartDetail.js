@@ -74,9 +74,12 @@ Page({
 
   },
   updateCartprice:function(){
-    util.request(api.updateCartprice, {cartId: this.data.cartId},'POST').then(function (res) {
+    util.request(api.UpdateCartprice, {cartId: this.data.cartId},'POST').then(function (res) {
     });
-
+  },
+  grabTask: function () {
+    util.request(api.GrabTask, { cartId: this.data.cartId }, 'POST').then(function (res) {
+    });
   },
   onReady: function () {
     // 页面渲染完成

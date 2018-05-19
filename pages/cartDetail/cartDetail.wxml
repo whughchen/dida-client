@@ -7,8 +7,8 @@
             </view>
             <view class="status" wx:if="{{userInfo.user_type != 2}}">{{cartInfo.status == 0 ? '等待接单':'正在进行中'}}</view>
             <view class="r" wx:if="{{userInfo.user_type == 2}}">
-                <view class="btn" bindtap="cancelCart">修改报价</view>
-                <view class="btn active" bindtap="payCart">确认接单</view>
+                <view class="btn" bindtap="ooooCartprice">修改报价</view>
+                <view class="btn active" bindtap="grabTask">确认接单</view>
             </view>
         </view>
     </view>
@@ -42,30 +42,23 @@
         <view class="label">用车人信息</view>
         <view class="fromUserInfo">     
 
-            <view class="mobile">客户姓名：{{cartInfo.fromUser.nickname}}</view>
-            <view class="mobile">客户电话：{{cartInfo.fromUser.mobile}}</view>
+            <text class="fromUserInfo-text">客户姓名：{{cartInfo.fromUser.nickname}}</text>
+            <text class="fromUserInfo-text">客户电话：{{cartInfo.fromUser.mobile}}</text>
 
-            <view class="b">拉货地址：{{cartInfo.full_region + cartInfo.address}}</view>
+            <text class="fromUserInfo-text">拉货地址：{{cartInfo.full_region + cartInfo.address}}</text>
         </view>
     </view>
 
     <view class="cart-bottom">
       <view class="label">开工前照片</view>
       <view class="picture_list">
-        <view wx:for="{{cartInfo.photoUrls.photo_urls}}" class="picture_item" wx:for-index="index">
-          <image  src="{{cartInfo.photoUrls.photo_urls[0]}}" mode="aspectFill"></image>
+        <view wx:for="{{cartInfo.photoUrls}}" class="picture_item" >
+          <image  src="{{item}}" mode="aspectFill" class="picture_item"></image>
         </view>
       </view>
     </view>
 
     <view class="cart-bottom">
-        <view class="address">
-            <view class="t">
-                <text class="name">{{cartInfo.consignee}}</text>
-                <text class="mobile">{{cartInfo.mobile}}</text>
-            </view>
-            <view class="b">{{cartInfo.full_region + cartInfo.address}}</view>
-        </view>
         <view class="total">
             <view class="t">
                 <text class="label">商品合计：</text>

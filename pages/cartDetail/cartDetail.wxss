@@ -261,7 +261,7 @@ page{
 }
 
 .picture_list {
-    padding: 20px;
+    padding: 2px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -271,8 +271,17 @@ page{
 }
 
 .picture_item {
-    margin: 10px;
-    position: relative;
-    width: 160rpx;
-    height: 160rpx;
+
+    width: 160px;
+    height: 160px;
+    margin: 10rpx;
+
+}
+
+.fromUserInfo{
+  font-size: 24rpx;
+}
+.fromUserInfo-text{
+  font-size: 26rpx;
+    display: block;
 }
