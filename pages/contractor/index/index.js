@@ -54,21 +54,34 @@ Page({
   },
   onShow: function () {
     let that=this;
+    var userInfo = wx.getStorageSync('userInfo');
+    if (that.data.userInfo.id){
+      that.setData({
+        userInfo: userInfo
+      })
+    }else{
+      this.goLogin();
+    }
     var location = wx.getStorageSync('location');
+
     if (!location){
       wx.getLocation({
         type: 'wgs84',
         success: function (res) {
           var loc = { lon: res.longitude, lat: res.latitude };
           wx.setStorageSync('location',loc);
+          if (that.data.userInfo.id){
+            util.request(api.UpdateLocation, { location: loc }, 'POST').then(function (res) {
+              console.log('更新位置成功'+res)
+            });
+          }
+
+          
         }
       })
     }
 
-    var userInfo = wx.getStorageSync('userInfo');
-    that.setData({
-      userInfo: userInfo
-    })
+
 
 
     //工长页面请求车型列表
@@ -208,7 +221,31 @@ Page({
     wx.navigateTo({
       url: '/pages/cartDetail/cartDetail'
     })
-  }
+  },
+
+  goLogin() {
+    user.loginByWeixin().then(res => {
+      this.setData({
+        userInfo: res.data.userInfo,
+        sessionData: res.data.sessionData,
+      });
+      wx.setStorageSync('userInfo', res.data.userInfo);
+      wx.setStorageSync('sessionData', res.data.sessionData);
+      if (res.data.userInfo.mobile) {
+        this.setData({
+          phone: res.data.userInfo.mobile
+        });
+        wx.setStorageSync('phone', res.data.userInfo.mobile);
+      }
+      app.globalData.userInfo = res.data.userInfo;
+      app.globalData.sessionData = res.data.sessionData;
+      app.globalData.token = res.data.token;
+
+
+    }).catch((err) => {
+      console.log("user login error:" + JSON.stringify(err));
+    });
+  },
 
 
 }

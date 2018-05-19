@@ -1,5 +1,5 @@
-//const ApiRootUrl = 'http://127.0.0.1:8360/api/';
-const ApiRootUrl = 'https://miniapp.rnh-inc.xyz/api/';
+const ApiRootUrl = 'http://127.0.0.1:8360/api/';
+//const ApiRootUrl = 'https://miniapp.rnh-inc.xyz/api/';
 
 module.exports = {
 
@@ -72,6 +72,7 @@ module.exports = {
   HallCart: ApiRootUrl + 'task/hallCart',
   NearByCart: ApiRootUrl + 'task/nearByCart',
   CartDetail: ApiRootUrl + 'cart/cartDetail',  //订单详情
-  SwitchRole: ApiRootUrl + 'user/switchRole'
+  SwitchRole: ApiRootUrl + 'user/switchRole',
+  UpdateLocation: ApiRootUrl + 'user/updateLocation'
 
 };
