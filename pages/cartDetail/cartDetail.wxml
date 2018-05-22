@@ -7,9 +7,23 @@
             </view>
             <view class="status" wx:if="{{userInfo.user_type != 2}}">{{cartInfo.status == 0 ? '等待接单':'正在进行中'}}</view>
             <view class="r" wx:if="{{userInfo.user_type == 2}}">
-                <view class="btn" bindtap="ooooCartprice">修改报价</view>
-                <view class="btn active" bindtap="grabTask">确认接单</view>
+                <!--view class="btn" bindtap="estimateTask">工程量预估</view-->
+                <view class="btn active" wx:if="{{estimateTaskFlag == true}}" bindtap="estimateTask">确认接单</view>
             </view>
+            <modal hidden="{{estimateTaskFlag}}" title="工程量预估" confirm-text="接单" cancel-text="不接单" bindcancel="rejectTask" bindconfirm="confirmTask">  
+              <view class='estimate-line'>
+                <view class='estimate-inline'>
+                  <text class='estimate-line-text'>预计车次:</text>
+                  <textarea placeholder='{{cartInfo.number}}' class='estimate-line-textarea'>  </textarea> 
+                  <text class="estimate-line-text">车</text>
+                </view>
+                <view class='estimate-inline'>
+                  <text class='estimate-line-text'>超时时间:{{cartInfo.create_time}}</text>
+                </view>
+              
+              
+              </view>
+            </modal> 
         </view>
     </view>
 
@@ -45,14 +59,15 @@
             <text class="fromUserInfo-text">客户姓名：{{cartInfo.fromUser.nickname}}</text>
             <text class="fromUserInfo-text">客户电话：{{cartInfo.fromUser.mobile}}</text>
 
-            <text class="fromUserInfo-text">拉货地址：{{cartInfo.full_region + cartInfo.address}}</text>
+            <text class="fromUserInfo-text">拉货地址：{{cartInfo.address}}</text>
+            <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
         </view>
     </view>
 
     <view class="cart-bottom">
       <view class="label">开工前照片</view>
       <view class="picture_list">
-        <view wx:for="{{cartInfo.photoUrls}}" class="picture_item" >
+        <view wx:key="{{cartInfo.photoUrls}}" class="picture_item" >
           <image  src="{{item}}" mode="aspectFill" class="picture_item"></image>
         </view>
       </view>
@@ -68,10 +83,10 @@
                 <text class="label">运费：</text>
                 <text class="txt">￥{{0 }}</text>
             </view>
-            <view class="t" wx:if="{{distance>0}}">
+            <!--view class="t" wx:if="{{distance>0}}">
                 <text class="label">距离：</text>
                 <text class="txt" >￥{{distance }}米</text>
-            </view>
+            </view-->
         </view>
         <view class="pay-fee">
             <text class="label">实付：</text>

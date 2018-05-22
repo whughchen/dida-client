@@ -8,7 +8,8 @@ Page({
     cartGoods: [],
     handleOption: {},
     distance:0,
-    userInfo:{}
+    userInfo:{},
+    estimateTaskFlag: true
   },
   onLoad: function (options) {
     this.setData({
@@ -21,6 +22,24 @@ Page({
     });
     this.getCartDetail();
   },
+
+  estimateTask: function(){
+    this.setData({
+      estimateTaskFlag: !this.data.estimateTaskFlag
+    })
+  },
+  //取消按钮  
+  rejectTask: function () {
+    this.setData({
+      estimateTaskFlag: true
+    });
+  },
+  //确认  
+  confirmTask: function () {
+    this.setData({
+      estimateTaskFlag: true
+    })
+  },  
   getCartDetail() {
     let that = this;
     util.request(api.CartDetail, {

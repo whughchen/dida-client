@@ -270,11 +270,7 @@ Page({
 
     this.getHallCart();
   },
-  gotoCartDetail: function(){
-    wx.navigateTo({
-      url: '/pages/cartDetail/cartDetail'
-    })
-  },
+
 
   goLogin() {
     user.loginByWeixin().then(res => {

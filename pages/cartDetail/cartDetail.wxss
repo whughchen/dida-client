@@ -285,3 +285,24 @@ page{
   font-size: 26rpx;
     display: block;
 }
+.estimate-line{
+  display:block;
+}
+.estimate-inline{
+  height: 26rpx;
+  line-height: 26rpx;
+  display:block;
+  margin-bottom: 20rpx;
+}
+.estimate-line-text{
+  line-height: 26rpx;
+  display:inline-flex;
+}
+
+.estimate-line-textarea{
+  width: 80rpx;
+  height: 30rpx;
+  color: red;
+  border: solid 0.5rpx black;
+  display:inline-flex;
+}
