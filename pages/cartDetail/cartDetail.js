@@ -9,7 +9,9 @@ Page({
     handleOption: {},
     distance:0,
     userInfo:{},
-    estimateTaskFlag: true
+    estimateTaskFlag: true,
+    numberOfvehicle: 0,
+    input_focus:false
   },
   onLoad: function (options) {
     this.setData({
@@ -22,7 +24,31 @@ Page({
     });
     this.getCartDetail();
   },
-
+  bindChange: function (e) {   //  存入input
+    if (e.detail && e.detail.value.length > 0) {
+      if (e.detail.value.length < 1 || e.detail.value.length > 500) {
+        wx.showToast({
+          title: '至少输入一个字符，长度不能超过250个汉字',
+          icon: 'fail',
+          duration: 1000
+        })
+      } else {
+        this.setData({
+          numberOfvehicle: e.detail.value
+        })
+      }
+    } else {
+      this.setData({
+        remark: ''
+      });
+      app.func.showToast('请输入备注', 'loading', 1000);
+    }
+  },
+  listenerPhoneInput: function (e) {  // 用户名input  获得焦点。 可填写内容
+    this.setData({
+      input_focus: true
+    });
+  },
   estimateTask: function(){
     this.setData({
       estimateTaskFlag: !this.data.estimateTaskFlag
@@ -35,11 +61,30 @@ Page({
     });
   },
   //确认  
-  confirmTask: function () {
+  grabTask: function () {
+    let that = this;
+    util.request(api.CartUpdate, { id: that.data.cartId, goodsId: that.data.cartInfo.goods_id, productId: that.data.cartInfo.product_id, number: that.data.numberOfvehicle, status: 1, taskUserId: userInfo.id}, 'POST').then(function (res) {
+      if (res.errno === 0) {
+        console.log('更新cart status成功');
+      }
+    });
     this.setData({
       estimateTaskFlag: true
     })
   },  
+
+  checkoutOrder: function () {
+    //获取已选择的商品
+    let that = this;
+    var params = ''
+    params = params + 'cartIdArray=' + that.data.cartId;
+
+
+    wx.navigateTo({
+      url: '../shopping/checkout/checkout?' + params
+    });
+  },
+  
   getCartDetail() {
     let that = this;
     util.request(api.CartDetail, {
@@ -92,14 +137,7 @@ Page({
     });
 
   },
-  updateCartprice:function(){
-    util.request(api.UpdateCartprice, {cartId: this.data.cartId},'POST').then(function (res) {
-    });
-  },
-  grabTask: function () {
-    util.request(api.GrabTask, { cartId: this.data.cartId }, 'POST').then(function (res) {
-    });
-  },
+
   onReady: function () {
     // 页面渲染完成
   },

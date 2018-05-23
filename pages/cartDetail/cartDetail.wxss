@@ -83,10 +83,10 @@ page{
 }
 
 .cart-goods .h{
-    height: 93.75rpx;
-    line-height: 93.75rpx;
+    height: 80rpx;
+    line-height: 80rpx;
     margin-left: 31.25rpx;
-    bcart-bottom: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
     padding-right: 31.25rpx;
 }
 
@@ -108,11 +108,11 @@ page{
     height: 220rpx;
     margin-left: 31.25rpx;
     padding-right: 31.25rpx;
-    bcart-bottom: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
 }
 
 .cart-goods .item:last-child{
-    bcart-bottom: none;
+    border-bottom: none;
 }
 
 .cart-goods .item .img{
@@ -244,8 +244,8 @@ page{
 }
 
 .cart-bottom .pay-fee{
-    height: 81rpx;
-    line-height: 81rpx;
+    height: 50rpx;
+    line-height: 50rpx;
 }
 
 .cart-bottom .pay-fee .label{
@@ -301,7 +301,7 @@ page{
 
 .estimate-line-textarea{
   width: 80rpx;
-  height: 30rpx;
+  height: 28rpx;
   color: red;
   border: solid 0.5rpx black;
   display:inline-flex;

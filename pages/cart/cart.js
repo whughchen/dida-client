@@ -49,7 +49,11 @@ Page({
   },
   getCartList: function () {
     let that = this;
-    util.request(api.CartList).then(function (res) {
+    var status = undefined;
+    if(that.data.userInfo.user_type == 2){ //司机只能看到未接单的
+      status =0;
+    }
+    util.request(api.CartList, { status: status},'POST').then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);
         that.setData({

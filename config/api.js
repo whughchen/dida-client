@@ -73,7 +73,6 @@ module.exports = {
   NearByCart: ApiRootUrl + 'task/nearByCart',
   CartDetail: ApiRootUrl + 'cart/cartDetail',  //订单详情
   SwitchRole: ApiRootUrl + 'user/switchRole',
-  UpdateLocation: ApiRootUrl + 'user/updateLocation',
-  GrabTask: ApiRootUrl + 'cart/grabTask'
+  UpdateLocation: ApiRootUrl + 'user/updateLocation'
 
 };

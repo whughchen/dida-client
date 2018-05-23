@@ -5,20 +5,21 @@
             <view class="l">实付：
             <text class="cost">￥{{cartInfo.retail_price}}</text>
             </view>
-            <view class="status" wx:if="{{userInfo.user_type != 2}}">{{cartInfo.status == 0 ? '等待接单':'正在进行中'}}</view>
+            <view class="status" wx:if="{{userInfo.user_type != 2 && cartInfo.status==0}}">等待接单</view>
+            <view class="r btn active" wx:if="{{userInfo.user_type != 2 && cartInfo.status==1}}" bindtap="checkoutOrder">下单</view>
             <view class="r" wx:if="{{userInfo.user_type == 2}}">
-                <!--view class="btn" bindtap="estimateTask">工程量预估</view-->
+                
                 <view class="btn active" wx:if="{{estimateTaskFlag == true}}" bindtap="estimateTask">确认接单</view>
             </view>
-            <modal hidden="{{estimateTaskFlag}}" title="工程量预估" confirm-text="接单" cancel-text="不接单" bindcancel="rejectTask" bindconfirm="confirmTask">  
+            <modal hidden="{{estimateTaskFlag}}" title="工程量预估" confirm-text="接单" cancel-text="不接单" bindcancel="rejectTask" bindconfirm="grabTask">  
               <view class='estimate-line'>
                 <view class='estimate-inline'>
                   <text class='estimate-line-text'>预计车次:</text>
-                  <textarea placeholder='{{cartInfo.number}}' class='estimate-line-textarea'>  </textarea> 
+                  <input class='estimate-line-textarea' focus="{{input_focus}}" bindchange="bindChange" bindtap="listenerPhoneInput" placeholder='多少'></input>
                   <text class="estimate-line-text">车</text>
                 </view>
                 <view class='estimate-inline'>
-                  <text class='estimate-line-text'>超时时间:{{cartInfo.create_time}}</text>
+                  <text class='estimate-line-text'>超时时间:{{cartInfo.deadline}}</text>
                 </view>
               
               

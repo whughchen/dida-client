@@ -31,7 +31,7 @@
                 <view class="attr">{{item.remark}}</view>
                 <view class="b">
                   <text class="price">￥{{item.retail_price}}</text>
-                  <text class="status" wx:if="{{userInfo.user_type != 2}}">{{item.status == 0 ? '等待接单':'正在进行中'}}</text>
+                  <text class="status" wx:if="{{userInfo.user_type != 2}}">{{item.status == 0 ? '等待接单':'等你下单'}}</text>
                   <view class="r" wx:if="{{userInfo.user_type==2}}">
                      
                     <button class="btn" data-order-index="{{index}}" catchtap="gotoCartDetail" >接单</button>

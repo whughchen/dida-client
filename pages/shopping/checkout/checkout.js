@@ -106,11 +106,11 @@ Page({
 
   },
   submitOrder: function () {
-    if (this.data.addressId <= 0) {
+    if (!this.data.checkedAddress.id ) {
       util.showErrorToast('请选择收货地址');
       return false;
     }
-    util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId }, 'POST').then(res => {
+    util.request(api.OrderSubmit, { checkedAddress: this.data.checkedAddress, couponId: this.data.couponId }, 'POST').then(res => {
       if (res.errno === 0) {
         const orderId = res.data.orderInfo.id;
         pay.payOrder(parseInt(orderId)).then(res => {
