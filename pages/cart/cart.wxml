@@ -33,8 +33,9 @@
                   <text class="price">￥{{item.retail_price}}</text>
                   <text class="status" wx:if="{{userInfo.user_type != 2}}">{{item.status == 0 ? '等待接单':'等你下单'}}</text>
                   <view class="r" wx:if="{{userInfo.user_type==2}}">
-                     
-                    <button class="btn" data-order-index="{{index}}" catchtap="gotoCartDetail" >接单</button>
+                    <navigator url="/pages/cartDetail/cartDetail?id={{item.id}}"> 
+                    <button class="btn" data-order-index="{{index}}"  >接单</button>
+                    </navigator>
                   </view>
                   <view class="selnum">
                     <view class="cut" bindtap="cutNumber" data-item-index="{{index}}">-</view>

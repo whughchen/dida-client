@@ -11,7 +11,7 @@
                 </view>
                 <view class="info">
                     <text class="name">{{gitem.goods_name}}</text>
-                    <text class="number">共{{gitem.number}}件商品</text>
+                    <text class="number">共{{item.number}}车</text>
                 </view>
                 <view class="status"></view>
             </view>

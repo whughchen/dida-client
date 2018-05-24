@@ -32,7 +32,7 @@ Page({
         util.request(api.AddressList, { isDefault: 1 }).then(function (res) {
           if (res.errno === 0) {
             console.log(res.data);
-            if(res.data.addressList.length>0){
+            if(res.data.addressList){
               that.setData({
                 addressId: res.data.addressList[0].id
               });
@@ -105,18 +105,17 @@ Page({
     // 页面关闭
 
   },
-  submitOrder: function () {
+  submitOrder () {
     if (!this.data.checkedAddress.id ) {
       util.showErrorToast('请选择收货地址');
       return false;
     }
-    util.request(api.OrderSubmit, { checkedAddress: this.data.checkedAddress, couponId: this.data.couponId }, 'POST').then(res => {
+    util.request(api.OrderSubmit, { checkedAddress: this.data.checkedAddress, couponId: this.data.couponId, checkedGoodsList: this.data.checkedGoodsList[0] }, 'POST').then(res => {
       if (res.errno === 0) {
         const orderId = res.data.orderInfo.id;
         pay.payOrder(parseInt(orderId)).then(res => {
           wx.redirectTo({
-            
-            
+                     
             url: '/pages/payResult/payResult?status=1&orderId=' + orderId
           });
         }).catch(res => {

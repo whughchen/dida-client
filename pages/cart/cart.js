@@ -47,13 +47,14 @@ Page({
     // 页面关闭
 
   },
+
   getCartList: function () {
     let that = this;
-    var status = undefined;
-    if(that.data.userInfo.user_type == 2){ //司机只能看到未接单的
-      status =0;
+    var taskUser = undefined;
+    if(that.data.userInfo.user_type == 2){ //司机是接单人
+      taskUser = that.data.userInfo.id;
     }
-    util.request(api.CartList, { status: status},'POST').then(function (res) {
+    util.request(api.CartList, { taskUser: taskUser},'POST').then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);
         that.setData({

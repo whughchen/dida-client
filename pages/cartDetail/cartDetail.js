@@ -63,7 +63,7 @@ Page({
   //确认  
   grabTask: function () {
     let that = this;
-    util.request(api.CartUpdate, { id: that.data.cartId, goodsId: that.data.cartInfo.goods_id, productId: that.data.cartInfo.product_id, number: that.data.numberOfvehicle, status: 1, taskUserId: userInfo.id}, 'POST').then(function (res) {
+    util.request(api.CartUpdate, { id: that.data.cartId, goodsId: that.data.cartInfo.goods_id, productId: that.data.cartInfo.product_id, number: that.data.numberOfvehicle, status: 1, taskUserId: that.data.userInfo.id}, 'POST').then(function (res) {
       if (res.errno === 0) {
         console.log('更新cart status成功');
       }
