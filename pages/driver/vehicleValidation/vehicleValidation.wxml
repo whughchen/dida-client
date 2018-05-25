@@ -1,33 +1,36 @@
 <view class="container">
-    <view class="driver_id_list">
-        <text class="brand11" style='margin-bottom: 5px;'>车主身份证照片 </text>
-        <text class="text1">(正面、反面各一张)</text>
-
-        <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
-            <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
-            <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
-            <view class="upload_progress" wx:if="{{item.upload_percent < 100}}">{{item.upload_percent}}%</view>
-        </view>
-        <view class="picture_item">
-            <image src="../../../img/add_photo.png" bindtap="uploadpic" mode="aspectFill"></image>
-        </view>
+  <view>
+    <text class="brand11" style='margin-bottom: 5px;'>行驶证照片 </text>
+    <text class="text1">(左右2页 必须清晰可见)</text>
+    <view class="picture_list">
+      <view wx:for="{{upload_id_list}}" class="picture_item" wx:key="{{index}}">
+        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}">{{item.upload_percent}}%</view>
+      </view>
+      <view class="picture_item">
+        <image src="../../../img/add_photo.png" bindtap="uploadIDpic" mode="aspectFill"></image>
+      </view>
     </view>
+  </view>
 
-    <view class="driver_liscence_list">
-        <text class="brand11" style='margin-bottom: 5px;'>驾照证照片 </text>
-        <text class="text1">示例</text>
-
-        <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
-            <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
-            <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
-            <view class="upload_progress" wx:if="{{item.upload_percent < 100}}">{{item.upload_percent}}%</view>
-        </view>
-        <view class="picture_item">
-            <image src="../../../img/add_photo.png" bindtap="uploadpic" mode="aspectFill"></image>
-        </view>
+  <view>
+    <text class="brand11" style='margin-bottom: 5px;'>车身全景照片 </text>
+    <text class="text1">示例</text>
+    <view class="picture_list">
+      <view wx:for="{{upload_driver_liscense_list}}" class="picture_item" wx:key="{{index}}">
+        <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
+        <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
+        <view class="upload_progress" wx:if="{{item.upload_percent < 100}}">{{item.upload_percent}}%</view>
+      </view>
+      <view class="picture_item">
+        <image src="../../../img/add_photo.png" bindtap="uploadDriverLiscensepic" mode="aspectFill"></image>
+      </view>
     </view>
+  </view>
 
-    <button class="page-body-button" type="primary" bindtap="submitValidation">提交审核</button>
+
 
 
 </view>
+<button class="page-body-button" type="primary" bindtap="uploadimage">提交审核</button>

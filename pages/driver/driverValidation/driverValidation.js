@@ -1,4 +1,9 @@
 // pages/driver/driverValidation/driverValidation.js
+const util = require('../../../utils/util.js');
+const api = require('../../../config/api.js');
+const user = require('../../../services/user.js');
+const imageutil = require('../../../services/imageutil.js');
+
 Page({
 
   /**
@@ -7,7 +12,8 @@ Page({
   data: {
     upload_id_list: [],
     upload_driver_liscense_list: [],
-    photoUrlId: 0
+    iDphotoUrlId: 0,
+    driverLiscensePhotoUrlId:0
   },
 
   /**
@@ -65,10 +71,10 @@ Page({
   onShareAppMessage: function () {
   
   },
-  //选择图片方法
-  uploadpic: function (e) {
+  //选择身份证
+  uploadIDpic: function (e) {
     var that = this//获取上下文
-    var upload_picture_list = that.data.upload_picture_list
+    var upload_picture_list = that.data.upload_id_list
     //选择图片
     wx.chooseImage({
       count: 5, // 默认9，这里显示一次选择相册的图片数量
@@ -84,7 +90,31 @@ Page({
         }
         //显示
         that.setData({
-          upload_picture_list: upload_picture_list,
+          upload_id_list: upload_picture_list,
+        });
+      }
+    });
+  },
+  //选择驾驶证
+  uploadDriverLiscensepic: function (e) {
+    var that = this//获取上下文
+    var upload_picture_list = that.data.upload_driver_liscense_list
+    //选择图片
+    wx.chooseImage({
+      count: 5, // 默认9，这里显示一次选择相册的图片数量
+      sizeType: ['original', 'compressed'],// 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'],// 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {// 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFiles = res.tempFiles
+        //把选择的图片 添加到集合里
+        for (var i in tempFiles) {
+          tempFiles[i]['upload_percent'] = 0
+          tempFiles[i]['path_server'] = ''
+          upload_picture_list.push(tempFiles[i])
+        }
+        //显示
+        that.setData({
+          upload_driver_liscense_list: upload_picture_list,
         });
       }
     });
@@ -92,16 +122,24 @@ Page({
   //点击上传事件
   uploadimage: function () {
     var page = this;
-    var upload_picture_list = page.data.upload_picture_list;
+    var upload_picture_list = page.data.upload_id_list;
     //循环把图片上传到服务器 并显示进度
     for (var j in upload_picture_list) {
       if (upload_picture_list[j]['upload_percent'] == 0) {
-        this.upload_file_server(page, upload_picture_list, j);
+        this.upload_file_server(page, upload_picture_list, j,0 );
+      }
+    }
+
+    var upload_picture_list2 = page.data.upload_driver_liscense_list;
+    //循环把图片上传到服务器 并显示进度
+    for (var j in upload_picture_list2) {
+      if (upload_picture_list2[j]['upload_percent'] == 0) {
+        this.upload_file_server(page, upload_picture_list2, j, 1);
       }
     }
   },
   //上传方法
-  upload_file_server: function (that, upload_picture_list, j) {
+  upload_file_server: function (that, upload_picture_list, j,taskId) {
     if (upload_picture_list[j].size >= 2 * 1024 * 1024) {
       wx.showToast({
         image: '/static/images/icon_error.png',
@@ -144,38 +182,42 @@ Page({
           //upload_picture_list[j]['path_server'] = filename;
           console.log('upload failed, reason=' + res.data);
         }
-        that.setData({
-          upload_picture_list: upload_picture_list
-        });
-        that.savePhotoUrl(successList);
 
+        that.savePhotoUrl(successList,taskId);
 
       },
-
-
     });
-
 
     //上传 进度方法
     upload_task.onProgressUpdate((res) => {
+        upload_picture_list[j]['upload_percent'] = res.progress
+        //console.log('第' + j + '个图片上传进度：' + upload_picture_list[j]['upload_percent'])
+        //console.log(upload_picture_list)
+      });
 
-      upload_picture_list[j]['upload_percent'] = res.progress
-      //console.log('第' + j + '个图片上传进度：' + upload_picture_list[j]['upload_percent'])
-      //console.log(upload_picture_list)
-      that.setData({ upload_picture_list: upload_picture_list });
-    });
   },
 
-  savePhotoUrl: function (upload_picture_list) {
+  savePhotoUrl: function (upload_picture_list,taskId) {
     let that = this;
     util.request(api.SavePhotoUrl, { upload_picture_list: upload_picture_list }, 'POST').then(function (res) {
       console.log(res);
       if (res.errno == 0) {
         console.log('savePhotoUrl success');
-        that.setData({
-          photoUrlId: res.data.photoUrlId
-        });
-        that.createOrder();
+
+        if (taskId == 0) {
+          that.setData({
+            iDphotoUrlId: res.data.photoUrlId
+          })
+        } else {
+          that.setData({
+            driverLiscensePhotoUrlId: res.data.photoUrlId
+          })
+        }
+
+        //that.setData({
+        //  photoUrlId: res.data.photoUrlId
+        //});
+       // that.createOrder();
 
       } else {
         console.log('savePhotoUrl failed');

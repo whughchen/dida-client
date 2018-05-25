@@ -541,6 +541,9 @@ display: inline-block;
     position: relative;
     width: 160rpx;
     height: 160rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .upload_progress {

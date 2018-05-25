@@ -1,4 +1,3 @@
-/* pages/driver/vehicleValidation/vehicleValidation.wxss */
 .banner {
   width: 750rpx;
   height: 417rpx;
@@ -542,6 +541,9 @@ display: inline-block;
     position: relative;
     width: 160rpx;
     height: 160rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .upload_progress {
