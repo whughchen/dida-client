@@ -118,7 +118,7 @@ page{
     height: 36rpx;
     line-height: 36rpx;
     text-align: center;
-    padding: 0 20rpx;
+    padding: 0rpx;
     border-radius: 5rpx;
     font-size: 28rpx;
     color: #fff;

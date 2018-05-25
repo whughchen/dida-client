@@ -3,7 +3,7 @@
         <text class="brand11" style='margin-bottom: 5px;'>车主身份证照片 </text>
         <text class="text1">(正面、反面各一张)</text>
 
-        <view wx:for="{{upload_picture_list}}" class="picture_item" wx:key="{{index}}">
+        <view wx:for="{{upload_id_list}}" class="picture_item" wx:key="{{index}}">
             <image wx:if="{{item.upload_percent < 100}}" src="{{item.path}}" mode="aspectFill"></image>
             <image wx:if="{{item.upload_percent == 100}}" src="{{item.path_server}}" mode="aspectFill"></image>
             <view class="upload_progress" wx:if="{{item.upload_percent < 100}}">{{item.upload_percent}}%</view>
@@ -13,7 +13,7 @@
         </view>
     </view>
 
-    <view class="driver_liscence_list">
+    <view class="upload_driver_liscense_list">
         <text class="brand11" style='margin-bottom: 5px;'>驾照证照片 </text>
         <text class="text1">示例</text>
 

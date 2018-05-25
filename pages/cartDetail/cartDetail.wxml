@@ -6,12 +6,13 @@
             <text class="cost">￥{{cartInfo.retail_price}}</text>
             </view>
             <view class="status" wx:if="{{userInfo.user_type != 2 && cartInfo.status==0}}">等待接单</view>
-            <view class="r btn active" wx:if="{{userInfo.user_type != 2 && cartInfo.status==1}}" bindtap="checkoutOrder">下单</view>
-            <view class="r" wx:if="{{userInfo.user_type == 2}}">
-                
-                <view class="btn active" wx:if="{{estimateTaskFlag == true}}" bindtap="estimateTask">确认接单</view>
+            <view class="r btn active" wx:if="{{userInfo.user_type != 2 && cartInfo.status==1}}" bindtap="checkoutOrder">下单
             </view>
-            <modal hidden="{{estimateTaskFlag}}" title="工程量预估" confirm-text="接单" cancel-text="不接单" bindcancel="rejectTask" bindconfirm="grabTask">  
+            <view class="r" wx:if="{{userInfo.user_type == 2}}">
+                <view class="btn active" wx:if="{{cartInfo.status == 0}}" bindtap="estimateTask">工程量评估</view>
+                <text class="cost" wx:if="{{cartInfo.status == 1}}">等待付款</text>
+            </view>
+            <modal hidden="{{estimateTaskFlag}}" title="工程量预估" confirm-text="确定"  bindconfirm="grabTask">  
               <view class='estimate-line'>
                 <view class='estimate-inline'>
                   <text class='estimate-line-text'>预计车次:</text>
@@ -44,8 +45,8 @@
                         <text class="number">x{{cartInfo.number}}车</text>
                     </view>
                     <view class="attr">{{cartInfo.goods_specifition_name_value}}</view>
-                    <view class="attr">{{cartInfo.responce_time}}</view>
-                    <view class="attr">{{cartInfo.remark}}</view>
+                    <!--view class="attr">{{cartInfo.responce_time}}</view>
+                    <view class="attr">{{cartInfo.remark}}</view-->
                     <view class="price">￥{{cartInfo.retail_price}}</view>
 
                 </view>
@@ -53,7 +54,17 @@
             </view>
         </view>
     </view>
-        <view class="cart-bottom">
+    
+    <view class="cart-bottom">
+        <view class="label">用车要求</view>
+        <view class="fromUserInfo">     
+
+            <text class="fromUserInfo-text">完工期限：{{cartInfo.responce_time}}</text>
+            <text class="fromUserInfo-text">客户留言：{{cartInfo.remark}}</text>
+        </view>
+    </view>
+
+    <view class="cart-bottom">
         <view class="label">用车人信息</view>
         <view class="fromUserInfo">     
 

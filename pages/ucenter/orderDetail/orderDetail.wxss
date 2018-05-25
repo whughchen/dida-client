@@ -176,7 +176,7 @@ page{
 }
 
 .order-bottom .address{
-    height: 128rpx;
+    height: 158rpx;
     padding-top: 25rpx;
     border-bottom: 1px solid #f4f4f4;
 }
@@ -252,4 +252,22 @@ page{
     display: inline-block;
     width: 140rpx;
     color: #b4282d;
+}
+
+.picture_list {
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.picture_item {
+
+    width: 160px;
+    height: 160px;
+    margin: 10rpx;
+
 }

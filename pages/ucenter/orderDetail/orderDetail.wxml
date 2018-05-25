@@ -5,8 +5,13 @@
         <view class="item-c">
             <view class="l">实付：<text class="cost">￥{{orderInfo.actual_price}}</text></view>
             <view class="r">
-                <view class="btn" bindtap="cancelOrder" wx:if="{{userInfo.user_type == 1}}">取消订单</view>
-                <view class="btn active" bindtap="payOrder" wx:if="{{userInfo.user_type == 1}}">去付款</view>
+               <view wx:if="{{userInfo.user_type == 1}}">
+                  <view class="btn" bindtap="cancelOrder" >取消订单</view>
+                  <view class="btn active" bindtap="payOrder">去付款</view>
+                </view>
+                <view wx:if="{{userInfo.user_type == 2}}">
+                  <!--view class="btn active" bindtap="payOrder">去付款</view-->
+                </view>
             </view>
         </view>
     </view>
@@ -24,23 +29,42 @@
                 <view class="info">
                     <view class="t">
                         <text class="name">{{item.goods_name}}</text>
-                        <text class="number">x{{item.number}}</text>
+                        <text class="number">x{{item.number}}车</text>
                     </view>
                     <view class="attr">{{item.goods_specifition_name_value}}</view>
-                    <view class="attr">{{orderInfo.responce_time}}</view>
-                    <view class="attr">{{orderInfo.remark}}</view>
+                    <!--view class="attr">{{orderInfo.responce_time}}</view>
+                    <view class="attr">{{orderInfo.remark}}</view-->
                     <view class="price">￥{{item.retail_price}}</view>
 
                 </view>
-                <view wx:for="{{item.photo_urls}}" class="picture_item" wx:key="{{index}}">
-                    <image src="{{item.path}}" mode="aspectFill"></image>
-                </view>
+ 
             </view>
         </view>
     </view>
 
     <view class="order-bottom">
+      <view class="address">
+          <view class="label">用车要求</view>
+          <view class="t">     
+              <text class="b" style='display:block;'>完工期限：{{orderInfo.responce_time}}</text>
+              <text class="b" style='display:block;'>客户留言：{{orderInfo.remark}}</text>
+          </view>
+      </view>
+    </view>
+
+    <view class="order-bottom">
+      <view class="label">开工前照片</view>
+      <view class="picture_list">
+        <view wx:key="{{orderInfo.photoUrls}}" class="picture_item" >
+          <image  src="{{item}}" mode="aspectFill" class="picture_item"></image>
+        </view>
+      </view>
+    </view>
+    
+
+    <view class="order-bottom">
         <view class="address">
+            <view class="label">用车人信息</view> 
             <view class="t">
                 <text class="name">{{orderInfo.consignee}}</text>
                 <text class="mobile">{{orderInfo.mobile}}</text>

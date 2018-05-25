@@ -66,11 +66,12 @@ Page({
     util.request(api.CartUpdate, { id: that.data.cartId, goodsId: that.data.cartInfo.goods_id, productId: that.data.cartInfo.product_id, number: that.data.numberOfvehicle, status: 1, taskUserId: that.data.userInfo.id}, 'POST').then(function (res) {
       if (res.errno === 0) {
         console.log('更新cart status成功');
+        that.setData({
+          estimateTaskFlag: true
+        })
       }
     });
-    this.setData({
-      estimateTaskFlag: true
-    })
+
   },  
 
   checkoutOrder: function () {
