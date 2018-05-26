@@ -7,10 +7,10 @@
             </view>
             <view class="goods" wx:for="{{item.goodsList}}" wx:key="{{gitem.id}}" wx:for-item="gitem">
                 <view class="img">
-                    <image src="{{gitem.list_pic_url}}"></image>
+                    <image src="{{gitem.pic_url}}"></image>
                 </view>
                 <view class="info">
-                    <text class="name">{{gitem.goods_name}}</text>
+                    <text class="name">{{gitem.name}}</text>
                     <text class="number">共{{item.number}}车</text>
                 </view>
                 <view class="status"></view>
