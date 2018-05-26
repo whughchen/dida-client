@@ -91,6 +91,7 @@ Page({
       //that.getAddressTxt();
     } else { //司机页面请求任务列表
       that.getHallCart();
+      that.getNearByCart();
     }
     // 跳转带来的参数
     let pages = getCurrentPages();

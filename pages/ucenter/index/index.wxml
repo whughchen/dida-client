@@ -1,6 +1,6 @@
 <view class="container">
   <view class="profile-info" >
-    <image class="avatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl :'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'}}" ></image>
+    <image class="avatar" src="{{userInfo.avatarUrl ? userInfo.avatarUrl :(userInfo.avatar?userInfo.avatar : 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png')}}" ></image>
     <view class="info">
       <view style='display:block;'>
         <button class="getPhone"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" wx:if="{{!(userInfo.nickname)}}">请登录</button>
