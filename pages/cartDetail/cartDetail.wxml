@@ -76,7 +76,7 @@
             <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
         </view>
       </view>
-      <view wx:if="{{userInfo.user_type != 2}}">
+      <view wx:if="{{userInfo.user_type != 2 && cartInfo.status ==1}}">
         <view class="label">接单人信息</view>
         <view class="taskUser">     
 
