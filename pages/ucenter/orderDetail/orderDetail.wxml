@@ -55,7 +55,7 @@
     <view class="order-bottom">
       <view class="label">开工前照片</view>
       <view class="picture_list">
-        <view wx:key="{{orderInfo.photoUrls}}" class="picture_item" >
+        <view wx:for="{{orderInfo.photoUrls}}" class="picture_item" >
           <image  src="{{item}}" mode="aspectFill" class="picture_item"></image>
         </view>
       </view>
@@ -76,12 +76,19 @@
 
       <view wx:if="{{userInfo.user_type != 2}}">
         <view class="address">
-            <view class="label">接单人信息</view> 
-            <view class="t">
-                <text class="name">{{orderInfo.taskUser.nickname}}</text>
-                <text class="mobile">{{orderInfo.taskUser.mobile}}</text>
+          <view class="label">接单人信息</view> 
+            <view style='display: inline-flex;'>
+              <view >
+                    <image class="avatar" src="{{cartInfo.fromUser.avatar?  cartInfo.fromUser.avatar :'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'}}"></image>
+              </view>
+              <view class="taskUser" >     
+
+              <text class="fromUserInfo-text">客户姓名：{{cartInfo.taskUser.nickname}}</text>
+              <text class="fromUserInfo-text">客户电话：{{cartInfo.taskUser.mobile}}</text>
+
+              <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
+              </view>
             </view>
-            
         </view>
       </view>
 

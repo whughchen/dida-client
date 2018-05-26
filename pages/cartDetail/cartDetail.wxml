@@ -67,23 +67,34 @@
     <view class="cart-bottom">
       <view wx:if="{{userInfo.user_type == 2}}">
         <view class="label">用车人信息</view>
-        <view class="fromUserInfo">     
+        <view style='display: inline-flex;'>
+          <view >
+                <image class="avatar" src="{{cartInfo.fromUser.avatar}}"></image>
+          </view>
+          <view class="fromUserInfo">     
 
-            <text class="fromUserInfo-text">客户姓名：{{cartInfo.fromUser.nickname}}</text>
-            <text class="fromUserInfo-text">客户电话：{{cartInfo.fromUser.mobile}}</text>
+              <text class="fromUserInfo-text">客户姓名：{{cartInfo.fromUser.nickname}}</text>
+              <text class="fromUserInfo-text">客户电话：{{cartInfo.fromUser.mobile}}</text>
 
-            <text class="fromUserInfo-text">拉货地址：{{cartInfo.address}}</text>
-            <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
+              <text class="fromUserInfo-text">拉货地址：{{cartInfo.address}}</text>
+              <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
+          </view>
         </view>
       </view>
       <view wx:if="{{userInfo.user_type != 2 && cartInfo.status ==1}}">
         <view class="label">接单人信息</view>
-        <view class="taskUser">     
+        <view style='display: inline-flex;'>
+          <view >
+                <image class="avatar" src="{{cartInfo.fromUser.avatar}}"></image>
+          </view>
+        
+          <view class="taskUser">     
 
-            <text class="fromUserInfo-text">客户姓名：{{cartInfo.taskUser.nickname}}</text>
-            <text class="fromUserInfo-text">客户电话：{{cartInfo.taskUser.mobile}}</text>
+              <text class="fromUserInfo-text">客户姓名：{{cartInfo.taskUser.nickname}}</text>
+              <text class="fromUserInfo-text">客户电话：{{cartInfo.taskUser.mobile}}</text>
 
-            <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
+              <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
+          </view>
         </view>
       </view>
     </view>
@@ -91,7 +102,7 @@
     <view class="cart-bottom">
       <view class="label">开工前照片</view>
       <view class="picture_list">
-        <view wx:key="{{cartInfo.photoUrls}}" class="picture_item" >
+        <view wx:for="{{cartInfo.photoUrls}}" class="picture_item" >
           <image  src="{{item}}" mode="aspectFill" class="picture_item"></image>
         </view>
       </view>

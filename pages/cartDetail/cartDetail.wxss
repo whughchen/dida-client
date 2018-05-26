@@ -283,7 +283,8 @@ page{
 }
 .fromUserInfo-text{
   font-size: 26rpx;
-    display: block;
+  display: block;
+  margin-left: 29rpx
 }
 .estimate-line{
   display:block;
@@ -305,4 +306,10 @@ page{
   color: red;
   border: solid 0.5rpx black;
   display:inline-flex;
+}
+
+ .avatar{
+    height: 148rpx;
+    width: 148rpx;
+    border-radius: 50%;
 }

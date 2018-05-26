@@ -176,7 +176,7 @@ page{
 }
 
 .order-bottom .address{
-    height: 158rpx;
+    height: 218rpx;
     padding-top: 25rpx;
     border-bottom: 1px solid #f4f4f4;
 }
@@ -270,4 +270,15 @@ page{
     height: 160px;
     margin: 10rpx;
 
+}
+
+ .avatar{
+    height: 148rpx;
+    width: 148rpx;
+    border-radius: 50%;
+}
+.fromUserInfo-text{
+  font-size: 26rpx;
+  display: block;
+  margin-left: 29rpx
 }
