@@ -36,7 +36,7 @@
                     <text class="status" wx:if="{{item.status == 0}}">司机报价中</text>
                     <view wx:if="{{item.status == 1}}">
                       <navigator url="/pages/cartDetail/cartDetail?id={{item.id}}"> 
-                        <button class="btn" data-order-index="{{index}}"  >下单</button>
+                        <button class="btn" data-order-index="{{index}}"  >下定金</button>
                       </navigator>
                     </view>
                   </view>

@@ -153,9 +153,11 @@
                 <view class="attr">{{item.remark}}</view>
                 <view class="b">
                   <text class="l">￥{{item.retail_price}}   距离:{{item.distance}}米</text>
+                  <navigator url="/pages/cartDetail/cartDetail?id={{item.id}}&distance={{999000}}">
                   <view class="r">
-                    <button class="btn" data-order-index="{{index}}" catchtap="gotoCartDetail" >接单</button>
+                    <button class="btn" data-order-index="{{index}}" >接单</button>
                   </view>
+                  </navigator>
                   <view class="selnum">
                     <view class="cut" bindtap="cutNumber" data-item-index="{{index}}">-</view>
                     <input value="{{item.number}}" class="number" disabled="true" type="number" />

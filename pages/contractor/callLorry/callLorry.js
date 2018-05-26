@@ -224,7 +224,7 @@ Page({
       this.setData({
         remark: ''
       });
-      app.func.showToast('请输入备注', 'loading', 1000);
+      wx.showToast('请输入备注', 'loading', 1000);
     }
   }, 
 

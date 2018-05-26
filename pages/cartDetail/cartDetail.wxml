@@ -3,16 +3,16 @@
         <view class="item-a">创建时间：{{cartInfo.create_time}}</view>
         <view class="item-c">
             <view class="l">实付：
-            <text class="cost">￥{{cartInfo.retail_price}}</text>
+            <text class="cost">￥{{cartInfo.retail_price * cartInfo.number}}</text>
             </view>
             <view class="status" wx:if="{{userInfo.user_type != 2 && cartInfo.status==0}}">等待接单</view>
-            <view class="r btn active" wx:if="{{userInfo.user_type != 2 && cartInfo.status==1}}" bindtap="checkoutOrder">下单
+            <view class="r btn active" wx:if="{{userInfo.user_type != 2 && cartInfo.status==1}}" bindtap="checkoutOrder">下定金
             </view>
             <view class="r" wx:if="{{userInfo.user_type == 2}}">
-                <view class="btn active" wx:if="{{cartInfo.status == 0}}" bindtap="estimateTask">工程量评估</view>
+                <view class="btn active" wx:if="{{cartInfo.status == 0}}" bindtap="estimateTask">接单</view>
                 <text class="cost" wx:if="{{cartInfo.status == 1}}">等待付款</text>
             </view>
-            <modal hidden="{{estimateTaskFlag}}" title="工程量预估" confirm-text="确定"  bindconfirm="grabTask">  
+            <modal hidden="{{estimateTaskFlag}}" title="工程量预估" confirm-text="确定"  bindconfirm="grabTask" cancel-text="不接单"  bindcancel="rejectTask">  
               <view class='estimate-line'>
                 <view class='estimate-inline'>
                   <text class='estimate-line-text'>预计车次:</text>
@@ -47,7 +47,7 @@
                     <view class="attr">{{cartInfo.goods_specifition_name_value}}</view>
                     <!--view class="attr">{{cartInfo.responce_time}}</view>
                     <view class="attr">{{cartInfo.remark}}</view-->
-                    <view class="price">￥{{cartInfo.retail_price}}</view>
+                    <view class="price">单价：￥{{cartInfo.retail_price}}</view>
 
                 </view>
 
@@ -65,6 +65,7 @@
     </view>
 
     <view class="cart-bottom">
+      <view wx:if="{{userInfo.user_type == 2}}">
         <view class="label">用车人信息</view>
         <view class="fromUserInfo">     
 
@@ -74,6 +75,17 @@
             <text class="fromUserInfo-text">拉货地址：{{cartInfo.address}}</text>
             <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
         </view>
+      </view>
+      <view wx:if="{{userInfo.user_type != 2}}">
+        <view class="label">接单人信息</view>
+        <view class="taskUser">     
+
+            <text class="fromUserInfo-text">客户姓名：{{cartInfo.taskUser.nickname}}</text>
+            <text class="fromUserInfo-text">客户电话：{{cartInfo.taskUser.mobile}}</text>
+
+            <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
+        </view>
+      </view>
     </view>
 
     <view class="cart-bottom">
@@ -89,7 +101,7 @@
         <view class="total">
             <view class="t">
                 <text class="label">商品合计：</text>
-                <text class="txt">￥{{cartInfo.retail_price}}</text>
+                <text class="txt">￥{{cartInfo.retail_price * cartInfo.number}}</text>
             </view>
             <view class="t">
                 <text class="label">运费：</text>
@@ -102,7 +114,7 @@
         </view>
         <view class="pay-fee">
             <text class="label">实付：</text>
-            <text class="txt">￥{{cartInfo.retail_price}}</text>
+            <text class="txt">￥{{cartInfo.retail_price * cartInfo.number}}</text>
         </view>
     </view>
 </view>

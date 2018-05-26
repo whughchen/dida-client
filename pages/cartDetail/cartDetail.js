@@ -69,6 +69,10 @@ Page({
         that.setData({
           estimateTaskFlag: true
         })
+        wx.switchTab({
+          url: '/pages/cart/cart',
+          
+        })
       }
     });
 

@@ -63,6 +63,7 @@
     
 
     <view class="order-bottom">
+      <view wx:if="{{userInfo.user_type == 2}}">
         <view class="address">
             <view class="label">用车人信息</view> 
             <view class="t">
@@ -71,6 +72,19 @@
             </view>
             <view class="b">{{orderInfo.full_region + orderInfo.address}}</view>
         </view>
+      </view>
+
+      <view wx:if="{{userInfo.user_type != 2}}">
+        <view class="address">
+            <view class="label">接单人信息</view> 
+            <view class="t">
+                <text class="name">{{orderInfo.taskUser.nickname}}</text>
+                <text class="mobile">{{orderInfo.taskUser.mobile}}</text>
+            </view>
+            
+        </view>
+      </view>
+
         <view class="total">
             <view class="t">
                 <text class="label">商品合计：</text>
