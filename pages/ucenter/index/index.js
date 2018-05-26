@@ -39,9 +39,11 @@ Page({
           phone: phone
         });
       }
+      if (userInfo.user_type ==2){
+        this.getMyBalance();
+        this.withdrawSum();
+      }
 
-      this.getMyBalance();
-      this.withdrawSum();
     }
     if (!sessionData){
       this.goLogin();
@@ -63,6 +65,63 @@ Page({
   onUnload: function () {
     // 页面关闭
   },
+  onGotUserInfo: function (e) {
+
+    console.log('getUserInfo:' + JSON.stringify(e.detail.userInfo))
+    var fullUserInfo = this.updateUserInfo(e.detail.userInfo)
+    app.globalData.userInfo = fullUserInfo;
+    wx.setStorageSync('userInfo', fullUserInfo)
+    this.setData({
+      userInfo: fullUserInfo
+    })
+    this.updateUser();
+    this.onShow();
+
+  },
+
+  updateUserInfo: function (userInfo){
+    var userInfoFromLogin =this.data.userInfo;
+    if (!userInfoFromLogin.gender){
+      userInfoFromLogin.gender = userInfo.gender;
+    }
+    if (!userInfoFromLogin.nickname) {
+      userInfoFromLogin.nickname = userInfo.nickName;
+    }
+    if (!userInfoFromLogin.country) {
+      userInfoFromLogin.country = userInfo.country;
+    }
+    if (!userInfoFromLogin.province) {
+      userInfoFromLogin.province = userInfo.province;
+    }
+    if (!userInfoFromLogin.city) {
+      userInfoFromLogin.city = userInfo.city;
+    }
+    if (!userInfoFromLogin.language) {
+      userInfoFromLogin.language = userInfo.language;
+    }
+    if (!userInfoFromLogin.avatarUrl) {
+      userInfoFromLogin.avatarUrl = userInfo.avatarUrl;
+      userInfoFromLogin.avatar = userInfo.avatarUrl;
+    }
+    var location = wx.getStorageSync('location');
+    if (location){
+      userInfoFromLogin.lon = location.lon;
+      userInfoFromLogin.lat = location.lat;
+    }
+    
+    return userInfoFromLogin;
+  },
+
+  updateUser:function(){
+    util.request(api.UpdateUser, { userInfo: this.data.userInfo }, 'POST').then(function (res) {
+      if (res.errno === 0) {
+        console.log('更新用户完整的信息成功');
+      }else{
+        console.log('更新用户完整的信息失败：'+ JSON.stringify(res));
+      }
+    })
+  },
+
   getPhoneNumber: function (e) {
     let that = this;
     // console.log(e.detail)

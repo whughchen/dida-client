@@ -45,7 +45,7 @@ page{
     height: 26rpx;
     line-height: 26rpx;
     color: #fff;
-    font-size: 22rpx;
+    font-size: 26rpx;
     margin-bottom: 10rpx;
     margin-left: 10rpx;
 }
@@ -66,7 +66,7 @@ page{
     height: 26rpx;
     line-height: 26rpx;
     font-size: 26rpx;
-    margin-bottom: 10rpx;
+    /*margin-bottom: 10rpx;*/
     color: lightblue;
     text-decoration: underline;
     background-color: #333;
