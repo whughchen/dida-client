@@ -79,12 +79,12 @@
           <view class="label">接单人信息</view> 
             <view style='display: inline-flex;'>
               <view >
-                    <image class="avatar" src="{{cartInfo.fromUser.avatar?  cartInfo.fromUser.avatar :'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'}}"></image>
+                    <image class="avatar" src="{{orderInfo.taskUser.avatar?  orderInfo.taskUser.avatar :'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'}}"></image>
               </view>
               <view class="taskUser" >     
 
-              <text class="fromUserInfo-text">客户姓名：{{cartInfo.taskUser.nickname}}</text>
-              <text class="fromUserInfo-text">客户电话：{{cartInfo.taskUser.mobile}}</text>
+              <text class="fromUserInfo-text">客户姓名：{{orderInfo.taskUser.nickname}}</text>
+              <text class="fromUserInfo-text">客户电话：{{orderInfo.taskUser.mobile}}</text>
 
               <text class="fromUserInfo-text">和你距离：{{distance}}米</text>
               </view>

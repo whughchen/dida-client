@@ -85,7 +85,7 @@
         <view class="label">接单人信息</view>
         <view style='display: inline-flex;'>
           <view >
-                <image class="avatar" src="{{cartInfo.fromUser.avatar}}"></image>
+                <image class="avatar" src="{{cartInfo.taskUser.avatar}}"></image>
           </view>
         
           <view class="taskUser">     
