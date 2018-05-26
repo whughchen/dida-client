@@ -6,6 +6,7 @@ var app = getApp();
 
 Page({
   data: {
+    cartId:0,
     checkedGoodsList: [],
     checkedAddress: {},
     checkedCoupon: [],
@@ -21,6 +22,10 @@ Page({
   onLoad: function (options) {
 
     // 页面初始化 options为页面跳转所带来的参数
+    this.setData({
+      cartId: options.cartId
+    })
+    
 
     try {
       var addressId = options.addressId;
@@ -56,7 +61,7 @@ Page({
   
   getCheckoutInfo: function () {
     let that = this;
-    util.request(api.CartCheckout, { addressId: that.data.addressId, couponId: that.data.couponId }).then(function (res) {
+    util.request(api.CartCheckout, { addressId: that.data.addressId, couponId: that.data.couponId, cartId: that.data.cartId}).then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);
         that.setData({

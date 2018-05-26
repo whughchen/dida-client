@@ -82,7 +82,7 @@ Page({
     //获取已选择的商品
     let that = this;
     var params = ''
-    params = params + 'cartIdArray=' + that.data.cartId;
+    params = params + 'cartId=' + that.data.cartId;
 
 
     wx.navigateTo({
